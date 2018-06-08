@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "plugins": [
+    "html"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  }
+}

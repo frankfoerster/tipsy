@@ -1,0 +1,5 @@
+<?php
+
+$configure = [
+    'debug' => true
+];

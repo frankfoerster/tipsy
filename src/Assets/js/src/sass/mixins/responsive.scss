@@ -1,0 +1,28 @@
+@mixin respond-to-max($maxWidth) {
+  @if unit($maxWidth) == 'px' {
+    $maxEm: $maxWidth / 16px + 0em;
+
+    @media only screen and (max-width: $maxEm) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to-min($minWidth) {
+  @if unit($minWidth) == 'px' {
+    $minEm: $minWidth / 16px + 0em;
+
+    @media only screen and (min-width: $minEm) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to-min-max($minWidth, $maxWidth) {
+  $minEm: $minWidth / 16px + 0em;
+  $maxEm: $maxWidth / 16px + 0em;
+
+  @media only screen and (min-width: $minEm) and (max-width: $maxEm) {
+    @content;
+  }
+}

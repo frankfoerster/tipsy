@@ -1,0 +1,87 @@
+@font-face {
+  font-family: $icon-font-family;
+  src:
+    url('#{$icon-font-path}/#{$icon-font-filename}.woff2?#{$icon-font-key}') format('woff2'),
+    url('#{$icon-font-path}/#{$icon-font-filename}.ttf?#{$icon-font-key}') format('truetype'),
+    url('#{$icon-font-path}/#{$icon-font-filename}.woff?#{$icon-font-key}') format('woff'),
+    url('#{$icon-font-path}/#{$icon-font-filename}.svg?#{$icon-font-key}##{$icon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin icon($icon: '') {
+  display: inline-block;
+  font-family: $icon-font-family !important; // use !important to prevent issues with browser extensions that change fonts
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  @include font-smoothing;
+
+  &:before {
+    display: inline-block;
+    width: 1em;
+    @if $icon {
+      content: $icon;
+    }
+  }
+}
+
+@mixin icon-direct($icon: '') {
+  display: inline-block;
+  font-family: $icon-font-family !important; // use !important to prevent issues with browser extensions that change fonts
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  @include font-smoothing;
+  width: 1em;
+  @if $icon {
+    content: $icon;
+  }
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  @include icon();
+  @include rem(margin-right, 5px);
+  transform: translateY(1px);
+}
+
+.input-icon {
+  margin-right: 0;
+  transform: translateY(-1px);
+}
+
+// Icon classes
+
+.icon-user {
+  &:before {
+    content: $icon-user;
+  }
+}
+.icon-mail {
+  &:before {
+    content: $icon-mail;
+  }
+}
+.icon-lock {
+  &:before {
+    content: $icon-lock;
+  }
+}
+.icon-angle-down {
+  &:before {
+    content: $icon-angle-down;
+  }
+}
+.icon-soccer-ball {
+  &:before {
+    content: $icon-soccer-ball;
+  }
+}
