@@ -332,9 +332,10 @@ export default Component
   @import '../../sass/imports';
 
   .notifications {
-    display: block;
     position: fixed;
     z-index: $zindex-notifications;
+    max-width: 100%;
+    top: 49px !important;
   }
 
   .notification-wrapper {
@@ -359,7 +360,7 @@ export default Component
   .vue-notification {
     @include rem(font-size, 14px);
     @include rem(padding, 10px);
-    @include rem(margin, 0 10px 10px 0);
+    @include rem(margin, 0 10px 5px);
 
     color: white;
     background: #44A4FC;

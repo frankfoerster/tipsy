@@ -1,6 +1,6 @@
 <template>
   <div class="vote">
-    <form class="vote-form" @submit.prevent="onSubmit">
+    <form v-if="canVote(game)" class="vote-form" @submit.prevent="onSubmit">
       <div class="vote--control">
         <vue-label :for="'vote-' + game.id + '-v1'">Vote</vue-label>
         <vue-input
@@ -36,6 +36,16 @@
         <template v-if="!loading && voted">Update Vote!</template>
       </vue-button>
     </form>
+    <div class="voting-closed" v-else>
+      <div class="voting-closed--info">
+        Voting is closed for this game.<div v-if="voted">You voted!</div>
+      </div>
+      <div class="user-vote" v-if="voted">
+        <div class="user-vote--result">{{ result1 }}</div>
+        <div class="vote--spacer">:</div>
+        <div class="user-vote--result">{{ result2 }}</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -43,12 +53,16 @@
   import { mapGetters } from 'vuex';
   import { required, integer, minValue } from 'vuelidate/lib/validators';
 
+  import canVote from '../mixins/canVoteMixin';
+
   import VueLabel from './VueLabel.vue';
   import VueInput from './VueInput.vue';
   import VueButton from './VueButton.vue';
 
   export default {
     name: 'game-vote',
+
+    mixins: [canVote],
 
     props: {
       game: {
@@ -97,8 +111,8 @@
 
       hasChanged() {
         return (
-          this.initialResult1 !== this.result1 ||
-          this.initialResult2 !== this.result2
+          parseInt(this.initialResult1) !== parseInt(this.result1) ||
+          parseInt(this.initialResult2) !== parseInt(this.result2)
         );
       }
     },
@@ -146,9 +160,9 @@
         this.loading = true;
 
         const vote = Object.assign({}, {
-          gameId: this.game.id,
-          result1: this.result1,
-          result2: this.result2
+          game_id: this.game.id,
+          result1: parseInt(this.result1),
+          result2: parseInt(this.result2)
         });
 
         setTimeout(() => {
@@ -163,13 +177,29 @@
             if (data && data.message) {
               this.$notify({
                 group: 'vote',
-                title: 'Vote submitted!',
+                title: 'Success!',
                 text: data.message,
-                duration: 1000000
+                type: 'success',
+                duration: 6000
               });
             }
-          }).catch(() => {
+          }).catch((data) => {
+            let errorMsg = '';
 
+            if (data) {
+              if (data.errors && data.errors.game_id && data.errors.game_id['is-voting-allowed']) {
+                errorMsg = data.errors.game_id['is-voting-allowed'];
+              } else if (data.message) {
+                errorMsg = data.message;
+              }
+            }
+
+            this.$notify({
+              group: 'vote',
+              title: 'Error!',
+              text: errorMsg,
+              type: 'error'
+            });
           }).finally(() => {
             this.loading = false;
           });
@@ -256,5 +286,38 @@
     @include rem(margin-top, 10px);
     width: 100%;
     @include rem(padding, 12px 15px);
+  }
+
+  .voting-closed {
+    @include rem(margin-top, 5px);
+    color: #fff;
+    background-color: #4299c1;
+    border-radius: 3px;
+  }
+
+  .voting-closed--info {
+    @include rem(padding, 10px);
+
+    div {
+      font-weight: 600;
+    }
+  }
+
+  .user-vote {
+    display: flex;
+    @include rem(padding-bottom, 10px);
+  }
+
+  .user-vote--result {
+    width: calc((100% - 56px)/2);
+    @include rem(padding-left, 21px);
+    @include rem(font-size, 18px);
+    font-weight: 600;
+  }
+
+  .user-vote--result ~ .user-vote--result {
+    padding-left: 0;
+    @include rem(padding-right, 22px);
+    text-align: right;
   }
 </style>

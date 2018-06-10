@@ -155,7 +155,12 @@ const store = new Vuex.Store({
     },
 
     VOTE({commit}, {token, vote}) {
-      return tipResource.createOrUpdate(token, vote);
+      return tipResource.createOrUpdate(token, vote)
+        .then((data) => {
+          commit('UPDATE_USER_TIP', Object.assign({}, vote, { voted: true }));
+
+          return Promise.resolve(data);
+        });
     }
   },
 
@@ -179,6 +184,10 @@ const store = new Vuex.Store({
 
     SET_LOGIN_REDIRECT(state, to) {
       state.redirect =  to && to.fullPath || null;
+    },
+
+    UPDATE_USER_TIP(state, vote) {
+      Vue.set(state.user.tips, vote.game_id, vote);
     }
   },
 

@@ -113,10 +113,13 @@
 
   .game-team--name {
     order: 1;
+    @include rem(padding-right, 5px);
 
     .game-team__reverse & {
       order: 2;
       text-align: right;
+      padding-right: 0;
+      @include rem(padding-left, 5px);
     }
   }
 

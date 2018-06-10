@@ -2,7 +2,7 @@
   <div class="upcoming-games">
     <div v-for="(game, index) in upcomingGames" v-if="upcomingGames && upcomingGames.length > 0 && index < 5"
          class="upcoming--row"
-         :class="{'upcoming--row__focused': focused[game.id]}"
+         :class="{'upcoming--row__focused': focused[game.id], 'upcoming--row__voting-closed': !canVote(game)}"
     >
       <game :game="game" @gameFocus="onFocus" @gameBlur="onBlur"></game>
     </div>
@@ -13,10 +13,14 @@
   import { mapGetters } from 'vuex';
   import Vue from 'vue';
 
+  import canVote from '../mixins/canVoteMixin';
+
   import Game from './Game.vue';
 
   export default {
     name: 'upcoming-games',
+
+    mixins: [canVote],
 
     components: {
       Game
@@ -69,6 +73,18 @@
 
     &, &:hover {
       background-color: #fff6bf;
+    }
+  }
+
+  .upcoming--row__voting-closed {
+
+    &, &:hover {
+      background-color: #dde9f5;
+      border-bottom-color: #d9d9d9;
+    }
+
+    & + .upcoming--row__voting-closed {
+      margin-top: 1px;
     }
   }
 </style>

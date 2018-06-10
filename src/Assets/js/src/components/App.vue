@@ -14,7 +14,7 @@
       </transition>
     </div>
     <app-footer></app-footer>
-    <notifications group="vote"></notifications>
+    <notifications group="vote" width="400px"></notifications>
   </div>
 </template>
 
