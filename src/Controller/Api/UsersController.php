@@ -5,11 +5,7 @@ namespace App\Controller\Api;
 use App\Model\Entity\User;
 use App\Model\Table\TokensTable;
 use App\Model\Table\UsersTable;
-use Cake\Http\Exception\BadRequestException;
-use Cake\Http\Exception\MethodNotAllowedException;
-use Cake\Http\Exception\UnauthorizedException;
 use Cake\Mailer\MailerAwareTrait;
-use Cake\Utility\Security;
 
 /**
  * Class UserController
@@ -34,11 +30,13 @@ class UsersController extends ApiAppController
         $this->loadModel('Users');
         $this->loadModel('Tokens');
 
-        $this->Auth->allow([
+        $this->Guardian->allow([
             'login',
-            'register',
+            'signup',
+            'verify',
             'lostPassword',
-            'resetPassword'
+            'resetPassword',
+            'notFound'
         ]);
     }
 
@@ -48,31 +46,38 @@ class UsersController extends ApiAppController
      *
      * @return void
      * @throws \Aura\Intl\Exception
+     * @throws \Exception
      */
     public function login()
     {
-        if (!$this->request->is(['post'])) {
-            throw new MethodNotAllowedException('Invalid request');
+        if (!$this->request->is('post')) {
+            $this->_respondWithMethodNotAllowed();
+            return;
         }
 
-        $user = $this->Users->findByCredentials($this->request);
+        $login = $this->request->getData('login');
+        $password = $this->request->getData('password');
 
-        if (!$user) {
-            throw new UnauthorizedException(__('Wrong email or password.'));
+        $user = $this->Users->findByCredentials($login, $password);
+
+        if ($user) {
+            $this->Guardian->authenticate($user);
+
+            // Respond with the auth token in the Authorization header.
+            $this->response = $this->response->withHeader('Authorization', 'Bearer ' . $this->Guardian->user('token.token'));
+
+            $this->set('user', [
+                'username' => $user->username,
+                'email' => $user->email,
+                'verified' => $user->verified,
+                'tips' => $this->Users->Tips->findTipsForUser($user->id)
+            ]);
+        } else {
+            $this->set('message', __('Wrong email/username or password.'));
+            $this->_respondWithUnauthorized();
         }
 
-        // Generate auth token.
-        $token = Security::hash($user->id . $user->email, 'sha1', true);
-
-        // Add auth token to user and update the session.
-        $user->set('token', $token);
-        $this->Auth->setUser($user);
-
-        // Respond with the auth token in the Authorization header.
-        $this->response = $this->response->withHeader('Authorization', 'Bearer ' . $token);
-
-        $this->set('user', $this->Auth->user());
-        $this->set('_serialize', ['user']);
+        $this->set('_serialize', ['user', 'message']);
     }
 
     /**
@@ -84,35 +89,131 @@ class UsersController extends ApiAppController
      */
     public function logout()
     {
-        $this->Auth->logout();
+        if (!$this->request->is('post')) {
+            $this->_respondWithMethodNotAllowed();
+            return;
+        }
+
+        $this->Guardian->logout();
         $this->set('message', __('You were logged out.'));
         $this->set('_serialize', ['message']);
     }
 
     /**
-     * Register action
+     * Info action
+     * GET
+     *
+     * @return void
+     */
+    public function info()
+    {
+        if (!$this->request->is('get')) {
+            $this->_respondWithMethodNotAllowed();
+            return;
+        }
+
+        $user = $this->Guardian->user();
+
+        $this->set('user', [
+            'username' => $user->username,
+            'email' => $user->email,
+            'verified' => $user->verified,
+            'tips' => $this->Users->Tips->findTipsForUser($user->id)
+        ]);
+        $this->set('_serialize', ['user']);
+    }
+
+    /**
+     * Signup action
      * POST
      *
      * @throws \Aura\Intl\Exception
+     * @throws \Exception
      */
-    public function register()
+    public function signup()
     {
         if (!$this->request->is('post')) {
-            throw new MethodNotAllowedException();
+            $this->_respondWithMethodNotAllowed();
+            return;
         }
 
         /** @var User $user */
         $user = $this->Users->newEntity();
 
         if ($this->Users->create($user, $this->request->getData())) {
-            $this->getMailer('User')->send('signup', [$user]);
+            $token = $this->Users->Tokens->create($user, TokensTable::TYPE_VERIFY_EMAIL, 'P2D');
+            $this->getMailer('User')->send('signup', [$user, $token->token]);
             $this->set('message', __('Your account has been created.'));
         } else {
             $this->set('message', __('Please correct the marked errors.'));
             $this->set('errors', $user->getErrors());
+            if ($user->hasRuleErrors()) {
+                $this->_respondWithConflict();
+            } else {
+                $this->_respondWithValidationErrors();
+            }
         }
 
         $this->set('_serialize', ['message', 'errors']);
+    }
+
+    /**
+     * Verify action
+     * POST
+     */
+    public function verify()
+    {
+        if (!$this->request->is('post')) {
+            $this->_respondWithMethodNotAllowed();
+            return;
+        }
+
+        $token = $this->request->getData('token');
+        if (empty($token)) {
+            $this->_respondWithBadRequest();
+            return;
+        }
+
+        $user = $this->Users->findByToken($token, TokensTable::TYPE_VERIFY_EMAIL);
+        if (empty($user)) {
+            $this->set('message', 'This verification url is no longer valid.');
+            $this->set('_serialize', ['message']);
+            $this->_respondWithBadRequest();
+            return;
+        }
+
+        $this->Users->verify($user->id);
+        $this->Users->Tokens->expireToken($token);
+
+        $this->set('message', 'Your email address has been verified.');
+        $this->set('_serialize', ['message']);
+    }
+
+    /**
+     * Request a new verification email.
+     * POST
+     *
+     * @return void
+     * @throws \Exception
+     */
+    public function requestVerificationEmail()
+    {
+        if (!$this->request->is('post')) {
+            $this->_respondWithMethodNotAllowed();
+            return;
+        }
+
+        $user = $this->Guardian->user();
+        if (!$user->verified) {
+            $this->Users->Tokens->expireTokens($user->id, TokensTable::TYPE_VERIFY_EMAIL);
+            $token = $this->Users->Tokens->create($user, TokensTable::TYPE_VERIFY_EMAIL, 'P2D');
+            $this->getMailer('User')->send('verify', [$user, $token->token]);
+            $this->set('message', __('Please check your inbox.'));
+        } else {
+            $this->set('message', __('Your email address is already verified.'));
+        }
+
+        $this->set('_serialize', ['message']);
     }
 
     /**
@@ -121,17 +222,19 @@ class UsersController extends ApiAppController
      *
      * @return void
      * @throws \Aura\Intl\Exception
+     * @throws \Exception
      */
     public function lostPassword()
     {
         if (!$this->request->is('post')) {
-            throw new MethodNotAllowedException();
+            $this->_respondWithMethodNotAllowed();
+            return;
         }
 
         $user = $this->Users->findByEmail($this->request->getData('email'));
 
         if ($user) {
-            $token = $this->Tokens->create($user, 'lost-password');
+            $token = $this->Tokens->create($user, TokensTable::TYPE_LOST_PASSWORD);
             $this->getMailer('User')->send('lostPassword', [$user, $token]);
         }
 
@@ -142,7 +245,7 @@ class UsersController extends ApiAppController
 
     /**
      * Reset password action
-     * POST
+     * PATCH
      *
      * @return void
      * @throws \Aura\Intl\Exception
@@ -150,20 +253,11 @@ class UsersController extends ApiAppController
     public function resetPassword()
     {
         if (!$this->request->is('patch')) {
-            throw new MethodNotAllowedException();
+            $this->_respondWithMethodNotAllowed();
+            return;
         }
 
-        $token = $this->request->getData('token');
-        if (!$token || !$this->Tokens->exists(['token' => $token, 'used' => false])) {
-            throw new BadRequestException(__('Invalid token'));
-        }
-
-        $token = $this->Tokens->findUnusedTokenWithUser($token);
-
-        if ($token->hasExpired()) {
-            $this->Tokens->useToken($token);
-            throw new UnauthorizedException(__('Your token has expired.'));
-        }
+        // @TODO
 
         $token->user = $this->Users->patchEntity($token->user, $this->request->getData(), ['validate' => 'resetPassword']);
         if ($this->Users->save($token->user)) {
@@ -174,6 +268,18 @@ class UsersController extends ApiAppController
             $this->set('errors', $token->user->getErrors());
         }
 
-        $this->set('_serialize', ['message', 'errors']);
+    /**
+     * NotFound action
+     * ANY
+     *
+     * Default api action that is called when no other api route matched.
+     *
+     * @return void
+     */
+    public function notFound()
+    {
+        $this->set('message', 'API endpoint "' . $this->request->getUri()->getPath() . '" does not exist.');
+        $this->set('_serialize', ['message']);
+        $this->_respondWithNotFound();
     }
 }
