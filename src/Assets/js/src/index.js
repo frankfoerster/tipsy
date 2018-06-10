@@ -9,6 +9,9 @@ Vue.use(Vuelidate);
 import Vue2TouchEvents from 'vue2-touch-events'
 Vue.use(Vue2TouchEvents);
 
+import Notifications from './plugins/Notify';
+Vue.use(Notifications);
+
 import {sync} from 'vuex-router-sync';
 import store from './store';
 import router from './router';

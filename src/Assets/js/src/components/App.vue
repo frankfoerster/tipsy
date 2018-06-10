@@ -19,11 +19,7 @@
 </template>
 
 <script>
-  import Vue from 'vue';
   import { mapGetters } from 'vuex';
-
-  import Notifications from 'vue-notification';
-  Vue.use(Notifications);
 
   import AppHeader from './Header.vue';
   import AppFooter from './Footer.vue';
