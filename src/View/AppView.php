@@ -1,6 +1,7 @@
 <?php
 namespace App\View;
 
+use App\View\Helper\EmailHelper;
 use Cake\View\View;
 use FrankFoerster\Asset\View\Helper\AssetHelper;
 
@@ -8,6 +9,7 @@ use FrankFoerster\Asset\View\Helper\AssetHelper;
  * Application View
  *
  * @property AssetHelper Asset
+ * @property EmailHelper Email
  */
 class AppView extends View
 {
@@ -24,5 +26,6 @@ class AppView extends View
     public function initialize()
     {
         $this->loadHelper('Asset', ['className' => 'FrankFoerster/Asset.Asset']);
+        $this->loadHelper('Email');
     }
 }
