@@ -74,5 +74,7 @@ $configure = [
         '_cake_routes_' => ['prefix' => CACHE_PREFIX . 'cake_route_']
     ],
 
+    'appMail' => 'yoursendermail@domain.com',
+    'appName' => 'Tipsy',
     'appTitle' => 'WM 2018'
 ];
