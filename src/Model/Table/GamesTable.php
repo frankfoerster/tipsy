@@ -2,6 +2,8 @@
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Game;
+use Cake\ORM\Entity;
 use Cake\ORM\Query;
 use Cake\ORM\Table;
 
@@ -11,6 +13,7 @@ use Cake\ORM\Table;
  * @property TeamsTable Team1
  * @property TeamsTable Team2
  * @property TipsTable Tips
+ * @property TipsTable UserTip
  */
 class GamesTable extends Table
 {
@@ -35,6 +38,11 @@ class GamesTable extends Table
         ]);
 
         $this->hasMany('Tips');
+
+        $this->hasOne('UserTip', [
+            'className' => 'Tips',
+            'foreign_key' => 'game_id'
+        ]);
     }
 
     /**
@@ -55,5 +63,126 @@ class GamesTable extends Table
                 }
             ]);
 
+    }
+
+    /**
+     * Find all groups for the vuex store.
+     *
+     * @return \Cake\Collection\CollectionInterface
+     */
+    public function findForStore()
+    {
+        return $this->find()
+            ->select([
+                'id',
+                'team1_id',
+                'team2_id',
+                'result1',
+                'result2',
+                'team1_note',
+                'team2_note',
+                'playing_time',
+                'is_preliminary',
+                'is_last_sixteen',
+                'is_quarter_final',
+                'is_semi_final',
+                'is_game_for_3rd_place',
+                'is_final'
+            ])
+            ->order(['playing_time' => 'asc'])
+            ->map(function(Game $entity) {
+                if (!empty($entity->playing_time)) {
+                    $entity->set('playing_timestamp', $entity->playing_time->getTimestamp());
+                }
+                return $entity;
+            })
+            ->combine('id', function (Entity $entity) { return $entity; });
+    }
+
+    /**
+     * Find user ranking for the vuex store.
+     *
+     * @return \Cake\Collection\CollectionInterface
+     */
+    public function findRankingForStore()
+    {
+        $games = $this->find()
+            ->contain([
+                'UserTip' => function (Query $query) {
+                    return $query
+                        ->select([
+                            'user_id',
+                            'game_id',
+                            'result1',
+                            'result2'
+                        ])
+                        ->contain([
+                            'Users' => function (Query $query) {
+                                return $query->select([
+                                    'id',
+                                    'username'
+                                ]);
+                            }
+                        ]);
+                }
+            ]);
+
+        $pointsCase = $games->newExpr()
+            ->addCase(
+                [
+                    // win
+                    $games->newExpr()->add([
+                        'UserTip.result1 > UserTip.result2',
+                        'Games.result1 > Games.result2',
+                        'UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2'
+                    ]),
+                    // lose
+                    $games->newExpr()->add([
+                        'UserTip.result1 < UserTip.result2',
+                        'Games.result1 < Games.result2',
+                        'UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2'
+                    ]),
+                    // draw
+                    $games->newExpr()->add([
+                        'UserTip.result1 = UserTip.result2',
+                        'Games.result1 = Games.result2',
+                        'UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2'
+                    ]),
+                    //exact
+                    $games->newExpr()->add([
+                        'UserTip.result1 = Games.result1',
+                        'UserTip.result2 = Games.result2'
+                    ])
+                ],
+                [1, 1, 1, 3],
+                ['integer', 'integer', 'integer', 'integer']
+            );
+
+        $games->select(['points' => $pointsCase]);
+
+        $rankings = $games
+            ->group('user_id')
+            ->having([
+                'UserTip.user_id IS NOT NULL'
+            ])
+            ->select([
+                'total_points' => $games->func()->sum($pointsCase)
+            ])
+            ->order(['total_points' => 'desc'], true)
+            ->filter(function (Game $game) {
+                return $game->user_tip->user !== null;
+            })
+            ->combine(
+                function (Game $game) {
+                    return $game->user_tip->user->id;
+                },
+                function (Game $game) {
+                    $user = $game->user_tip->user;
+                    $user->set('total_points', $game->get('total_points'));
+                    return $user;
+                }
+            );
+
+        return $rankings;
     }
 }

@@ -13,6 +13,10 @@ use Cake\Utility\Security;
  */
 class TokensTable extends Table
 {
+    const TYPE_ACCESS = 'access';
+    const TYPE_LOST_PASSWORD = 'lost_password';
+    const TYPE_VERIFY_EMAIL = 'verify_email';
+
     /**
      * Initialization method
      *
@@ -32,43 +36,66 @@ class TokensTable extends Table
      *
      * @param User $user
      * @param string $type
-     * @return bool|User
+     * @param string $validFor date interval period
+     * @return bool|Token
+     * @throws \Exception
      */
-    public function create(User $user, $type)
+    public function create(User $user, $type, $validFor = 'PT1H')
     {
         $token = $this->newEntity([
-            'token' => $this->_generateUniqueToken(),
+            'user_id' => $user->id,
+            'token' => $this->generateUniqueToken(),
             'type' => $type,
-            'user_id' => $user->id
+            'expires' => (new \DateTime())->add(new \DateInterval($validFor)),
+            'force_expired' => false
         ]);
 
         return $this->save($token);
     }
 
     /**
-     * Mark the given token as used.
+     * Expire a token matching the given $token string.
      *
-     * @param Token $token
-     * @return bool|Token
+     * @param string $token
+     * @return void
      */
-    public function useToken(Token $token)
+    public function expireToken($token)
     {
-        $token->used = true;
-        return $this->save($token);
+        $this->updateAll(
+            ['force_expired' => true],
+            ['token' => $token]
+        );
     }
 
     /**
-     * Find an unused token and corresponding user for the given $token string.
+     * Expire all token of a specific $type for the given $user.
+     *
+     * @param int $userId
+     * @param string $type
+     * @return void
+     */
+    public function expireTokens($userId, $type)
+    {
+        $this->updateAll(
+            ['force_expired' => true],
+            ['user_id' => $userId, 'type' => $type]
+        );
+    }
+
+    /**
+     * Renew the token expiration date of the given $token.
      *
      * @param string $token
-     * @return array|null|Token
+     * @param string $validFor Date interval period the token should be valid for from now.
+     * @throws \Exception
+     * @return void
      */
-    public function findUnusedTokenWithUser($token)
+    public function renewTokenExpiration($token, $validFor = 'PT1H')
     {
-        return $this->find()
-            ->where(['token' => $token, 'used' => false])
-            ->contain(['User'])
-            ->first();
+        $this->updateAll(
+            ['expires' => (new \DateTime())->add(new \DateInterval($validFor))],
+            ['token' => $token]
+        );
     }
 
     /**
@@ -76,12 +103,12 @@ class TokensTable extends Table
      *
      * @return string
      */
-    protected function _generateUniqueToken()
+    public function generateUniqueToken()
     {
-        $token = $this->_generateToken();
+        $token = $this->generateToken();
 
         while ($this->exists(['token' => $token])) {
-            $token = $this->_generateToken();
+            $token = $this->generateToken();
         }
 
         return $token;
@@ -92,8 +119,8 @@ class TokensTable extends Table
      *
      * @return string
      */
-    protected function _generateToken()
+    public function generateToken()
     {
-        return Security::hash(Security::randomBytes(32), 'sha256', false);
+        return Security::hash(Security::randomBytes(32), 'sha256', true);
     }
 }

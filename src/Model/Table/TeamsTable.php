@@ -2,6 +2,7 @@
 
 namespace App\Model\Table;
 
+use Cake\ORM\Entity;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -45,5 +46,25 @@ class TeamsTable extends Table
             ->requirePresence('name', true, __('The team name must be present.'));
 
         return $validator;
+    }
+
+    /**
+     * Find all teams for the vuex store.
+     *
+     * @return \Cake\Collection\CollectionInterface
+     */
+    public function findForStore()
+    {
+        return $this->find()
+            ->select([
+                'id',
+                'name',
+                'icon',
+                'group_id'
+            ])
+            ->order([
+                'name' => 'asc'
+            ])
+            ->combine('id', function (Entity $entity) { return $entity; });
     }
 }

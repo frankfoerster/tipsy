@@ -3,9 +3,9 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
-use Cake\Auth\DefaultPasswordHasher;
+use Cake\Auth\PasswordHasherFactory;
 use Cake\Event\Event;
-use Cake\Http\ServerRequest;
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -45,8 +45,8 @@ class UsersTable extends Table
      */
     public function beforeSave(Event $event, User $user)
     {
-        if (empty($user->group_id)) {
-            $user->group_id = 2;
+        if (empty($user->user_group_id)) {
+            $user->user_group_id = 2;
         }
     }
 
@@ -111,7 +111,7 @@ class UsersTable extends Table
     {
         $rules->add([$this, 'isUniqueEmail'], 'unique', [
             'errorField' => 'email',
-            'message' => __('This email is already used.')
+            'message' => __('This email is already in use.')
         ]);
 
         $rules->add([$this, 'isUniqueUsername'], 'unique', [
@@ -136,27 +136,85 @@ class UsersTable extends Table
     }
 
     /**
-     * Find a user by the given login credentials.
+     * Find a user by the given credentials.
      *
-     * @param ServerRequest $request
+     * @param string $login The email or username of the user.
+     * @param string $password The password of the user.
      * @return array|User|null
      */
-    public function findByCredentials(ServerRequest $request)
+    public function findByCredentials($login, $password)
     {
-        $usernameOrEmail = $request->getData('login');
-        $password = $request->getData('password');
-
-        if (empty($usernameOrEmail) || empty($password)) {
+        if (empty($login) || empty($password)) {
             return null;
         }
 
-        return $this->find()->where([
-            'or' => [
-                'username' => $usernameOrEmail,
-                'email' => $usernameOrEmail
-            ],
-            'password' => (new DefaultPasswordHasher())->hash($password)
-        ])->first();
+        /** @var User $user */
+        $user = $this->find()
+            ->select([
+                'id',
+                'username',
+                'email',
+                'password',
+                'verified'
+            ])
+            ->where([
+                'or' => [
+                    'username' => $login,
+                    'email' => $login
+                ]
+            ])
+            ->first();
+
+        if (!$user) {
+            return null;
+        }
+
+        $hasher = PasswordHasherFactory::build('Default');
+        if (!$hasher->check($password, $user->password)) {
+            return null;
+        }
+
+        $user->unsetProperty('password');
+
+        return $user;
+    }
+
+    /**
+     * Find a user by valid $token and token $type.
+     *
+     * @param string $token
+     * @param string $type The token type.
+     * @return array|User|null
+     */
+    public function findByToken($token, $type)
+    {
+        if (empty($token)) {
+            return null;
+        }
+
+        $user = $this->find()
+            ->select([
+                'id',
+                'username',
+                'email',
+                'verified'
+            ])
+            ->matching('Tokens', function (Query $query) use ($token, $type) {
+                return $query
+                    ->select([
+                        'user_id',
+                        'token'
+                    ])
+                    ->where([
+                        'token' => $token,
+                        'type' => $type,
+                        'force_expired' => false,
+                        'expires >' => new \DateTime()
+                    ]);
+            })
+            ->first();
+
+        return $user;
     }
 
     /**
@@ -168,6 +226,20 @@ class UsersTable extends Table
     public function findByEmail($email)
     {
         return $this->find()->where(['email' => $email])->first();
+    }
+
+    /**
+     * Verify the user with the given $userId.
+     *
+     * @param int $userId
+     * @return void
+     */
+    public function verify($userId)
+    {
+        $this->updateAll(
+            ['verified' => true],
+            ['id' => $userId]
+        );
     }
 
     /**
