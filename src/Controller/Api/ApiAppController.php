@@ -2,15 +2,14 @@
 namespace App\Controller\Api;
 
 use App\Controller\AppController;
-use Cake\Controller\Component\AuthComponent;
+use App\Controller\Component\GuardianComponent;
 use Cake\Event\Event;
 use Cake\Http\Exception\BadRequestException;
-use Cake\Http\Exception\ForbiddenException;
 
 /**
  * Class ApiAppController
  *
- * @property AuthComponent Auth
+ * @property GuardianComponent Guardian
  */
 class ApiAppController extends AppController
 {
@@ -25,25 +24,10 @@ class ApiAppController extends AppController
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
+        $this->RequestHandler->renderAs($this, 'json');
+        $this->response = $this->response->withType('application/json');
 
-        $this->loadComponent('Auth', [
-            'authenticate' => [
-                'Form' => [
-                    'userModel' => 'Users',
-                    'fields' => [
-                        'username' => 'email',
-                        'password' => 'password'
-                    ]
-                ]
-            ],
-            'loginAction' => [
-                'controller' => 'Home',
-                'action' => 'unauthorized',
-                '_ext' => 'json'
-            ],
-            'authorize' => ['Controller'],
-            'authError' => __('Please login to access this website.')
-        ]);
+        $this->loadComponent('Guardian');
     }
 
     /**
@@ -55,7 +39,6 @@ class ApiAppController extends AppController
      *
      * @param Event $event
      * @return \Cake\Http\Response|null|void
-     * @throws \Aura\Intl\Exception
      */
     public function beforeFilter(Event $event)
     {
@@ -64,48 +47,47 @@ class ApiAppController extends AppController
         if (!$this->request->is('ajax')) {
             throw new BadRequestException();
         }
-
-        $userId = $this->Auth->user('id');
-
-        if ($userId && !$this->_checkUserToken()) {
-            $this->Auth->logout();
-            throw new ForbiddenException(__('Invalid authentication token.'));
-        }
     }
 
     /**
-     * Check if the user token is valid.
+     * Respond with the given status $code and the specified $reason.
      *
-     * @return bool
+     * @param int $code
+     * @param string $reason
+     * @return void
      */
-    protected function _checkUserToken()
+    protected function _respondWith($code = 200, $reason = '')
     {
-        $requestToken = $this->_getRequestToken();
-
-        if (!$requestToken) {
-            return false;
-        }
-
-        return $requestToken === $this->_getUserToken();
+        $this->response = $this->response->withStatus($code, $reason);
     }
 
-    /**
-     * Get the authorization token from the current request.
-     *
-     * @return array
-     */
-    protected function _getRequestToken()
+    protected function _respondWithBadRequest()
     {
-        return $this->request->getHeader('Authorization');
+        $this->_respondWith(400, 'BAD REQUEST');
     }
 
-    /**
-     * Get the stored user token from the session.
-     *
-     * @return string
-     */
-    protected function _getUserToken()
+    protected function _respondWithUnauthorized()
     {
-        return $this->Auth->user('token');
+        $this->_respondWith(401, 'UNAUTHORIZED');
+    }
+
+    protected function _respondWithNotFound()
+    {
+        $this->_respondWith(404, 'NOT FOUND');
+    }
+
+    protected function _respondWithMethodNotAllowed()
+    {
+        $this->_respondWith(405, 'METHOD NOT ALLOWED');
+    }
+
+    protected function _respondWithValidationErrors()
+    {
+        $this->_respondWith(422, 'UNPROCESSABLE ENTITY');
+    }
+
+    protected function _respondWithConflict()
+    {
+        $this->_respondWith(409, 'CONFLICT');
     }
 }

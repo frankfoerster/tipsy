@@ -259,14 +259,29 @@ class UsersController extends ApiAppController
 
         // @TODO
 
-        $token->user = $this->Users->patchEntity($token->user, $this->request->getData(), ['validate' => 'resetPassword']);
-        if ($this->Users->save($token->user)) {
-            $this->Tokens->useToken($token);
-            $this->set('message', __('Your new password has been saved.'));
-        } else {
-            $this->set('message', __('Please correct the marked errors.'));
-            $this->set('errors', $token->user->getErrors());
-        }
+//        $token = $this->request->getData('token');
+//        if (!$token || !$this->Tokens->exists(['token' => $token, 'used' => false])) {
+//            throw new BadRequestException(__('Invalid token'));
+//        }
+//
+//        $token = $this->Tokens->findUnusedTokenWithUser($token);
+//
+//        if ($token->hasExpired()) {
+//            $this->Tokens->useToken($token);
+//            throw new UnauthorizedException(__('Your token has expired.'));
+//        }
+//
+//        $token->user = $this->Users->patchEntity($token->user, $this->request->getData(), ['validate' => 'resetPassword']);
+//        if ($this->Users->save($token->user)) {
+//            $this->Tokens->useToken($token);
+//            $this->set('message', __('Your new password has been saved.'));
+//        } else {
+//            $this->set('message', __('Please correct the marked errors.'));
+//            $this->set('errors', $token->user->getErrors());
+//        }
+//
+//        $this->set('_serialize', ['message', 'errors']);
+    }
 
     /**
      * NotFound action
