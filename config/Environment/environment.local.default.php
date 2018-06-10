@@ -1,5 +1,7 @@
 <?php
 
 $configure = [
-    'debug' => true
+    'debug' => true,
+
+    'App.defaultTimezone' => 'Europe/Berlin'
 ];
