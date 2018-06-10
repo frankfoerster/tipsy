@@ -9,44 +9,6 @@
   font-style: normal;
 }
 
-@mixin icon($icon: '') {
-  display: inline-block;
-  font-family: $icon-font-family !important; // use !important to prevent issues with browser extensions that change fonts
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  vertical-align: baseline;
-  @include font-smoothing;
-
-  &:before {
-    display: inline-block;
-    width: 1em;
-    @if $icon {
-      content: $icon;
-    }
-  }
-}
-
-@mixin icon-direct($icon: '') {
-  display: inline-block;
-  font-family: $icon-font-family !important; // use !important to prevent issues with browser extensions that change fonts
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  vertical-align: baseline;
-  @include font-smoothing;
-  width: 1em;
-  @if $icon {
-    content: $icon;
-  }
-}
-
 [class^="icon-"], [class*=" icon-"] {
   @include icon();
   @include rem(margin-right, 5px);
@@ -60,6 +22,11 @@
 
 // Icon classes
 
+.icon-menu {
+  &:before {
+    content: $icon-menu;
+  }
+}
 .icon-user {
   &:before {
     content: $icon-user;
