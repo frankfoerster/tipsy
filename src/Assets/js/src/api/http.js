@@ -13,14 +13,29 @@ const http = axios.create({
 
 http.interceptors.response.use(
   (response) => {
-    return Promise.resolve(response);
+    let data = response.data;
+
+    if (response.headers && response.headers.authorization) {
+      const token = response.headers.authorization.split(' ')[1];
+      if (token) {
+        data.auth = {
+          token
+        };
+      }
+    }
+
+    return Promise.resolve(data);
   },
   (error) => {
     if (error.response.status === 403) {
-      //@TODO: Display login modal
+      //@TODO: Redirect to login route
     }
 
-    return Promise.reject(error);
+    if ([400, 401, 409, 422].indexOf(error.response.status) !== -1 && typeof error.response.data !== 'undefined') {
+      return Promise.reject(error.response.data);
+    }
+
+    return Promise.reject(error.response);
   }
 );
 
