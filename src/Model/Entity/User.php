@@ -2,8 +2,9 @@
 
 namespace App\Model\Entity;
 
-use Cake\Auth\DefaultPasswordHasher;
+use Cake\Auth\PasswordHasherFactory;
 use Cake\ORM\Entity;
+use Cake\Utility\Hash;
 
 /**
  * Class User
@@ -12,7 +13,8 @@ use Cake\ORM\Entity;
  * @property int user_group_id
  * @property string username
  * @property string email
- * @proberty string password
+ * @property string password
+ * @property bool verified
  * @property UserGroup user_group
  */
 class User extends Entity

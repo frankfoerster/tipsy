@@ -13,24 +13,12 @@ use Cake\ORM\Entity;
  * @property string token
  * @property string type
  * @property bool used
+ * @property FrozenTime expired
+ * @property bool force_expired
  * @property FrozenTime created
  * @property User user
  */
 class Token extends Entity
 {
-    /**
-     * Check if the token has expired.
-     *
-     * @param int $validForHours The number of hours the token is valid after token creation.
-     * @return bool
-     */
-    public function hasExpired($validForHours = 24)
-    {
-        $tokenTimestamp = $this->created->getTimestamp();
-        $currentTimestamp = (new \DateTime())->getTimestamp();
 
-        $differenceInHours = ($currentTimestamp - $tokenTimestamp) / 60 / 60;
-
-        return $differenceInHours > (int)$validForHours;
-    }
 }

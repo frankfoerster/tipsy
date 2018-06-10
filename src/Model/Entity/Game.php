@@ -21,6 +21,7 @@ use Cake\ORM\Entity;
  * @property bool is_final
  * @property Team team1
  * @property Team team2
+ * @property Tip user_tip
  */
 class Game extends Entity
 {
