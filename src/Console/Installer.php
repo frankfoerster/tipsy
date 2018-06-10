@@ -115,8 +115,8 @@ class Installer
      */
     public static function createLocalConfig($dir, $io)
     {
-        $appConfig = $dir . '/config/Environment/environment.local.php.default';
-        $defaultConfig = $dir . '/config/Environment/environment.local.php';
+        $appConfig = $dir . '/config/Environment/environment.local.php';
+        $defaultConfig = $dir . '/config/Environment/environment.local.default.php';
         if (!file_exists($appConfig)) {
             copy($defaultConfig, $appConfig);
             $io->write('Created `config/Environment/environment.local.php` file');
