@@ -32,10 +32,9 @@ $icon-soccer-ball: "\e901";
 
 $zindex-bg-image: -1;
 $zindex-header: 100;
-$zindex-back-to-top: 900;
-$zindex-dropdown-backdrop: 950;
 $zindex-dropdown: 1000;
 $zindex-cookiebar: 2000;
+$zindex-notifications: 5000;
 
 // ---------------------------------------------------------------------------------------------------------------------
 // --- Widths ----------------------------------------------------------------------------------------------------------
@@ -55,50 +54,6 @@ $font-family-fira-sans: 'Fira Sans', sans-serif;
 $base-font-size: 100%;
 $body-font-family: $font-family-fira-sans;
 $body-font-size: 16px;
-$base-line-height: 1.5;
-$body-font-color: #101010;
-
-// h1-h6
-$h1-font-family: $font-family-fira-sans;
-$h1-font-weight: 700;
-$h1-font-size-mobile: 28px;
-$h1-font-size-desktop: 38px;
-$h1-color: #101010;
-
-$h2-font-family: $font-family-fira-sans;
-$h2-font-weight: 700;
-$h2-font-size: 24px;
-$h2-color: #101010;
-
-$h3-font-family: $font-family-fira-sans;
-$h3-font-weight: 500;
-$h3-font-size: 20px;
-$h3-color: #101010;
-
-$h4-font-family: $font-family-fira-sans;
-$h4-font-weight: 500;
-$h4-font-size: 18px;
-$h4-color: #101010;
-
-$h5-font-family: $font-family-fira-sans;
-$h5-font-weight: 400;
-$h5-font-size: 16px;
-$h5-color: #101010;
-
-$h6-font-family: $font-family-fira-sans;
-$h6-font-weight: 500;
-$h6-font-size: 18px;
-$h6-color: #101010;
-
-// Dropdown Menu
-$dropdown-min-width: 200px;
-$dropdown-padding-y: 20px;
-$dropdown-margin-top: 0;
-$dropdown-bg: #fff;
-$dropdown-box-shadow: 5px 7px 10px rgba(0, 0, 0, 0.4);
 
 // Links
 $link-color: $rot;
-$link-hover-color: $rot;
-$link-active-color: $rot;
-$link-icon-color: $rot;

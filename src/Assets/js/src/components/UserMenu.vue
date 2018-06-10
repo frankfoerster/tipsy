@@ -66,15 +66,6 @@
     }
   }
 
-  .dropdown-backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: $zindex-dropdown-backdrop;
-  }
-
   .user-menu--dropdown {
     position: absolute;
     top: 100%;
