@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = '/...'; //@TODO: setup base url via CakePhp layout
+const baseUrl = global.window.AppConfig.apiBaseUrl;
 
 const http = axios.create({
   baseURL: baseUrl,
