@@ -1,6 +1,49 @@
 @import './mixins/rem';
 @import './mixins/responsive';
 
+@mixin font-smoothing {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin icon($icon: '') {
+  display: inline-block;
+  font-family: $icon-font-family !important; // use !important to prevent issues with browser extensions that change fonts
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  @include font-smoothing;
+
+  &:before {
+    display: inline-block;
+    width: 1em;
+    @if $icon {
+      content: $icon;
+    }
+  }
+}
+
+@mixin icon-direct($icon: '') {
+  display: inline-block;
+  font-family: $icon-font-family !important; // use !important to prevent issues with browser extensions that change fonts
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  @include font-smoothing;
+  width: 1em;
+  @if $icon {
+    content: $icon;
+  }
+}
+
 @mixin clearfix () {
   &::before,
   &::after {
