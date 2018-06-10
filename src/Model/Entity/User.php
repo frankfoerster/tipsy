@@ -25,6 +25,29 @@ class User extends Entity
      */
     protected function _setPassword($password)
     {
-        return (new DefaultPasswordHasher)->hash($password);
+        return PasswordHasherFactory::build('Default')->hash($password);
+    }
+
+    /**
+     * Check if the user has any rule errors.
+     *
+     * @return bool
+     */
+    public function hasRuleErrors()
+    {
+        $ruleErrorPaths = [
+            'email.unique',
+            'username.unique'
+        ];
+
+        $errors = $this->getErrors();
+
+        foreach ($ruleErrorPaths as $errorPath) {
+            if (Hash::get($errors, $errorPath) !== null) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
