@@ -1,6 +1,6 @@
-# BETZ - A CakePHP 3 + VueJS betting game SPA 
+# Tipsy - A CakePhp 3 + VueJS betting game SPA 
 
-Betz is a betting game for football worldcups and shows how CakePHP 3 and VueJS can be used to create SPAs that consist of a VueJS powered frontend and an API implementation in CakePHP 3. 
+Tipsy is a betting game for football worldcups and shows how CakePHP 3 and VueJS can be used to create SPAs that consist of a VueJS powered frontend and an API implementation in CakePHP 3. 
 
 ## Installation
 
@@ -48,4 +48,4 @@ Depending on the debug configuration of your environment the app will either loa
 
 ## About
 
-This app is an experiment to see how easy it is to couple VueJS with a CakePHP based API.
+This app is an experiment to see how easy it is to couple VueJS with a stateless CakePHP API.
