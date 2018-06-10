@@ -1,0 +1,74 @@
+<template>
+  <div class="card" :class="[`card__${type}`]">
+    <div class="card--container">
+      <div class="card--header">
+        <div class="card--title" v-if="!!this.$slots['title']">
+          <slot name="title"></slot>
+        </div>
+        <div class="card--link" v-if="!!this.$slots['link']">
+          <slot name="link"></slot>
+        </div>
+      </div>
+      <div class="card--content" v-if="!!this.$slots['content']">
+        <slot name="content"></slot>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'card',
+
+    props: {
+      type: {
+        type: String,
+        required: true
+      }
+    }
+  }
+</script>
+
+<style lang="scss">
+  @import '../sass/imports';
+
+  .card {
+    @include rem(padding, 10px 0 0 10px);
+  }
+
+  .card--container {
+    @include rem(padding, 15px);
+    background-color: #fff;
+    border-radius: 5px;
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
+    /*box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.2);*/
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.2);
+  }
+
+  .card--header {
+    display: flex;
+    @include rem(padding-bottom, 10px);
+    font-weight: 600;
+
+    .card__group & {
+      @include rem(padding-bottom, 15px);
+      text-align: center;
+    }
+
+    .card__top10 & {
+      @include rem(padding-bottom, 14px);
+    }
+  }
+
+  .card--title {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  .card--link {
+    display: inline-block;
+    @include rem(padding, 1px 0);
+    @include rem(font-size, 14px);
+    white-space: nowrap;
+  }
+</style>

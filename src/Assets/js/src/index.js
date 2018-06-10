@@ -22,6 +22,8 @@ const app = new Vue({
   render: h => h(App)
 });
 
+router.app = app;
+
 const appContainer = document.querySelector('#app');
 if (appContainer !== null) {
     app.$mount('#app');

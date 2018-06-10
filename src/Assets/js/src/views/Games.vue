@@ -1,15 +1,15 @@
 <template>
-  <div class="view-game-plan">
-
+  <div class="view-games">
+    Games
   </div>
 </template>
 
 <script>
   export default {
-    name: 'game-plan'
+    name: 'games'
   }
 </script>
 
 <style lang="scss">
-  @import '../sass/imports';
+
 </style>

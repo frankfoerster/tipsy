@@ -1,5 +1,5 @@
 <template>
-  <form novalidate="novalidate" @submit.prevent="onSubmit">
+  <form novalidate="novalidate" @submit.prevent="onSubmit($event)">
     <slot></slot>
   </form>
 </template>
@@ -8,10 +8,9 @@
   export default {
     name: 'vue-form',
 
-    props: {
-      onSubmit: {
-        type: Function,
-        required: true
+    methods: {
+      onSubmit(event) {
+        this.$emit('submit', event);
       }
     }
   }

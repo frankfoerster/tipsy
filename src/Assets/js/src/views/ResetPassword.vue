@@ -2,7 +2,7 @@
   <div class="view-support view-reset-password">
     <support-box :shake="shake">
       <template slot="title">Reset Password</template>
-      <vue-form class="support-form" slot="content" :onSubmit="validateBeforeSubmit">
+      <vue-form class="support-form" slot="content" @submit="validateBeforeSubmit">
         <form-row>
           <vue-label for="password">Password</vue-label>
           <vue-input
@@ -28,7 +28,7 @@
           ></vue-input>
           <vue-input-error v-if="!$v.passwordConfirmation.required">The passwords must be identical.</vue-input-error>
         </form-row>
-        <vue-button class="support-form--button">Reset Password</vue-button>
+        <vue-button>Reset Password</vue-button>
       </vue-form>
       <template slot="footer">
         <p>Remember password? <router-link to="/login">Login</router-link></p>

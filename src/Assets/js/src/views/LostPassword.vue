@@ -2,7 +2,7 @@
   <div class="view-support view-lost-password">
     <support-box :shake="shake">
       <template slot="title">Lost Password</template>
-      <vue-form class="support-form" slot="content" :onSubmit="validateBeforeSubmit">
+      <vue-form class="support-form" slot="content" @submit="validateBeforeSubmit">
         <form-row>
           <vue-label for="email">Email</vue-label>
           <vue-input
@@ -17,7 +17,7 @@
           <vue-input-error v-if="!$v.email.required">Please enter your email address.</vue-input-error>
           <vue-input-error v-if="!$v.email.email">Please enter a valid email address.</vue-input-error>
         </form-row>
-        <vue-button class="support-form--button">Submit</vue-button>
+        <vue-button>Submit</vue-button>
       </vue-form>
       <template slot="footer">
         <p>Remember Password? <router-link to="/login">Login</router-link></p>

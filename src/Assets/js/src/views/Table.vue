@@ -1,15 +1,15 @@
 <template>
-  <div class="view-ranking">
-    Ranking
+  <div class="view-table">
+    Table
   </div>
 </template>
 
 <script>
   export default {
-    name: 'ranking'
+    name: 'game-table'
   }
 </script>
 
 <style lang="scss">
-  @import '../sass/imports';
+
 </style>

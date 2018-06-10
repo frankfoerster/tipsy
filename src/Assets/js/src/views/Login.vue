@@ -2,32 +2,31 @@
   <div class="view-support view-login">
     <support-box :shake="shake">
       <template slot="title">Login</template>
-      <template slot="content">
-        <flash-message type="'error'" v-if="$v.$anyError">Invalid Credentials.</flash-message>
-      </template>
-      <vue-form class="support-form" slot="content" :onSubmit="validateBeforeSubmit">
+      <flash-message :type="flash.type" slot="content" v-if="flash.show">{{ flash.message }}</flash-message>
+      <vue-form class="support-form" slot="content" @submit="validateBeforeSubmit">
         <form-row>
           <vue-label for="login">Login</vue-label>
           <vue-input
-            :id="'login'"
-            :type="'text'"
-            :placeholder="'Email or Username'"
+            v-model="login"
+            id="login"
+            type="text"
+            placeholder="Email or Username"
+            icon="user"
             :autofocus="true"
-            :icon="'user'"
-            :error="$v.$anyError"
           ></vue-input>
         </form-row>
         <form-row>
           <vue-label for="password">Password</vue-label>
           <vue-input
-            :id="'password'"
-            :type="'password'"
-            :placeholder="'Password'"
-            :icon="'lock'"
-            :error="$v.$anyError"
+            v-model="password"
+            id="password"
+            type="password"
+            placeholder="Password"
+            icon="lock"
+            ref="password"
           ></vue-input>
         </form-row>
-        <vue-button class="support-form--button">Login</vue-button>
+        <vue-button :loading="loading" :disabled="$v.$invalid">Login</vue-button>
       </vue-form>
       <template slot="footer">
         <p>Forgot <router-link to="/lost-password">Username / Password?</router-link></p>
@@ -40,6 +39,9 @@
 <script>
   import { required } from 'vuelidate/lib/validators';
 
+  import flash from '../mixins/flashMixin';
+  import handleErrors from '../mixins/handleErrorsMixin';
+
   import FlashMessage from '../components/FlashMessage.vue';
   import FormRow from '../components/FormRow.vue';
   import SupportBox from '../components/SupportBox.vue';
@@ -50,6 +52,8 @@
 
   export default {
     name: 'login',
+
+    mixins: [flash, handleErrors],
 
     data() {
       return {
@@ -85,8 +89,37 @@
         if (this.$v.$invalid) {
           this.shake = true;
         } else {
-          console.log('login');
+          this.loading = true;
+          this.submit().finally(() => {
+            this.loading = false;
+          });
         }
+      },
+
+      submit() {
+        const credentials = {
+          login: this.login,
+          password: this.password
+        };
+
+        this.password = '';
+
+        return this.$store.dispatch('LOGIN',
+          credentials
+        ).then((data) => {
+          const redirect = this.$store.getters.redirect;
+          this.$store.dispatch('FORGET_LOGIN_REDIRECT');
+          this.$router.push(redirect || '/');
+        }).catch((data) => {
+          if (data.status && data.status === 500) {
+            this.showFlashMessage('Authentication failed.', 'error');
+          } else {
+            this.showFlashMessage(data.message, 'error');
+          }
+          this.$nextTick(() => {
+            this.$refs.password.focus();
+          });
+        });
       }
     }
   }
@@ -96,8 +129,8 @@
   @import '../sass/imports';
 
   .view-support {
-    @include rem(padding, 20px);
-    min-height: calc(100vh - 82px);
+    @include rem(padding, 20px 20px 0);
+    min-height: calc(100vh - 103px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,24 +138,5 @@
 
   .support-form {
     @include rem(margin-bottom, 40px)
-  }
-
-  .support-form--button {
-    color: #fff;
-    text-transform: uppercase;
-    width: 100%;
-    height: 62px;
-    border-radius: 3px;
-    background-color: $rot;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 25px;
-    transition: background-color 0.2s linear;
-    will-change: background-color;
-
-    &:hover, &:focus {
-      background-color: $rot2;
-    }
   }
 </style>

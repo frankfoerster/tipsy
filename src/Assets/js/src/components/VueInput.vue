@@ -3,12 +3,14 @@
     <input
       :class="inputClasses"
       :id="id"
-      :name="id"
       :type="type"
       :value="value"
       :placeholder="placeholder"
       @change="onChange($event.target.value)"
       @input="onInput($event.target.value)"
+      @focus="onFocus($event)"
+      @blur="onBlur($event)"
+      @keydown="onKeydown($event)"
       autocomplete="off"
       ref="input"
     />
@@ -85,12 +87,28 @@
 
       onInput(value) {
         this.$emit('input', value);
+      },
+
+      onFocus(event) {
+        this.$emit('focus', event);
+      },
+
+      onBlur(event) {
+        this.$emit('blur', event);
+      },
+
+      onKeydown(event) {
+        this.$emit('keydown', event);
+      },
+
+      focus() {
+        this.$refs.input.focus();
       }
     },
 
     mounted() {
       if (this.autofocus) {
-        this.$refs.input.focus();
+        this.focus();
       }
     }
   }

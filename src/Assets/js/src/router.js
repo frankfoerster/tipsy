@@ -3,48 +3,87 @@ import VueRouter from 'vue-router';
 
 import store from './store';
 
-import GamePlan from './views/GamePlan.vue';
+import Games from './views/Games.vue';
+import Imprint from './views/Imprint.vue';
 import Login from './views/Login.vue';
 import LostPassword from './views/LostPassword.vue';
 import NotFound from './views/NotFound.vue';
+import Overview from './views/Overview.vue';
 import Ranking from './views/Ranking.vue';
-import Signup from './views/Signup.vue';
 import ResetPassword from './views/ResetPassword.vue';
+import Signup from './views/Signup.vue';
+import Table from './views/Table.vue';
+import VerifyEmail from './views/VerifyEmail.vue';
 
 Vue.use(VueRouter);
 
 const baseUrl = global.window.AppConfig.appBaseUrl;
 
-const requireAuth = (to, from, next) => {
-  if (!store.getters.isAuthenticated) {
-    window.location.href = baseUrl + '/login';
-  } else {
-    next();
-  }
-};
-
 const routes = [
   {
     path: '/',
-    name: 'game-plan',
+    name: 'overview',
     components: {
-      default: GamePlan
+      default: Overview
     },
-    beforEnter: requireAuth
+    meta: {
+      auth: true
+    }
   },
   {
-    path: '/',
+    path: '/games',
+    name: 'games',
+    components: {
+      default: Games
+    },
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/table',
+    name: 'table',
+    components: {
+      default: Table
+    },
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/ranking',
     name: 'ranking',
     components: {
       default: Ranking
     },
-    beforEnter: requireAuth
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/imprint',
+    name: 'imprint',
+    components: {
+      default: Imprint
+    }
   },
   {
     path: '/login',
     name: 'login',
     components: {
       default: Login
+    }
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    beforeEnter: (to, from, next) => {
+      store.dispatch('LOGOUT', store.getters.token).finally(() => {
+        next('/login');
+      });
+    },
+    meta: {
+      auth: true
     }
   },
   {
@@ -69,6 +108,23 @@ const routes = [
     }
   },
   {
+    path: '/verify/:token',
+    name: 'verify-email',
+    components: {
+      default: VerifyEmail
+    }
+  },
+  {
+    path: '/request-verification',
+    name: 'request-verification',
+    components: {
+      default: VerifyEmail
+    },
+    meta: {
+      auth: true
+    }
+  },
+  {
     path: '*',
     component: NotFound
   }
@@ -77,7 +133,47 @@ const routes = [
 const router = new VueRouter({
   routes,
   base: baseUrl,
-  mode: 'history'
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return new Promise(resolve => {
+        router.app.$root.$once('triggerScroll', () => {
+          resolve(savedPosition);
+        });
+      });
+    }
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  const authRequired = to.matched.some((route) => route.meta.auth);
+  const token = store.getters.token;
+  const tokenPresent = token !== null;
+  const authenticated = store.getters.isAuthenticated;
+
+  if (!authRequired) {
+    next();
+    return;
+  }
+
+  if (authenticated) {
+    next();
+    return;
+  }
+
+  if (tokenPresent) {
+    store.dispatch('FETCH_USER_INFO', token)
+      .then(() => {
+        next();
+      })
+      .catch(() => {
+        store.dispatch('RESET_USER').then(() => {
+          store.dispatch('LOGIN_REDIRECT', { to, next });
+        });
+      });
+  } else {
+    store.dispatch('LOGIN_REDIRECT', { to, next });
+  }
 });
 
 export default router;

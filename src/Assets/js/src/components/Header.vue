@@ -1,7 +1,8 @@
 <template>
   <header class="header">
     <container class="header--container">
-      <div class="header--title"><i class="icon-soccer-ball header--title--icon" aria-hidden="true"></i>{{ appTitle }}</div>
+      <div class="header--title"><router-link to="/" exact><i class="icon-soccer-ball header--title--icon" aria-hidden="true"></i>{{ appTitle }}</router-link></div>
+      <main-menu></main-menu>
       <user-menu></user-menu>
     </container>
   </header>
@@ -9,15 +10,18 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import UserMenu from './UserMenu.vue';
+
   import Container from './Container.vue';
+  import MainMenu from './MainMenu.vue';
+  import UserMenu from './UserMenu.vue';
 
   export default {
     name: 'app-header',
 
     components: {
-      UserMenu,
-      Container
+      Container,
+      MainMenu,
+      UserMenu
     },
 
     computed: {
@@ -31,11 +35,15 @@
 <style lang="scss">
   @import '../sass/imports';
 
+  .container.header--container {
+    padding: 0;
+  }
+
   .header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     background-color: #c21429;
     z-index: $zindex-header;
   }
@@ -46,11 +54,21 @@
   }
 
   .header--title {
+    @include rem(padding, 10px 30px 10px 10px);
+    width: 100%;
     flex-grow: 1;
-    @include rem(padding, 10px);
-    color: #fff;
     @include rem(font-size, 20px);
     user-select: none;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @include respond-to-min($breakpoint-display-full-menu) {
+      flex-grow: unset;
+      width: auto;
+    }
   }
 
   .header--title--icon {
