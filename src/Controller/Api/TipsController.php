@@ -36,7 +36,7 @@ class TipsController extends ApiAppController
         }
 
         $userId = $this->Guardian->user('id');
-        $gameId = $this->request->getData('gameId');
+        $gameId = $this->request->getData('game_id');
         $result1 = $this->request->getData('result1');
         $result2 = $this->request->getData('result2');
 
