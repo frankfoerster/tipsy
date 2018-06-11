@@ -4,7 +4,7 @@
     <app-header></app-header>
     <div class="content">
       <div class="verification-warning" v-if="notVerified">Your email address is not verified. Please check your inbox, or <router-link to="/request-verification">request a new verification mail</router-link>.</div>
-      <transition name="fade" mode="out-in" @enter="onEnter">
+      <transition name="fade" mode="out-in">
         <div class="app-pre-loader" v-if="loading">
           <div class="pre-load-spinner"></div>
         </div>
@@ -91,10 +91,6 @@
         }
 
         return Promise.all(promises);
-      },
-
-      onEnter() {
-        this.$root.$emit('triggerScroll');
       }
     },
 
@@ -103,7 +99,7 @@
 
       this.preload().then(() => {
         this.loading = false;
-        this.$refs.wrapperBackground.style = 'background-image: url(' + backgroundImage +');';
+        this.$refs.wrapperBackground.style.backgroundImage = 'url(' + backgroundImage +')';
         this.$nextTick(() => {
           this.$refs.wrapperBackground.classList.add('loaded');
         });
@@ -116,6 +112,8 @@
   @import '../../node_modules/normalize.css/normalize.css';
   @import '../sass/imports';
   @import '../sass/icons';
+
+  @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600');
 
   :root {
     -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -210,7 +208,6 @@
   .fade-leave-active {
     pointer-events: none;
     user-select: none;
-    transition: opacity .3s ease;
     opacity: 0;
   }
 
