@@ -104,7 +104,7 @@
         this.$refs.wrapperBackground.style = 'background-image: url(' + backgroundImage +');';
         this.$nextTick(() => {
           this.$refs.wrapperBackground.classList.add('loaded');
-        })
+        });
       });
     }
   };
