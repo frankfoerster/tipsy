@@ -17,74 +17,13 @@ const store = new Vuex.Store({
   /* --------------------------------------------------------------------------------------------- */
   state: {
     appTitle: global.window.AppConfig.appTitle || 'BETZ',
+    baseUrl: global.window.AppConfig.appBaseUrl || '/',
     user: null,
     token: global.window.localStorage.getItem('token'),
     games: global.window.AppConfig.games || {},
     groups: global.window.AppConfig.groups || {},
     teams: global.window.AppConfig.teams || {},
-    baseUrl: global.window.AppConfig.appBaseUrl || '/',
-    ranking: /*global.window.AppConfig.ranking*/null || {
-      1: {
-        total_points: 3,
-        username: 'fo1'
-      },
-      2: {
-        total_points: 3234,
-        username: 'fo2'
-      },
-      3: {
-        total_points: 33,
-        username: 'fo3'
-      },
-      4: {
-        total_points: 34,
-        username: 'fo4'
-      },
-      5: {
-        total_points: 13,
-        username: 'fo5'
-      },
-      6: {
-        total_points: 33,
-        username: 'fo6'
-      },
-      7: {
-        total_points: 35,
-        username: 'fo7'
-      },
-      8: {
-        total_points: 34,
-        username: 'fo8'
-      },
-      9: {
-        total_points: 37,
-        username: 'fo9'
-      },
-      10: {
-        total_points: 32,
-        username: 'fo10'
-      },
-      11: {
-        total_points: 33,
-        username: 'fo11'
-      },
-      12: {
-        total_points: 36,
-        username: 'fo12'
-      },
-      13: {
-        total_points: 37,
-        username: 'fo13'
-      },
-      14: {
-        total_points: 23,
-        username: 'fo14'
-      },
-      15: {
-        total_points: 83,
-        username: 'fo15'
-      }
-    },
+    ranking: global.window.AppConfig.ranking || {},
     tips: {},
     redirect: null
   },
