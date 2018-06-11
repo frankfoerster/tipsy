@@ -1,7 +1,7 @@
 <template>
   <div class="card" :class="[`card__${type}`]">
     <div class="card--container">
-      <div class="card--header">
+      <div class="card--header" v-if="!!this.$slots['title'] || !!this.$slots['link']">
         <div class="card--title" v-if="!!this.$slots['title']">
           <slot name="title"></slot>
         </div>
@@ -36,13 +36,26 @@
     @include rem(padding, 10px 0 0 10px);
   }
 
+  .card__game {
+    @include rem(max-width, 400px);
+    @include rem(padding-right);
+    margin: 0 auto;
+  }
+
   .card--container {
     @include rem(padding, 15px);
     background-color: #fff;
     border-radius: 5px;
-    /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
-    /*box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.2);*/
     box-shadow: 0 3px 6px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.2s linear;
+
+    .card__game-focused & {
+      background-color: #fff6bf;
+    }
+
+    .card__game-voting-closed & {
+      background-color: #dde9f5;
+    }
   }
 
   .card--header {

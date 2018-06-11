@@ -7,10 +7,20 @@
     <div class="game-teams">
       <div class="game-team">
         <div class="game-team--name">
-          {{ teamById(game.team1_id).name }}
+          <template v-if="game.team1_id">
+            {{ teamById(game.team1_id).name }}
+          </template>
+          <template v-else>
+            {{ game.team1_note }}
+          </template>
         </div>
         <div class="game-team--image-wrapper">
-          <img :src="teamById(game.team1_id).icon" :title="teamById(game.team1_id).name" :alt="teamById(game.team1_id).name" class="game-team--image">
+          <template v-if="game.team1_id">
+            <img :src="teamById(game.team1_id).icon" :title="teamById(game.team1_id).name" :alt="teamById(game.team1_id).name" class="game-team--image">
+          </template>
+          <template v-else>
+            <div class="game-team--image game-team--image__empty"></div>
+          </template>
         </div>
       </div>
       <div class="game-results">
@@ -20,14 +30,25 @@
       </div>
       <div class="game-team game-team__reverse">
         <div class="game-team--name">
-          {{ teamById(game.team2_id).name }}
+          <template v-if="game.team2_id">
+            {{ teamById(game.team2_id).name }}
+          </template>
+          <template v-else>
+            {{ game.team2_note }}
+          </template>
         </div>
         <div class="game-team--image-wrapper">
-          <img :src="teamById(game.team2_id).icon" :title="teamById(game.team2_id).name" :alt="teamById(game.team2_id).name" class="game-team--image">
+          <template v-if="game.team1_id">
+            <img :src="teamById(game.team2_id).icon" :title="teamById(game.team2_id).name" :alt="teamById(game.team2_id).name" class="game-team--image">
+          </template>
+          <template v-else>
+            <div class="game-team--image game-team--image__empty"></div>
+          </template>
+
         </div>
       </div>
     </div>
-    <game-vote :game="game" @voteFocus="onFocus" @voteBlur="onBlur"></game-vote>
+    <game-vote :game="game" @voteFocus="onFocus" @voteBlur="onBlur" v-if="game.team1_id && game.team2_id"></game-vote>
   </div>
 </template>
 
@@ -139,6 +160,11 @@
     height: auto;
     border-radius: 50%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.2);
+    transform: translateY(-1px);
+  }
+
+  .game-team--image__empty {
+    @include rem(height, 30px);
   }
 
   .game-results {

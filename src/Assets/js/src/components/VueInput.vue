@@ -141,7 +141,7 @@
     }
   }
 
-  input:not([type="button"]) {
+  input {
     display: block;
     width: 100%;
     @include rem(height, 62px);
