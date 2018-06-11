@@ -32,4 +32,8 @@
 
 <style lang="scss">
   @import '../sass/imports';
+
+  .view-group-table {
+    @include rem(padding-top, 10px);
+  }
 </style>

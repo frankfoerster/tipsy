@@ -26,4 +26,8 @@
 
 <style lang="scss">
   @import '../sass/imports';
+
+  .view-table {
+    @include rem(padding-top, 10px);
+  }
 </style>
