@@ -67,7 +67,7 @@
 
   .group-table {
     width: 100%;
-    @include rem(margin, 0 -15px);
+    border-spacing: 0;
   }
 
   .group-table--row {
@@ -81,9 +81,36 @@
     }
   }
 
+  .group-table--row__body {
+
+    .group-table--cell {
+      border-bottom: 1px solid #f5f5f5;
+      transition: background-color 0.2s linear;
+    }
+
+    &:last-of-type {
+
+      .group-table--cell {
+        border-bottom: none;
+      }
+    }
+
+    &:hover {
+      .group-table--cell {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  .group-table--cell {
+    @include rem(padding, 5px);
+  }
+
   .group-table--cell__header {
     text-align: right;
     cursor: help;
+    @include rem(padding-bottom, 8px);
+    @include rem(padding-top, 0);
 
     &:first-child {
       @include rem(padding-left, 15px);
@@ -96,31 +123,13 @@
     }
   }
 
-  .group-table--row__body {
-
-    .group-table--cell {
-      border-bottom: 1px solid #f5f5f5;
-    }
-
-    &:last-of-type {
-
-      .group-table--cell {
-        border-bottom: none;
-      }
-    }
-  }
-
-  .group-table--cell {
-    @include rem(padding, 5px);
-  }
-
   .group-table--cell__games,
   .group-table--cell__diff,
   .group-table--cell__points {
     text-align: right;
   }
 
-  .group-table--cell__name {
+  .group-table--cell__team {
     width: 100%;
   }
 

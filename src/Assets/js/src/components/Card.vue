@@ -40,6 +40,10 @@
     @include rem(padding-right, 10px);
     @include rem(max-width, 400px);
     margin: 0 auto;
+
+    .card--content {
+      @include rem(margin, 0 -15px);
+    }
   }
 
   .card--container {
