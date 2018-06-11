@@ -16,7 +16,7 @@ const store = new Vuex.Store({
   /* ------------------------------------- INITIAL STATE ----------------------------------------- */
   /* --------------------------------------------------------------------------------------------- */
   state: {
-    appTitle: global.window.AppConfig.appTitle || 'BETZ',
+    appTitle: global.window.AppConfig.appTitle || 'Tipsy',
     baseUrl: global.window.AppConfig.appBaseUrl || '/',
     user: null,
     token: global.window.localStorage.getItem('token'),
