@@ -6,7 +6,7 @@
  * Avoids Memcache and APC conflicts.
  */
 if (!defined('CACHE_PREFIX')) {
-    define('CACHE_PREFIX', 'betz_');
+    define('CACHE_PREFIX', 'tipsy_');
 }
 
 /**
@@ -57,12 +57,12 @@ $configure = [
     /**
      * Session name
      */
-    'Session.cookie' => 'betz',
+    'Session.cookie' => 'tipsy',
 
     /**
      * Cookie name
      */
-    'Cookie.name' => 'betzC',
+    'Cookie.name' => 'tipsyC',
 
     /**
      * Cache configuration
