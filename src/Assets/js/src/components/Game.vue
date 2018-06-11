@@ -24,9 +24,9 @@
         </div>
       </div>
       <div class="game-results">
-        <div class="game-result">-</div>
+        <div class="game-result">{{ game.result1 || '-' }}</div>
         <div class="game-result--spacer">:</div>
-        <div class="game-result">-</div>
+        <div class="game-result">{{ game.result2 || '-' }}</div>
       </div>
       <div class="game-team game-team__reverse">
         <div class="game-team--name">
