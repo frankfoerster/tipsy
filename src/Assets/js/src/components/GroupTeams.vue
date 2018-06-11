@@ -1,12 +1,14 @@
 <template>
   <div class="group-teams">
     <div v-for="team in teams" :key="team.id" v-if="teams && teams.length > 0" class="group-teams--team">
-      <img :src="team.icon" :title="team.name" :alt="team.name" class="group-teams--image">
+      <img :src="baseUrl + team.icon" :title="team.name" :alt="team.name" class="group-teams--image">
     </div>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
   export default {
     name: 'group-teams',
 
@@ -15,6 +17,12 @@
         type: Array,
         required: true
       }
+    },
+
+    computed: {
+      ...mapGetters([
+        'baseUrl'
+      ])
     }
   };
 </script>

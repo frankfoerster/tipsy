@@ -40,6 +40,8 @@
 
     computed: {
       ...mapGetters([
+        'baseUrl',
+        'icons',
         'notVerified'
       ]),
       wrapperClasses() {
@@ -62,11 +64,11 @@
       },
 
       preload() {
-        const icons = this.$store.getters.icons;
+        const icons = this.icons;
         const backgroundImage = global.window.AppConfig.backgroundImage;
         const medalIcon3rd = global.window.AppConfig.medalIcon3rd;
         const trophyIcon = global.window.AppConfig.trophyIcon;
-        const baseUrl = global.window.AppConfig.appBaseUrl;
+        const baseUrl = this.baseUrl;
 
         let promises = [];
 
@@ -84,7 +86,7 @@
 
         if (baseUrl) {
           icons.forEach(icon => {
-            promises.push(icon);
+            promises.push(this.getImagePromise(this.baseUrl + icon));
           });
         }
 
@@ -104,7 +106,7 @@
         this.$refs.wrapperBackground.style = 'background-image: url(' + backgroundImage +');';
         this.$nextTick(() => {
           this.$refs.wrapperBackground.classList.add('loaded');
-        })
+        });
       });
     }
   };

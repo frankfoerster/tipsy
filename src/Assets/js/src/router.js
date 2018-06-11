@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import store from './store';
 
 import Games from './views/Games.vue';
+import GroupTable from './views/GroupTable.vue';
 import Imprint from './views/Imprint.vue';
 import Login from './views/Login.vue';
 import LostPassword from './views/LostPassword.vue';
@@ -35,6 +36,16 @@ const routes = [
     name: 'games',
     components: {
       default: Games
+    },
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/group/:groupId/table',
+    name: 'group-table',
+    components: {
+      default: GroupTable
     },
     meta: {
       auth: true

@@ -1,15 +1,29 @@
 <template>
   <div class="view-table">
-    Table
+    <group-table v-for="group in groups" :group="group" :key="group.id" v-if="groups && groups.length > 0"></group-table>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
+  import GroupTable from '../components/GroupTable.vue';
+
   export default {
-    name: 'game-table'
+    name: 'view-table',
+
+    components: {
+      GroupTable
+    },
+
+    computed: {
+      ...mapGetters([
+        'groups'
+      ])
+    }
   }
 </script>
 
 <style lang="scss">
-
+  @import '../sass/imports';
 </style>

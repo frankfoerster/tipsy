@@ -16,7 +16,7 @@
         </div>
         <div class="game-team--image-wrapper">
           <template v-if="game.team1_id">
-            <img :src="teamById(game.team1_id).icon" :title="teamById(game.team1_id).name" :alt="teamById(game.team1_id).name" class="game-team--image">
+            <img :src="baseUrl + teamById(game.team1_id).icon" :title="teamById(game.team1_id).name" :alt="teamById(game.team1_id).name" class="game-team--image">
           </template>
           <template v-else>
             <div class="game-team--image game-team--image__empty"></div>
@@ -39,12 +39,11 @@
         </div>
         <div class="game-team--image-wrapper">
           <template v-if="game.team1_id">
-            <img :src="teamById(game.team2_id).icon" :title="teamById(game.team2_id).name" :alt="teamById(game.team2_id).name" class="game-team--image">
+            <img :src="baseUrl + teamById(game.team2_id).icon" :title="teamById(game.team2_id).name" :alt="teamById(game.team2_id).name" class="game-team--image">
           </template>
           <template v-else>
             <div class="game-team--image game-team--image__empty"></div>
           </template>
-
         </div>
       </div>
     </div>
@@ -82,6 +81,7 @@
 
     computed: {
       ...mapGetters([
+        'baseUrl',
         'teamById'
       ])
     },

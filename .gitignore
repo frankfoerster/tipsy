@@ -10,10 +10,6 @@ config/app.php
 config/Environment/environment.local.php
 src/Assets/js/node_modules
 src/Assets/js/dist
-webroot/css/**/app.css
-webroot/css/**/app.css.map
-webroot/js/**/app.js
-webroot/js/**/app.js.map
 webroot/fonts/**/selection.json
 
 # OS generated files #
@@ -23,7 +19,6 @@ webroot/fonts/**/selection.json
 ._*
 .Spotlight-V100
 .Trashes
-Icon?
 ehthumbs.db
 Thumbs.db
 
