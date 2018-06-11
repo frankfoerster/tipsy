@@ -75,10 +75,14 @@ class TipsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        // Add a rule that is applied for create and update operations
         $rules->add([$this, 'isVotingAllowed'], 'is-voting-allowed', [
             'errorField' => 'game_id',
             'message' => __('You can only vote until 15 minutes prior to the start of the game.')
+        ]);
+
+        $rules->add([$this, 'areTeamsSet'], 'are-teams-set', [
+            'errorField' => 'team1_id',
+            'message' => __('You can only vote on games with known teams.')
         ]);
 
         return $rules;
@@ -173,5 +177,25 @@ class TipsTable extends Table
         $votingAllowed = ($minutesToStartOfGame > 15);
 
         return $votingAllowed;
+    }
+
+    /**
+     * Check if teams are set on the game that is voted for.
+     *
+     * @param Tip $tip
+     * @return bool
+     */
+    public function areTeamsSet(Tip $tip)
+    {
+        /** @var Game $game */
+        $game = $this->Games->find()
+            ->where([
+                'id'=> $tip->game_id,
+                'team1_id IS NOT NULL',
+                'team2_id IS NOT NULL'
+            ])
+            ->first();
+
+        return !empty($game);
     }
 }
