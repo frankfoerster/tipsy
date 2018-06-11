@@ -340,6 +340,46 @@ const store = new Vuex.Store({
 
         return 0;
       });
+    },
+
+    gamesByTeam: (state, getters) => (teamId) => {
+      return [...getters.games].filter(game => {
+        return game.team1_id === teamId || game.team2_id === teamId;
+      });
+    },
+
+    teamGamesBefore: (state, getters) => (teamId, playingTimestamp) => {
+      return [...getters.gamesByTeam(teamId)].filter(game => {
+        return game.playing_timestamp < playingTimestamp;
+      });
+    },
+
+    gameDay: (state, getters) => (game) => {
+      if (game.is_preliminary) {
+        const pastTeamGames = getters.teamGamesBefore(game.team1_id, game.playing_timestamp);
+
+        return pastTeamGames.length + 1 + '. Game Day';
+      }
+
+      if (game.is_last_sixteen) {
+        return 'Last Sixteen';
+      }
+
+      if (game.is_quarter_final) {
+        return 'Quarter Final';
+      }
+
+      if (game.is_semi_final) {
+        return 'Semi Final';
+      }
+
+      if (game.is_game_for_3rd_place) {
+        return 'Game for 3rd Place';
+      }
+
+      if (game.is_final) {
+        return 'Final';
+      }
     }
   }
 

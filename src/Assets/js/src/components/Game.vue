@@ -2,7 +2,7 @@
   <div class="game">
     <div class="game-header">
       <div class="game-header--date">{{ formatDate(game.playing_time, 'dd. DD.MM.YYYY, HH:mm') }}</div>
-      <div class="game-header--day">1. Spieltag</div>
+      <div class="game-header--day">{{ gameDay(game) }}</div>
     </div>
     <div class="game-teams">
       <div class="game-team">
@@ -82,6 +82,7 @@
     computed: {
       ...mapGetters([
         'baseUrl',
+        'gameDay',
         'teamById'
       ])
     },

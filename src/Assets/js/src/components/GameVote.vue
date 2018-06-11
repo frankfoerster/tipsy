@@ -40,10 +40,15 @@
       <div class="voting-closed--info">
         Voting is closed for this game.<div v-if="voted">You voted!</div>
       </div>
-      <div class="user-vote" v-if="voted">
-        <div class="user-vote--result">{{ result1 }}</div>
+      <div class="voting-user" v-if="voted">
+        <div class="voting-user--result">{{ result1 }}</div>
         <div class="vote--spacer">:</div>
-        <div class="user-vote--result">{{ result2 }}</div>
+        <div class="voting-user--result">{{ result2 }}</div>
+      </div>
+      <div class="voting-points" v-if="voted">
+        <div class="voting-points--result voting-points--result__match" v-if="voteMatch">+3 Points</div>
+        <div class="voting-points--result voting-points--result__tendency" v-if="voteTendency">+1 Point</div>
+        <div class="voting-points--result voting-points--result__lose" v-if="voteLose">Sorry, maybe next time.</div>
       </div>
     </div>
   </div>
@@ -114,6 +119,31 @@
           parseInt(this.initialResult1) !== parseInt(this.result1) ||
           parseInt(this.initialResult2) !== parseInt(this.result2)
         );
+      },
+
+      voteMatch() {
+        const userTip = this.userTipByGameId(this.game.id);
+
+        return userTip.result1 === this.game.result1 && userTip.result2 === this.game.result2;
+      },
+
+      voteTendency() {
+        if (this.voteMatch) {
+          return false;
+        }
+
+        const userTip = this.userTipByGameId(this.game.id);
+        const gameDiff = this.game.result1 - this.game.result2;
+        const userDiff = userTip.result1 - userTip.result2;
+
+        return (
+          gameDiff < 0 && userDiff < 0 ||
+          gameDiff > 0 && userDiff > 0
+        );
+      },
+
+      voteLose() {
+        return !this.voteMatch && !this.voteTendency;
       }
     },
 
@@ -303,21 +333,47 @@
     }
   }
 
-  .user-vote {
+  .voting-user {
     display: flex;
     @include rem(padding-bottom, 10px);
   }
 
-  .user-vote--result {
+  .voting-user--result {
     width: calc((100% - 56px)/2);
     @include rem(padding-left, 21px);
     @include rem(font-size, 18px);
     font-weight: 600;
   }
 
-  .user-vote--result ~ .user-vote--result {
+  .voting-user--result ~ .voting-user--result {
     padding-left: 0;
     @include rem(padding-right, 22px);
     text-align: right;
+  }
+
+  .voting-points {
+    @include rem(padding, 10px);
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    border-top: 1px solid #248cb2;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .voting-points--result {
+    @include rem(font-size, 18px);
+    font-weight: bold;
+  }
+
+  .voting-points--result__match {
+    color: #51832a;
+  }
+
+  .voting-points--result__tendency {
+    color: #bf580c;
+  }
+
+  .voting-points--result__lose {
+    color: $rot2;
   }
 </style>
