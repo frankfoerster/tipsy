@@ -30,7 +30,7 @@ $options = [
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= __('Betz: ') . $this->fetch('title') ?></title>
+    <title><?= Configure::read('appName') . ': ' . Configure::read('appTitle') ?></title>
     <?= $this->Html->meta('icon') ?>
     <?= $this->Asset->css('css/app.css') ?>
 </head>
