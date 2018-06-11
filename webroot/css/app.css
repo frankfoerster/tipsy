@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);
 .notifications {
   position: fixed;
   z-index: 5000;
@@ -51,6 +51,142 @@
 }
 .vn-fade-enter, .vn-fade-leave-to {
   opacity: 0;
+}
+
+
+.group-table {
+  width: 100%;
+  margin: 0 -15px;
+  margin: 0 -0.9375rem;
+}
+.group-table--row .group-table--cell:first-child {
+  padding-left: 15px;
+  padding-left: 0.9375rem;
+}
+.group-table--row .group-table--cell:last-child {
+  padding-right: 15px;
+  padding-right: 0.9375rem;
+}
+.group-table--cell__header {
+  text-align: right;
+  cursor: help;
+}
+.group-table--cell__header:first-child {
+    padding-left: 15px;
+    padding-left: 0.9375rem;
+    text-align: left;
+    cursor: default;
+}
+.group-table--cell__header:last-child {
+    padding-right: 15px;
+    padding-right: 0.9375rem;
+}
+.group-table--row__body .group-table--cell {
+  border-bottom: 1px solid #f5f5f5;
+}
+.group-table--row__body:last-of-type .group-table--cell {
+  border-bottom: none;
+}
+.group-table--cell {
+  padding: 5px;
+  padding: 0.3125rem;
+}
+.group-table--cell__games,
+.group-table--cell__diff,
+.group-table--cell__points {
+  text-align: right;
+}
+.group-table--cell__name {
+  width: 100%;
+}
+.group-table--cell__games,
+.group-table--cell__diff {
+  min-width: 40px;
+  min-width: 2.5rem;
+}
+.group-table--cell__points {
+  min-width: 50px;
+  min-width: 3.125rem;
+  font-weight: 600;
+}
+.group-table--team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.group-table--team--image-wrapper {
+  width: 30px;
+  width: 1.875rem;
+  height: 30px;
+  height: 1.875rem;
+}
+.group-table--team--image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.group-table--team--name {
+  padding-left: 10px;
+  padding-left: 0.625rem;
+}
+
+.card {
+  padding: 10px 0 0 10px;
+  padding: 0.625rem 0 0 0.625rem;
+}
+.card__table {
+  padding-right: 10px;
+  padding-right: 0.625rem;
+  max-width: 400px;
+  max-width: 25rem;
+  margin: 0 auto;
+}
+.card--container {
+  padding: 15px;
+  padding: 0.9375rem;
+  background-color: #fff;
+  border-radius: 5px;
+  /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
+  /*box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.2);*/
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.card--header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
+  font-weight: 600;
+}
+.card__group .card--header {
+    padding-bottom: 15px;
+    padding-bottom: 0.9375rem;
+    text-align: center;
+}
+.card__top10 .card--header {
+    padding-bottom: 14px;
+    padding-bottom: 0.875rem;
+}
+.card--title {
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.card--link {
+  display: inline-block;
+  padding: 1px 0;
+  padding: 0.0625rem 0;
+  font-size: 14px;
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .view-support {
@@ -375,52 +511,6 @@ label {
 .overview-container__misc .card {
       width: 50%;
 }
-}
-
-.card {
-  padding: 10px 0 0 10px;
-  padding: 0.625rem 0 0 0.625rem;
-}
-.card--container {
-  padding: 15px;
-  padding: 0.9375rem;
-  background-color: #fff;
-  border-radius: 5px;
-  /*box-shadow: 0 0 10px rgba(0,0,0,0.3);*/
-  /*box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.2);*/
-  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.2);
-}
-.card--header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-bottom: 10px;
-  padding-bottom: 0.625rem;
-  font-weight: 600;
-}
-.card__group .card--header {
-    padding-bottom: 15px;
-    padding-bottom: 0.9375rem;
-    text-align: center;
-}
-.card__top10 .card--header {
-    padding-bottom: 14px;
-    padding-bottom: 0.875rem;
-}
-.card--title {
-  width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-.card--link {
-  display: inline-block;
-  padding: 1px 0;
-  padding: 0.0625rem 0;
-  font-size: 14px;
-  font-size: 0.875rem;
-  white-space: nowrap;
 }
 
 .group-footer {
@@ -877,6 +967,7 @@ label {
   padding-right: 1.375rem;
   text-align: right;
 }
+
 
 
 

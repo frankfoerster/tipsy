@@ -10,7 +10,7 @@
           {{ teamById(game.team1_id).name }}
         </div>
         <div class="game-team--image-wrapper">
-          <img :src="teamById(game.team1_id).icon" :title="teamById(game.team1_id).name" :alt="teamById(game.team1_id).name" class="game-team--image">
+          <img :src="baseUrl + teamById(game.team1_id).icon" :title="teamById(game.team1_id).name" :alt="teamById(game.team1_id).name" class="game-team--image">
         </div>
       </div>
       <div class="game-results">
@@ -23,7 +23,7 @@
           {{ teamById(game.team2_id).name }}
         </div>
         <div class="game-team--image-wrapper">
-          <img :src="teamById(game.team2_id).icon" :title="teamById(game.team2_id).name" :alt="teamById(game.team2_id).name" class="game-team--image">
+          <img :src="baseUrl + teamById(game.team2_id).icon" :title="teamById(game.team2_id).name" :alt="teamById(game.team2_id).name" class="game-team--image">
         </div>
       </div>
     </div>
@@ -61,6 +61,7 @@
 
     computed: {
       ...mapGetters([
+        'baseUrl',
         'teamById'
       ])
     },

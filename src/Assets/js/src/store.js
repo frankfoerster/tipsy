@@ -22,6 +22,7 @@ const store = new Vuex.Store({
     games: global.window.AppConfig.games || {},
     groups: global.window.AppConfig.groups || {},
     teams: global.window.AppConfig.teams || {},
+    baseUrl: global.window.AppConfig.appBaseUrl || '/',
     ranking: /*global.window.AppConfig.ranking*/null || {
       1: {
         total_points: 3,
@@ -199,6 +200,10 @@ const store = new Vuex.Store({
       return state.appTitle;
     },
 
+    baseUrl(state) {
+      return state.baseUrl;
+    },
+
     games(state) {
       const games = Object.keys(state.games).map(key => { return state.games[key] });
 
@@ -217,6 +222,10 @@ const store = new Vuex.Store({
         if (a.name < b.name) { return -1; }
         return 0;
       });
+    },
+
+    groupById: (state) => (id) => {
+      return state.groups[id];
     },
 
     icons(state) {
@@ -320,6 +329,78 @@ const store = new Vuex.Store({
 
     userTipByGameId: (state) => (id) => {
       return state.user.tips[id];
+    },
+
+    teamStats: (state, getters) => (id) => {
+      const games = [...getters.games].filter((game) => {
+        return (
+          game.is_preliminary && game.result1 !== null && game.result2 !== null &&
+          (game.team1_id === id  || game.team2_id === id)
+        );
+      });
+
+      let stats = {
+        games: games.length,
+        diff: 0,
+        points: 0
+      };
+
+      games.forEach(game => {
+        let diff;
+
+        if (game.team1_id === id) {
+          diff = game.result1 - game.result2;
+        } else {
+          diff = game.result2 - game.result1;
+        }
+
+        stats.diff += diff;
+
+        if (diff > 0) {
+          stats.points += 3;
+        } else if (diff === 0) {
+          stats.points += 1;
+        }
+      });
+
+      return stats;
+    },
+
+    tableByTeamIds: (state, getter) => (teamIds) => {
+      const teamStats = teamIds.map(id => {
+        return {
+          team: getter.teamById(id),
+          stats: getter.teamStats(id)
+        };
+      });
+
+      return [...teamStats].sort((a, b) => {
+        if (a.stats.points < b.stats.points) {
+          return 1;
+        }
+
+        if (a.stats.points > b.stats.points) {
+          return -1;
+        }
+
+        if (a.stats.diff > b.stats.diff) {
+          return 1;
+        }
+
+        if (a.stats.diff < b.stats.diff) {
+          return -1;
+        }
+
+        if (a.stats.games < b.stats.games) {
+          return 1;
+        }
+
+        if (a.stats.games > b.stats.games) {
+          return -1;
+        }
+
+        return 0;
+      });
     }
   }
 

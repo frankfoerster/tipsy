@@ -1,10 +1,10 @@
 <template>
   <div class="group-footer">
     <div class="group-footer--item">
-      <router-link :to="'/games/group/' + group.id">Games</router-link>
+      <router-link :to="'/group/' + group.id + '/games'">Games</router-link>
     </div>
     <div class="group-footer--item">
-      <router-link :to="'/table/group/' + group.id">Table</router-link>
+      <router-link :to="'/group/' + group.id + '/table'">Table</router-link>
     </div>
   </div>
 </template>

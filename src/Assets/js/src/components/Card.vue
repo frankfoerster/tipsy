@@ -36,6 +36,12 @@
     @include rem(padding, 10px 0 0 10px);
   }
 
+  .card__table {
+    @include rem(padding-right, 10px);
+    @include rem(max-width, 400px);
+    margin: 0 auto;
+  }
+
   .card--container {
     @include rem(padding, 15px);
     background-color: #fff;
