@@ -146,13 +146,13 @@ const router = new VueRouter({
   base: baseUrl,
   mode: 'history',
   scrollBehavior(to, from, savedPosition) {
+    let position = {x: 0, y: 0};
+
     if (savedPosition) {
-      return new Promise(resolve => {
-        router.app.$root.$once('triggerScroll', () => {
-          resolve(savedPosition);
-        });
-      });
+      position = savedPosition;
     }
+
+    return position;
   }
 });
 
