@@ -1,6 +1,6 @@
 <template>
   <div class="tables">
-    <group-table v-for="group in getGroups" :group="group" v-if="getGroups"></group-table>
+    <group-table v-for="group in getGroups" :key="group.id" :group="group" v-if="getGroups"></group-table>
   </div>
 </template>
 

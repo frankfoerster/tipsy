@@ -1,6 +1,6 @@
 <template>
   <div class="top-ten">
-    <div v-for="(user, index) in top10" v-if="top10 && top10.length > 0 && index < 10" class="top-ten--row">
+    <div v-for="(user, index) in top10" :key="user.id" v-if="top10 && top10.length > 0 && index < 10" class="top-ten--row">
       <div class="top-ten--place">{{ index + 1 }}.</div>
       <div class="top-ten--name">{{ user.username }}</div>
       <div class="top-ten--points">{{ user.total_points }}</div>

@@ -1,6 +1,6 @@
 <template>
   <div class="games">
-    <card v-for="(game, index) in getGames" type="game" :class="cardClasses(game)" v-if="getGames">
+    <card v-for="(game, index) in getGames" :key="game.id" type="game" :class="cardClasses(game)" v-if="getGames">
       <template slot="content">
         <game :game="game" @gameFocus="onFocus" @gameBlur="onBlur"></game>
       </template>

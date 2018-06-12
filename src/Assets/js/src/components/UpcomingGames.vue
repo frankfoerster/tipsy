@@ -1,6 +1,6 @@
 <template>
   <div class="upcoming-games">
-    <div v-for="(game, index) in upcomingGames" v-if="upcomingGames && index < 5" :class="rowClasses(game)">
+    <div v-for="(game, index) in upcomingGames" :key="game.id" v-if="upcomingGames && index < 5" :class="rowClasses(game)">
       <game :game="game" @gameFocus="onFocus" @gameBlur="onBlur"></game>
     </div>
   </div>

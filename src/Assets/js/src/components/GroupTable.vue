@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(team, index) in tableByTeamIds(getGroup.teams)" v-if="getGroup.teams && getGroup.teams.length > 0" class="group-table--row group-table--row__body">
+        <tr v-for="(team, index) in tableByTeamIds(getGroup.teams)" :key="team.id" v-if="getGroup.teams && getGroup.teams.length > 0" class="group-table--row group-table--row__body">
           <td class="group-table--cell group-table--cell__place">{{ index + 1 }}</td>
           <td class="group-table--cell group-table--cell__team">
             <div class="group-table--team">
