@@ -163,7 +163,8 @@ class UsersTable extends Table
                 'username',
                 'email',
                 'password',
-                'verified'
+                'verified',
+                'winning_team_id'
             ])
             ->where([
                 'or' => [
@@ -205,7 +206,8 @@ class UsersTable extends Table
                 'id',
                 'username',
                 'email',
-                'verified'
+                'verified',
+                'winning_team_id'
             ])
             ->matching('Tokens', function (Query $query) use ($token, $type) {
                 return $query
@@ -316,6 +318,21 @@ class UsersTable extends Table
     {
         $this->updateAll(
             ['verified' => true],
+            ['id' => $userId]
+        );
+    }
+
+    /**
+     * Update the winning team for the given $userId.
+     *
+     * @param int $userId
+     * @param int $winningTeamId
+     * @return void
+     */
+    public function updateWinningTeam($userId, $winningTeamId)
+    {
+        $this->updateAll(
+            ['winning_team_id' => $winningTeamId],
             ['id' => $userId]
         );
     }

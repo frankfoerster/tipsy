@@ -105,6 +105,7 @@
   .card--title {
     width: 100%;
     flex-grow: 1;
+    cursor: default;
   }
 
   .card--link {

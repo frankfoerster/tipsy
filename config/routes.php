@@ -27,6 +27,7 @@ Router::scope('/', function (RouteBuilder $routes) {
             $routes->connect('/info', ['action' => 'info', '_method' => 'GET']);
             $routes->connect('/verify', ['action' => 'verify', '_method' => 'POST']);
             $routes->connect('/request-verification-email', ['action' => 'requestVerificationEmail', '_method' => 'POST']);
+            $routes->connect('/update-winner', ['action' => 'updateWinner', '_method' => 'PATCH']);
         });
 
         $routes->scope('/tips', ['controller' => 'Tips'], function (RouteBuilder $routes) {

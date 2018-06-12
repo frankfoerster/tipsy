@@ -129,6 +129,7 @@
 
   .group-table--cell {
     @include rem(padding, 5px);
+    cursor: default;
   }
 
   .group-table--cell__header {

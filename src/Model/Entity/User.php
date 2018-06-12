@@ -15,6 +15,7 @@ use Cake\Utility\Hash;
  * @property string email
  * @property string password
  * @property bool verified
+ * @property int winning_team_id
  * @property UserGroup user_group
  */
 class User extends Entity

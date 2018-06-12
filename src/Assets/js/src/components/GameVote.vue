@@ -31,9 +31,9 @@
         ></vue-input>
       </div>
       <div class="game-votes">
-        <div class="game-votes--win" :style="{ width: winPercent + '%' }" :title="teamName(1) + ' will win against ' + teamName(2) + ' (' + winPercent + '%).'"></div>
-        <div class="game-votes--draw" :style="{ width: drawPercent + '%' }" :title="'The game will end with a draw (' + drawPercent + '%).'"></div>
-        <div class="game-votes--lose" :style="{ width: losePercent + '%' }" :title="teamName(1) + ' will lose against ' + teamName(2) + ' (' + losePercent + '%).'"></div>
+        <div class="game-votes--win" :style="{ width: winPercent + '%' }" :title="teamName(1) + ' will win against ' + teamName(2) + '. (' + winPercent + '%)'"></div>
+        <div class="game-votes--draw" :style="{ width: drawPercent + '%' }" :title="'The game will end with a draw. (' + drawPercent + '%)'"></div>
+        <div class="game-votes--lose" :style="{ width: losePercent + '%' }" :title="teamName(1) + ' will lose against ' + teamName(2) + '. (' + losePercent + '%)'"></div>
       </div>
       <vue-button class="vote--button" :loading="loading" :disabled="$v.$invalid || !hasChanged">
         <template v-if="loading">Voting ...</template>
@@ -378,22 +378,20 @@
     @include rem(height, 10px);
     border-radius: 3px 3px 0 0;
     overflow: hidden;
+    cursor: help;
   }
 
   .game-votes--win {
-    //background-color: #51832a;
     background-color: #bcdea2;
     flex-grow: 1;
   }
 
   .game-votes--draw {
-    //background-color: #e8840e;
     background-color: #ffd39f;
     flex-grow: 1;
   }
 
   .game-votes--lose {
-    //background-color: $rot2;
     background-color: #cb7680;
     flex-grow: 1;
   }
@@ -402,7 +400,7 @@
     width: 100%;
     @include rem(padding, 12px 15px);
 
-    &.button {
+    .game-votes + &.button {
       border-top-right-radius: 0;
       border-top-left-radius: 0;;
     }

@@ -32,11 +32,19 @@
             ></ranking-row>
           </template>
         </card>
+      </div>
+      <div class="overview-container overview-container__misc">
         <card type="upcoming">
           <template slot="title">Upcoming Games</template>
           <template slot="link"><router-link to="/games">All Games</router-link></template>
           <template slot="content">
             <upcoming-games></upcoming-games>
+          </template>
+        </card>
+        <card type="vote-winner">
+          <template slot="title">Who will win the {{ appTitle }}?</template>
+          <template slot="content">
+            <winner-vote></winner-vote>
           </template>
         </card>
       </div>
@@ -68,11 +76,13 @@
       GroupTeams,
       Playoffs,
       TopTen,
-      UpcomingGames
+      UpcomingGames,
+      WinnerVote
     },
 
     computed: {
       ...mapGetters([
+        'appTitle',
         'groups',
         'teamsById',
         'rankingSorted'

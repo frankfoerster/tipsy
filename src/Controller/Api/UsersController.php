@@ -72,6 +72,7 @@ class UsersController extends ApiAppController
                 'username' => $user->username,
                 'email' => $user->email,
                 'verified' => $user->verified,
+                'winning_team_id' => $user->winning_team_id,
                 'tips' => $this->Users->Tips->findTipsForUser($user->id)
             ]);
         } else {
@@ -121,6 +122,7 @@ class UsersController extends ApiAppController
             'username' => $user->username,
             'email' => $user->email,
             'verified' => $user->verified,
+            'winning_team_id' => $user->winning_team_id,
             'tips' => $this->Users->Tips->findTipsForUser($user->id)
         ]);
         $this->set('_serialize', ['user']);
@@ -292,6 +294,52 @@ class UsersController extends ApiAppController
         }
 
         $this->set('_serialize', ['message', 'errors']);
+    }
+
+    /**
+     * UpdateWinner action
+     *
+     * @throws \Aura\Intl\Exception
+     * @return void
+     */
+    public function updateWinner()
+    {
+        if (!$this->request->is('patch')) {
+            $this->_respondWithMethodNotAllowed();
+            return;
+        }
+
+        $winningTeamId = $this->request->getData('winning_team_id');
+        if (empty($winningTeamId)) {
+            $this->_respondWithBadRequest();
+            return;
+        }
+
+        $teamExists = $this->Users->UserTip->Games->Team1->exists(['id' => $winningTeamId]);
+        if (!$teamExists) {
+            $this->_respondWithBadRequest();
+            return;
+        }
+
+        $firstPlayingTime = $this->Users->UserTip->Games->findFirstPlayingTime();
+
+        if ($firstPlayingTime !== false) {
+            $currentDateTime = new \DateTime();
+            $minutesToStartOfGame = ($firstPlayingTime->getTimestamp() - $currentDateTime->getTimestamp()) / 60;
+            $votingAllowed = ($minutesToStartOfGame > 15);
+
+            if (!$votingAllowed) {
+                $this->_respondWithBadRequest();
+                return;
+            }
+        }
+
+        $userId = $this->Guardian->user('id');
+
+        $this->Users->updateWinningTeam($userId, $winningTeamId);
+
+        $this->set('message', __('Your winning team has been set.'));
+        $this->set('_serialize', ['message']);
     }
 
     /**

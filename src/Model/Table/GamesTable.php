@@ -4,6 +4,7 @@ namespace App\Model\Table;
 
 use App\Model\Entity\Game;
 use App\Model\UserTipTrait;
+use Cake\I18n\FrozenTime;
 use Cake\ORM\Entity;
 use Cake\ORM\Query;
 use Cake\ORM\Table;
@@ -93,5 +94,25 @@ class GamesTable extends Table
                 return $entity;
             })
             ->combine('id', function (Entity $entity) { return $entity; });
+    }
+
+    /**
+     * Find the playing time of the first game.
+     *
+     * @return bool|FrozenTime
+     */
+    public function findFirstPlayingTime()
+    {
+        /** @var Game $game */
+        $game = $this->find()
+            ->select('playing_time')
+            ->order(['playing_time' => 'asc'])
+            ->first();
+
+        if (empty($game)) {
+            return false;
+        }
+
+        return $game->playing_time;
     }
 }

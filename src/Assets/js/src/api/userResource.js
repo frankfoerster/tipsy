@@ -38,5 +38,11 @@ export default {
     const headers = authorizationHeader(token);
 
     return http.post('/users/request-verification-email', null, {headers});
+  },
+
+  updateWinner: (token, vote) => {
+    const headers = authorizationHeader(token);
+
+    return http.patch('/users/update-winner', vote, {headers});
   }
 }

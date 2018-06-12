@@ -138,6 +138,10 @@ const store = new Vuex.Store({
 
           return Promise.resolve(data);
         });
+    },
+
+    VOTE_WINNER({commit}, {token, vote}) {
+      return userResource.updateWinner(token, vote);
     }
   },
 
@@ -212,6 +216,16 @@ const store = new Vuex.Store({
         if (a.playing_timestamp < b.playing_timestamp) { return -1; }
         return 0;
       });
+    },
+
+    firstGame(state, getters) {
+      const games = [...getters.games];
+
+      if (games.length === 0) {
+        return null;
+      }
+
+      return games[0];
     },
 
     groups(state) {
@@ -296,6 +310,14 @@ const store = new Vuex.Store({
     teamsById: (state, getters) => (ids) => {
       return [...getters.teams].filter(team => {
         return ids.indexOf(team.id) !== -1;
+      });
+    },
+
+    teamsSorted(state, getters) {
+      return [...getters.teams].sort(function (a, b) {
+        if (a.name > b.name) { return 1; }
+        if (a.name < b.name) { return -1; }
+        return 0;
       });
     },
 
