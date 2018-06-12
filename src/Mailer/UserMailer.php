@@ -41,7 +41,7 @@ class UserMailer extends Mailer
     public function verify(User $user, $token)
     {
         return $this
-            ->_prepareEmail($user, __('Verify your email address'))
+            ->_prepareEmail($user, __('{appName}: Verify your email address', ['appName' => Configure::read('appName')]))
             ->set([
                 'user' => $user,
                 'token' => $token,
@@ -53,16 +53,17 @@ class UserMailer extends Mailer
      * lost password email
      *
      * @param User $user
-     * @param $hash
+     * @param string $token
      * @return \Cake\Mailer\Email
      * @throws \Aura\Intl\Exception
      */
-    public function lostPassword(User $user, $hash)
+    public function lostPassword(User $user, $token)
     {
         return $this
-            ->_prepareEmail($user, __('{appName}: Lost Password', ['appName' => Configure::read('appName')]))
+            ->_prepareEmail($user, __('{appName}: Reset Password', ['appName' => Configure::read('appName')]))
             ->set([
-                'hash' => $hash,
+                'user' => $user,
+                'token' => $token,
                 'instanceName' => 'Tipsy - ' . Configure::read('appTitle')
             ]);
     }

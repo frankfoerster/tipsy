@@ -235,7 +235,7 @@ class UsersController extends ApiAppController
 
         if ($user) {
             $token = $this->Tokens->create($user, TokensTable::TYPE_LOST_PASSWORD);
-            $this->getMailer('User')->send('lostPassword', [$user, $token]);
+            $this->getMailer('User')->send('lostPassword', [$user, $token->token]);
         }
 
         // We always respond positively to avoid email phishing.
@@ -257,30 +257,38 @@ class UsersController extends ApiAppController
             return;
         }
 
-        // @TODO
+        $token = $this->request->getData('token');
+        if (empty($token)) {
+            $this->_respondWithBadRequest();
+            return;
+        }
 
-//        $token = $this->request->getData('token');
-//        if (!$token || !$this->Tokens->exists(['token' => $token, 'used' => false])) {
-//            throw new BadRequestException(__('Invalid token'));
-//        }
-//
-//        $token = $this->Tokens->findUnusedTokenWithUser($token);
-//
-//        if ($token->hasExpired()) {
-//            $this->Tokens->useToken($token);
-//            throw new UnauthorizedException(__('Your token has expired.'));
-//        }
-//
-//        $token->user = $this->Users->patchEntity($token->user, $this->request->getData(), ['validate' => 'resetPassword']);
-//        if ($this->Users->save($token->user)) {
-//            $this->Tokens->useToken($token);
-//            $this->set('message', __('Your new password has been saved.'));
-//        } else {
-//            $this->set('message', __('Please correct the marked errors.'));
-//            $this->set('errors', $token->user->getErrors());
-//        }
-//
-//        $this->set('_serialize', ['message', 'errors']);
+        $user = $this->Users->findByToken($token, TokensTable::TYPE_LOST_PASSWORD);
+        if (empty($user)) {
+            $this->set('message', 'This password reset is no longer valid.');
+            $this->set('_serialize', ['message']);
+            $this->_respondWithBadRequest();
+            return;
+        }
+
+        $user->unsetProperty('username');
+        $user->unsetProperty('email');
+
+        $user = $this->Users->patchEntity($user, [
+            'password' => $this->request->getData('password'),
+            'password_confirmation' => $this->request->getData('password_confirmation')
+        ], ['validate' => 'resetPassword']);
+
+        if ($this->Users->save($user)) {
+            $this->Users->Tokens->expireTokens($user->id, TokensTable::TYPE_LOST_PASSWORD);
+            $this->set('message', __('Your password has been reset.'));
+        } else {
+            $this->set('message', __('Please correct the marked errors.'));
+            $this->set('errors', $user->getErrors());
+            $this->_respondWithValidationErrors();
+        }
+
+        $this->set('_serialize', ['message', 'errors']);
     }
 
     /**

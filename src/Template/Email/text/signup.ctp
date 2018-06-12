@@ -2,7 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
- * @var array $verifyEmailLink
+ * @var string $token
  */
 
 use Cake\Core\Configure;
