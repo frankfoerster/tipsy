@@ -45309,28 +45309,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var times_draw = this.game.times_draw || 0;
       var times_lose = this.game.times_lose || 0;
 
-      return this.game.times_win + this.game.times_draw + this.game.times_lose;
+      return times_win + times_draw + times_lose;
     },
 
     winPercent: function winPercent() {
       if (this.totalVotes === 0) {
         return 33.33;
       }
-      return Math.round(this.game.times_win / this.totalVotes * 100);
+
+      var times_win = this.game.times_win || 0;
+
+      return Math.round(times_win / this.totalVotes * 100);
     },
 
     drawPercent: function drawPercent() {
       if (this.totalVotes === 0) {
         return 33.33;
       }
-      return Math.round(this.game.times_draw / this.totalVotes * 100);
+
+      var times_draw = this.game.times_draw || 0;
+
+      return Math.round(times_draw / this.totalVotes * 100);
     },
 
     losePercent: function losePercent() {
       if (this.totalVotes === 0) {
         return 33.33;
       }
-      return Math.round(this.game.times_lose / this.totalVotes * 100);
+
+      var times_lose = this.game.times_lose || 0;
+
+      return Math.round(times_lose / this.totalVotes * 100);
     }}),
 
   methods: {

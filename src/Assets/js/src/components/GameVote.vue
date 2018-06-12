@@ -157,28 +157,37 @@
         const times_draw = this.game.times_draw || 0;
         const times_lose = this.game.times_lose || 0;
 
-        return this.game.times_win + this.game.times_draw + this.game.times_lose;
+        return times_win + times_draw + times_lose;
       },
 
       winPercent() {
         if (this.totalVotes === 0) {
           return 33.33;
         }
-        return Math.round(this.game.times_win / this.totalVotes * 100);
+
+        const times_win = this.game.times_win || 0;
+
+        return Math.round(times_win / this.totalVotes * 100);
       },
 
       drawPercent() {
         if (this.totalVotes === 0) {
           return 33.33;
         }
-        return Math.round(this.game.times_draw / this.totalVotes * 100);
+
+        const times_draw = this.game.times_draw || 0;
+
+        return Math.round(times_draw / this.totalVotes * 100);
       },
 
       losePercent() {
         if (this.totalVotes === 0) {
           return 33.33;
         }
-        return Math.round(this.game.times_lose / this.totalVotes * 100);
+
+        const times_lose = this.game.times_lose || 0;
+
+        return Math.round(times_lose / this.totalVotes * 100);
       }
     },
 
