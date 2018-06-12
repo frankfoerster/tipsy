@@ -46345,32 +46345,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_c('div', {
-    staticClass: "game-votes"
-  }, [_c('div', {
-    staticClass: "game-votes--win",
-    style: ({
-      width: _vm.winPercent + '%'
-    }),
-    attrs: {
-      "title": _vm.teamName(1) + ' will win against ' + _vm.teamName(2) + ' (' + _vm.winPercent + '%).'
-    }
-  }), _c('div', {
-    staticClass: "game-votes--draw",
-    style: ({
-      width: _vm.drawPercent + '%'
-    }),
-    attrs: {
-      "title": 'The game will end with a draw (' + _vm.drawPercent + '%).'
-    }
-  }), _c('div', {
-    staticClass: "game-votes--lose",
-    style: ({
-      width: _vm.losePercent + '%'
-    }),
-    attrs: {
-      "title": _vm.teamName(1) + ' will lose against ' + _vm.teamName(2) + ' (' + _vm.losePercent + '%).'
-    }
-  })]), _c('div', {
     staticClass: "vote--control"
   }, [_c('vue-label', {
     attrs: {
@@ -46432,7 +46406,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "result2"
     }
-  })], 1), _c('vue-button', {
+  })], 1), _c('div', {
+    staticClass: "game-votes"
+  }, [_c('div', {
+    staticClass: "game-votes--win",
+    style: ({
+      width: _vm.winPercent + '%'
+    }),
+    attrs: {
+      "title": _vm.teamName(1) + ' will win against ' + _vm.teamName(2) + ' (' + _vm.winPercent + '%).'
+    }
+  }), _c('div', {
+    staticClass: "game-votes--draw",
+    style: ({
+      width: _vm.drawPercent + '%'
+    }),
+    attrs: {
+      "title": 'The game will end with a draw (' + _vm.drawPercent + '%).'
+    }
+  }), _c('div', {
+    staticClass: "game-votes--lose",
+    style: ({
+      width: _vm.losePercent + '%'
+    }),
+    attrs: {
+      "title": _vm.teamName(1) + ' will lose against ' + _vm.teamName(2) + ' (' + _vm.losePercent + '%).'
+    }
+  })]), _c('vue-button', {
     staticClass: "vote--button",
     attrs: {
       "loading": _vm.loading,

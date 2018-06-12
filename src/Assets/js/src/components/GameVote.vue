@@ -1,11 +1,6 @@
 <template>
   <div class="vote">
     <form v-if="canVote(game)" class="vote-form" @submit.prevent="onSubmit">
-      <div class="game-votes">
-        <div class="game-votes--win" :style="{ width: winPercent + '%' }" :title="teamName(1) + ' will win against ' + teamName(2) + ' (' + winPercent + '%).'"></div>
-        <div class="game-votes--draw" :style="{ width: drawPercent + '%' }" :title="'The game will end with a draw (' + drawPercent + '%).'"></div>
-        <div class="game-votes--lose" :style="{ width: losePercent + '%' }" :title="teamName(1) + ' will lose against ' + teamName(2) + ' (' + losePercent + '%).'"></div>
-      </div>
       <div class="vote--control">
         <vue-label :for="'vote-' + game.id + '-v1'">Vote</vue-label>
         <vue-input
@@ -34,6 +29,11 @@
           @keydown="onKeydown"
           :error="$v.result2.$invalid"
         ></vue-input>
+      </div>
+      <div class="game-votes">
+        <div class="game-votes--win" :style="{ width: winPercent + '%' }" :title="teamName(1) + ' will win against ' + teamName(2) + ' (' + winPercent + '%).'"></div>
+        <div class="game-votes--draw" :style="{ width: drawPercent + '%' }" :title="'The game will end with a draw (' + drawPercent + '%).'"></div>
+        <div class="game-votes--lose" :style="{ width: losePercent + '%' }" :title="teamName(1) + ' will lose against ' + teamName(2) + ' (' + losePercent + '%).'"></div>
       </div>
       <vue-button class="vote--button" :loading="loading" :disabled="$v.$invalid || !hasChanged">
         <template v-if="loading">Voting ...</template>
@@ -363,11 +363,11 @@
   }
 
   .game-votes {
-    @include rem(margin-bottom, 15px);
     display: flex;
     width: 100%;
+    @include rem(margin-top, 12px);
     @include rem(height, 10px);
-    border-radius: 3px;
+    border-radius: 3px 3px 0 0;
     overflow: hidden;
   }
 
@@ -390,9 +390,13 @@
   }
 
   .vote--button {
-    @include rem(margin-top, 10px);
     width: 100%;
     @include rem(padding, 12px 15px);
+
+    &.button {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;;
+    }
   }
 
   .voting-closed {

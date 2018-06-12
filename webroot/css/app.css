@@ -312,15 +312,15 @@
           justify-content: center;
 }
 .game-votes {
-  margin-bottom: 15px;
-  margin-bottom: 0.9375rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  margin-top: 12px;
+  margin-top: 0.75rem;
   height: 10px;
   height: 0.625rem;
-  border-radius: 3px;
+  border-radius: 3px 3px 0 0;
   overflow: hidden;
 }
 .game-votes--win {
@@ -342,11 +342,13 @@
           flex-grow: 1;
 }
 .vote--button {
-  margin-top: 10px;
-  margin-top: 0.625rem;
   width: 100%;
   padding: 12px 15px;
   padding: 0.75rem 0.9375rem;
+}
+.vote--button.button {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
 .voting-closed {
   margin-top: 5px;
