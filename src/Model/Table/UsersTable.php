@@ -3,6 +3,7 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
+use App\Model\UserTipTrait;
 use Cake\Auth\PasswordHasherFactory;
 use Cake\Event\Event;
 use Cake\ORM\Query;
@@ -16,9 +17,12 @@ use Cake\Validation\Validator;
  * @property UserGroupsTable UserGroups
  * @property TokensTable Tokens
  * @property TipsTable Tips
+ * @property TipsTable UserTip
  */
 class UsersTable extends Table
 {
+    use UserTipTrait;
+
     /**
      * Initialization hook method.
      *
@@ -32,6 +36,10 @@ class UsersTable extends Table
         $this->belongsTo('UserGroups');
         $this->hasMany('Tokens');
         $this->hasMany('Tips');
+        $this->hasOne('UserTip', [
+            'className' => 'Tips',
+            'foreignKey' => 'user_id'
+        ]);
 
         $this->addBehavior('Timestamp');
     }
@@ -226,6 +234,60 @@ class UsersTable extends Table
     public function findByEmail($email)
     {
         return $this->find()->where(['email' => $email])->first();
+    }
+
+    /**
+     * Find user ranking for the vuex store.
+     *
+     * @return \Cake\Collection\CollectionInterface
+     */
+    public function findRankingForStore()
+    {
+        $users = $this->find()
+            ->select([
+                'id',
+                'username'
+            ])
+            ->contain([
+                'UserTip' => function (Query $query) {
+                    return $query
+                        ->select([
+                            'user_id',
+                            'game_id',
+                            'result1',
+                            'result2'
+                        ])
+                        ->contain([
+                            'Games'
+                        ]);
+                }
+            ]);
+
+        $rankings = $users
+            ->group('user_id')
+            ->select([
+                'total_points' => $users->func()->sum($this->getTotalPointsCase($users)),
+                'total_exact' => $users->func()->sum($this->getExactCase($users)),
+                'total_tendency' => $users->func()->sum($this->getTendencyCase($users)),
+                'total_votes' => $users->func()->sum($this->getTotalValuesVotes($users))
+            ])
+            ->order(['total_points' => 'desc'], true)
+            ->filter(function (User $user) {
+                if (empty($user->get('total_points'))) {
+                    $user->set('total_points', 0);
+                }
+                return $user;
+            })
+            ->combine(
+                function (User $user) {
+                    return $user->id;
+                },
+                function (User $user) {
+                    return $user;
+                }
+            );
+
+        return $rankings;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Model\Table\GamesTable;
 use App\Model\Table\GroupsTable;
 use App\Model\Table\TeamsTable;
+use App\Model\Table\UsersTable;
 
 /**
  * Class HomeController
@@ -11,6 +12,7 @@ use App\Model\Table\TeamsTable;
  * @property GamesTable Games
  * @property GroupsTable Groups
  * @property TeamsTable Teams
+ * @property UsersTable Users
  */
 class HomeController extends AppController
 {
@@ -26,6 +28,7 @@ class HomeController extends AppController
         $this->loadModel('Games');
         $this->loadModel('Groups');
         $this->loadModel('Teams');
+        $this->loadModel('Users');
     }
 
     /**
@@ -39,7 +42,7 @@ class HomeController extends AppController
         $games = $this->Games->findForStore();
         $groups = $this->Groups->findForStore();
         $teams = $this->Teams->findForStore();
-        $ranking = $this->Games->findRankingForStore();
+        $ranking = $this->Users->findRankingForStore();
 
         $this->set([
             'games' => $games,
