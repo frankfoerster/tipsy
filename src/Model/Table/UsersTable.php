@@ -245,37 +245,53 @@ class UsersTable extends Table
     {
         $users = $this->find()
             ->select([
-                'id',
-                'username'
+                'Users.id',
+                'base_user_id' => 'Users.id',
+                'Users.username'
             ])
             ->contain([
                 'UserTip' => function (Query $query) {
                     return $query
-                        ->select([
-                            'user_id',
-                            'game_id',
-                            'result1',
-                            'result2'
-                        ])
                         ->contain([
                             'Games'
                         ]);
                 }
             ]);
 
+        $bonusPointsQuery = $this->find()
+            ->select([
+                'points' => $users->func()->sum($this->getTotalBonusPoints($users))
+            ])
+            ->leftJoin(['Games' => 'games'], [
+                    'or' => [
+                        'Games.team1_id = Users.winning_team_id',
+                        'Games.team2_id = Users.winning_team_id'
+                    ]
+            ])
+            ->where([
+                'Users.id = base_user_id',
+                'Users.winning_team_id IS NOT NULL'
+            ]);
+
         $rankings = $users
-            ->group('user_id')
+            ->group('Users.id')
             ->select([
                 'total_points' => $users->func()->sum($this->getTotalPointsCase($users)),
                 'total_exact' => $users->func()->sum($this->getExactCase($users)),
                 'total_tendency' => $users->func()->sum($this->getTendencyCase($users)),
-                'total_votes' => $users->func()->sum($this->getTotalValuesVotes($users))
+                'total_votes' => $users->func()->sum($this->getTotalValuesVotes($users)),
+                'total_bonus_points' => $bonusPointsQuery
             ])
-            ->order(['total_points' => 'desc'], true)
             ->filter(function (User $user) {
                 if (empty($user->get('total_points'))) {
                     $user->set('total_points', 0);
                 }
+                if (empty($user->get('total_bonus_points'))) {
+                    $user->set('total_bonus_points', 0);
+                } else {
+                    $user->set('total_bonus_points', (int)$user->get('total_bonus_points'));
+                }
+                $user->set('total_points', $user->get('total_points') + (int)$user->get('total_bonus_points'));
                 return $user;
             })
             ->combine(

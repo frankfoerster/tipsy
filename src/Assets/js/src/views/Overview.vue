@@ -19,10 +19,17 @@
           </template>
         </card>
         <card type="top10">
-          <template slot="title">Top 10</template>
-          <template slot="link"><router-link to="/ranking">All Rankings</router-link></template>
+          <template slot="title">
+            <ranking-header :topTen="true"></ranking-header>
+          </template>
           <template slot="content">
-            <top-ten></top-ten>
+            <ranking-row
+              v-for="(user, index) in rankingSorted"
+              :key="user.id"
+              :user="user"
+              :place="index + 1"
+              v-if="rankingSorted && index < 10"
+            ></ranking-row>
           </template>
         </card>
         <card type="upcoming">
@@ -46,11 +53,16 @@
   import Playoffs from '../components/Playoffs.vue';
   import TopTen from '../components/TopTen.vue';
   import UpcomingGames from '../components/UpcomingGames.vue';
+  import RankingHeader from '../components/RankingHeader.vue';
+  import RankingRow from '../components/RankingRow.vue';
+  import WinnerVote from '../components/WinnerVote.vue';
 
   export default {
     name: 'view-overview',
 
     components: {
+      RankingRow,
+      RankingHeader,
       Card,
       GroupFooter,
       GroupTeams,
@@ -63,9 +75,7 @@
       ...mapGetters([
         'groups',
         'teamsById',
-        'top10',
-        'upcomingGames',
-        'teamById'
+        'rankingSorted'
       ])
     }
   }

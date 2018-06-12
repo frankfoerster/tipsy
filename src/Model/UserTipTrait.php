@@ -142,4 +142,31 @@ trait UserTipTrait
                 ['integer', 'integer']
             );
     }
+
+    public function getTotalBonusPoints(Query $query)
+    {
+        return $query->newExpr()
+            ->addCase(
+                [
+                    $query->newExpr()->add([
+                        'Users.winning_team_id IS NOT NULL',
+                        'Games.result1 IS NOT NULL',
+                        'Games.result2 IS NOT NULL',
+                        'Games.is_final = 1',
+                        'or' => [
+                            [
+                                'Games.result1 > Games.result2',
+                                'Games.team1_id = Users.winning_team_id'
+                            ],
+                            [
+                                'Games.result2 > Games.result1',
+                                'Games.team2_id = Users.winning_team_id'
+                            ]
+                        ]
+                    ])
+                ],
+                [10, 0],
+                ['integer', 'integer']
+            );
+    }
 }

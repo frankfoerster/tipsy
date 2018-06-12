@@ -311,7 +311,7 @@ const store = new Vuex.Store({
       return Object.keys(state.ranking).map(key => { return state.ranking[key] });
     },
 
-    top10(state, getters) {
+    rankingSorted(state, getters) {
       return [...getters.ranking].sort((a, b) => {
         if (a.total_points < b.total_points) { return 1; }
         if (a.total_points > b.total_points) { return -1; }

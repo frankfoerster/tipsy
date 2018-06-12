@@ -68,6 +68,7 @@ class UsersController extends ApiAppController
             $this->response = $this->response->withHeader(Configure::read('authorizationHeader'), 'Bearer ' . $this->Guardian->user('token.token'));
 
             $this->set('user', [
+                'id' => $user->id,
                 'username' => $user->username,
                 'email' => $user->email,
                 'verified' => $user->verified,
@@ -116,6 +117,7 @@ class UsersController extends ApiAppController
         $user = $this->Guardian->user();
 
         $this->set('user', [
+            'id' => $user->id,
             'username' => $user->username,
             'email' => $user->email,
             'verified' => $user->verified,
