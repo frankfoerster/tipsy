@@ -23,7 +23,7 @@ Router::scope('/', function (RouteBuilder $routes) {
             $routes->connect('/logout', ['action' => 'logout', '_method' => 'POST']);
             $routes->connect('/signup', ['action' => 'signup', '_method' => 'POST']);
             $routes->connect('/lost-password', ['action' => 'lostPassword', '_method' => 'POST']);
-            $routes->connect('/reset-password', ['action' => 'resetPassword', '_method' => 'POST']);
+            $routes->connect('/reset-password', ['action' => 'resetPassword', '_method' => 'PATCH']);
             $routes->connect('/info', ['action' => 'info', '_method' => 'GET']);
             $routes->connect('/verify', ['action' => 'verify', '_method' => 'POST']);
             $routes->connect('/request-verification-email', ['action' => 'requestVerificationEmail', '_method' => 'POST']);
