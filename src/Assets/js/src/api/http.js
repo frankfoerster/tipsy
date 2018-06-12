@@ -15,8 +15,10 @@ http.interceptors.response.use(
   (response) => {
     let data = response.data;
 
-    if (response.headers && response.headers.authorization) {
-      const token = response.headers.authorization.split(' ')[1];
+    const authorizationHeader = global.window.AppConfig.authorizationHeader.toLowerCase();
+
+    if (response.headers && response.headers[authorizationHeader]) {
+      const token = response.headers[authorizationHeader].split(' ')[1];
       if (token) {
         data.auth = {
           token

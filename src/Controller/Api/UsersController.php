@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Model\Entity\User;
 use App\Model\Table\TokensTable;
 use App\Model\Table\UsersTable;
+use Cake\Core\Configure;
 use Cake\Mailer\MailerAwareTrait;
 
 /**
@@ -64,7 +65,7 @@ class UsersController extends ApiAppController
             $this->Guardian->authenticate($user);
 
             // Respond with the auth token in the Authorization header.
-            $this->response = $this->response->withHeader('Authorization', 'Bearer ' . $this->Guardian->user('token.token'));
+            $this->response = $this->response->withHeader(Configure::read('authorizationHeader'), 'Bearer ' . $this->Guardian->user('token.token'));
 
             $this->set('user', [
                 'username' => $user->username,

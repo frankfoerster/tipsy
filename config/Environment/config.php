@@ -76,5 +76,7 @@ $configure = [
 
     'appMail' => 'yoursendermail@domain.com',
     'appName' => 'Tipsy',
-    'appTitle' => 'WM 2018'
+    'appTitle' => 'WM 2018',
+
+    'authorizationHeader' => 'Authorization'
 ];

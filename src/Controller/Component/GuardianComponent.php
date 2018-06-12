@@ -6,6 +6,7 @@ use App\Model\Entity\User;
 use App\Model\Table\TokensTable;
 use App\Model\Table\UsersTable;
 use Cake\Controller\Component;
+use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Http\Response;
 use Cake\ORM\Locator\TableLocator;
@@ -221,7 +222,7 @@ class GuardianComponent extends Component
      */
     protected function _getToken()
     {
-        $authorization = $this->getController()->getRequest()->getHeader('Authorization');
+        $authorization = $this->getController()->getRequest()->getHeader(Configure::read('authorizationHeader'));
         if (empty($authorization)) {
             return null;
         }

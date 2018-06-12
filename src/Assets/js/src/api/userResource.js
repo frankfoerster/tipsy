@@ -1,4 +1,5 @@
 import http from './http';
+import authorizationHeader from './authorizationHeader';
 
 export default {
   signup: (user) => {
@@ -10,9 +11,7 @@ export default {
   },
 
   logout: (token) => {
-    const headers = {
-      'Authorization': 'Bearer ' + token
-    };
+    const headers = authorizationHeader(token);
 
     return http.post('/users/logout', null, {headers});
   },
@@ -26,9 +25,7 @@ export default {
   },
 
   info: (token) => {
-    const headers = {
-      'Authorization': 'Bearer ' + token
-    };
+    const headers = authorizationHeader(token);
 
     return http.get('/users/info', {headers});
   },
@@ -38,9 +35,7 @@ export default {
   },
 
   requestVerificationEmail: (token) => {
-    const headers = {
-      'Authorization': 'Bearer ' + token
-    };
+    const headers = authorizationHeader(token);
 
     return http.post('/users/request-verification-email', null, {headers});
   }

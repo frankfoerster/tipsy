@@ -15,6 +15,7 @@ $options = [
     'appBaseUrl' => $this->Url->build(['controller' => 'Home', 'action' => 'index']),
     'apiBaseUrl' => $this->Url->build('/api'),
     'appTitle' => Configure::read('appTitle'),
+    'authorizationHeader' => Configure::read('authorizationHeader'),
     'backgroundImage' => $this->Url->build('/img/bg/3.jpg'),
     'medalIcon3rd' => $this->Url->build('/img/icons/3rd_place_medal.svg'),
     'trophyIcon' => $this->Url->build('/img/icons/trophy.svg'),
