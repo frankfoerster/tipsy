@@ -17,6 +17,14 @@ export default {
     return http.post('/users/logout', null, {headers});
   },
 
+  lostPassword: (data) => {
+    return http.post('/users/lost-password', data);
+  },
+
+  resetPassword: (data) => {
+    return http.patch('/users/reset-password', data);
+  },
+
   info: (token) => {
     const headers = {
       'Authorization': 'Bearer ' + token
