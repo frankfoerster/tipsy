@@ -58,6 +58,14 @@ const store = new Vuex.Store({
       commit('SET_LOGIN_REDIRECT', null);
     },
 
+    LOST_PASSWORD({commit}, data) {
+      return userResource.lostPassword(data);
+    },
+
+    RESET_PASSWORD({commit}, data) {
+      return userResource.resetPassword(data);
+    },
+
     RESET_USER({commit}) {
       commit('SET_USER', null);
       commit('SET_TOKEN', null);
