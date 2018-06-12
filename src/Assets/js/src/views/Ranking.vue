@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'ranking'
+    name: 'view-ranking'
   }
 </script>
 

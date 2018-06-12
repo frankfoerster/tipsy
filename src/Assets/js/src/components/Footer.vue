@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <router-link class="footer--link" to="imprint">Imprint</router-link>
+    <router-link class="footer--link" to="/imprint">Imprint</router-link>
     <span class="made-with-love">Made with <span class="heart">❤</span> by <a class="twitter-handle" href="https://twitter.com/frfoerster">@frfoerster</a></span>
   </footer>
 </template>

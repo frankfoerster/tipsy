@@ -62,7 +62,7 @@
         <vue-button :loading="loading">Signup</vue-button>
       </vue-form>
       <template slot="footer">
-        <p>Forgot <router-link to="/lost-password">Username / Password?</router-link></p>
+        <p>Lost your <router-link to="/lost-password">Password?</router-link></p>
         <p>Already a member? <router-link to="/login">Login</router-link></p>
       </template>
     </support-box>
@@ -85,7 +85,7 @@
   import VueLabel from '../components/VueLabel.vue';
 
   export default {
-    name: 'signup',
+    name: 'view-signup',
 
     mixins: [flash, handleErrors],
 
@@ -151,7 +151,7 @@
           password: this.password,
           password_confirmation: this.passwordConfirmation
         }).then(() => {
-          // this.$router.push('/login');
+          this.$router.push('/signed-up');
         }).catch((data) => {
           this.showFlashMessage(data.message, 'error');
           this.setErrors(data.errors);

@@ -1,9 +1,6 @@
 <template>
   <div class="upcoming-games">
-    <div v-for="(game, index) in upcomingGames" v-if="upcomingGames && upcomingGames.length > 0 && index < 5"
-         class="upcoming--row"
-         :class="{'upcoming--row__focused': focused[game.id], 'upcoming--row__voting-closed': !canVote(game)}"
-    >
+    <div v-for="(game, index) in upcomingGames" v-if="upcomingGames && index < 5" :class="rowClasses(game)">
       <game :game="game" @gameFocus="onFocus" @gameBlur="onBlur"></game>
     </div>
   </div>
@@ -11,25 +8,19 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import Vue from 'vue';
 
   import canVote from '../mixins/canVoteMixin';
+  import focusable from '../mixins/focusableMixin';
 
   import Game from './Game.vue';
 
   export default {
     name: 'upcoming-games',
 
-    mixins: [canVote],
+    mixins: [canVote, focusable],
 
     components: {
       Game
-    },
-
-    data() {
-      return {
-        focused: {}
-      }
     },
 
     computed: {
@@ -39,12 +30,12 @@
     },
 
     methods: {
-      onFocus(gameId) {
-        Vue.set(this.focused, gameId, true);
-      },
-
-      onBlur(gameId) {
-        Vue.set(this.focused, gameId, false);
+      rowClasses(game) {
+        return [
+          'upcoming--row',
+          { 'upcoming--row__focused': this.isFocused[game.id] },
+          { 'upcoming--row__voting-closed': !this.canVote(game) }
+        ];
       }
     }
   }

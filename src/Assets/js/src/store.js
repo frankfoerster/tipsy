@@ -358,6 +358,62 @@ const store = new Vuex.Store({
       });
     },
 
+    gamesByGroup: (state, getters) => (groupId) => {
+      return [...getters.games].filter(game => {
+        if (!game.is_preliminary) {
+          return false;
+        }
+
+        const team = getters.teamById(game.team1_id);
+        return team.group_id === parseInt(groupId);
+      });
+    },
+
+    gamesByType: (state, getters) => (type) => {
+      const games = [...getters.games];
+
+      if (!type) {
+        return games;
+      }
+
+      if (type === 'last-sixteen') {
+        return games.filter(game => {
+          return game.is_last_sixteen;
+        });
+      }
+
+      if (type === 'quarter-final') {
+        return games.filter(game => {
+          return game.is_quarter_final;
+        });
+      }
+
+      if (type === 'semi-final') {
+        return games.filter(game => {
+          return game.is_semi_final;
+        });
+      }
+
+      if (type === '3rd-place') {
+        return games.filter(game => {
+          return game.is_game_for_3rd_place;
+        });
+      }
+
+      if (type === 'final') {
+        return games.filter(game => {
+          return game.is_final;
+        });
+      }
+
+      const team = getters.teamById(type);
+      if (team) {
+        return getters.gamesByTeam(type);
+      }
+
+      return null;
+    },
+
     teamGamesBefore: (state, getters) => (teamId, playingTimestamp) => {
       return [...getters.gamesByTeam(teamId)].filter(game => {
         return game.playing_timestamp < playingTimestamp;

@@ -29,9 +29,14 @@
   @import '../sass/imports';
 
   .flash-message {
-    @include rem(padding, 20px);
+    @include rem(padding, 10px 15px);
     @include rem(margin-bottom, 20px);
+    line-height: 1.4;
     border-radius: 3px;
+
+    @include respond-to-min(400px) {
+      @include rem(padding, 20px);
+    }
   }
 
   .flash-message__error {

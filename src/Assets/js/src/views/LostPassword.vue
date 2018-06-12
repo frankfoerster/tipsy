@@ -17,7 +17,7 @@
           <vue-input-error v-if="!$v.email.required">Please enter your email address.</vue-input-error>
           <vue-input-error v-if="!$v.email.email">Please enter a valid email address.</vue-input-error>
         </form-row>
-        <vue-button>Submit</vue-button>
+        <vue-button :loading="loading">Submit</vue-button>
       </vue-form>
       <template slot="footer">
         <p>Remember Password? <router-link to="/login">Login</router-link></p>
@@ -39,7 +39,7 @@
   import VueLabel from '../components/VueLabel.vue';
 
   export default {
-    name: 'lost-password',
+    name: 'view-lost-password',
 
     data() {
       return {
@@ -72,8 +72,19 @@
         if (this.$v.$invalid) {
           this.shake = true;
         } else {
-          console.log('lost password');
+          this.loading = true;
+          this.submit().finally(() => {
+            this.loading = false;
+          });
         }
+      },
+
+      submit() {
+        return this.$store.dispatch('LOST_PASSWORD', {
+          email: this.email
+        }).then(() => {
+          this.$router.push('/lost-password-requested');
+        });
       }
     }
   }

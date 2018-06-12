@@ -378,8 +378,8 @@ export default Component
   }
 
   .vue-notification.success {
-    background: #68CD86;
-    border-left-color: #42A85F;
+    background: #2d8647;
+    border-left-color: #28673a;
   }
 
   .vn-fade-enter-active, .vn-fade-leave-active, .vn-fade-move  {

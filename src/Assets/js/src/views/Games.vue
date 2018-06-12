@@ -1,51 +1,37 @@
 <template>
   <div class="view-games">
-    <card v-for="(game, index) in games" :key="game.id" type="game" :class="{'card__game-focused': focused[game.id], 'card__game-voting-closed': !canVote(game)}">
-      <template slot="content">
-        <game :game="game" @gameFocus="onFocus" @gameBlur="onBlur"></game>
+    <h1 class="page-title">
+      All Games
+      <template v-if="secondaryTitle">
+        <span class="page-title--divider">/</span>
+        {{ secondaryTitle }}
       </template>
-    </card>
+    </h1>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue';
-  import { mapGetters } from 'vuex';
+  import secondaryTitle from '../mixins/secondaryTitleMixin';
 
-  import canVote from '../mixins/canVoteMixin';
-
-  import Card from '../components/Card.vue';
-  import Game from '../components/Game.vue';
+  import Games from '../components/Games.vue';
 
   export default {
-    name: 'games',
+    name: 'view-games',
 
-    mixins: [canVote],
+    mixins: [secondaryTitle],
 
     components: {
-      Card,
-      Game
-    },
-
-    data() {
-      return {
-        focused: {}
-      }
+      Games
     },
 
     computed: {
-      ...mapGetters([
-        'games'
-      ])
-    },
+      secondaryTitle() {
+        if (this.$route.name === 'games') {
+          return false;
+        }
 
-    methods: {
-      onFocus(gameId) {
-        Vue.set(this.focused, gameId, true);
-      },
-
-      onBlur(gameId) {
-        Vue.set(this.focused, gameId, false);
+        return this.getSecondaryTitle(this.$route.params.type)
       }
     }
   }
@@ -53,8 +39,4 @@
 
 <style lang="scss">
   @import '../sass/imports';
-
-  .view-games {
-    @include rem(padding-top, 10px);
-  }
 </style>

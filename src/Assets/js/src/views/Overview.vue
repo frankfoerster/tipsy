@@ -1,5 +1,6 @@
 <template>
   <div class="view-overview">
+    <h1 class="page-title">Overview</h1>
     <div class="container">
       <div class="overview-container overview-container__groups">
         <card type="group" v-for="group in groups" :key="group.id" v-if="groups && groups.length > 0">
@@ -47,7 +48,7 @@
   import UpcomingGames from '../components/UpcomingGames.vue';
 
   export default {
-    name: 'overview',
+    name: 'view-overview',
 
     components: {
       Card,
@@ -80,7 +81,6 @@
   }
 
   .overview-container__groups {
-    @include rem(padding-top, 10px);
 
     .card__group {
       width: 50%;

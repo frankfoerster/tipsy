@@ -1,17 +1,17 @@
 <template>
-  <card type="table" v-if="group">
+  <card type="table" v-if="getGroup">
     <template slot="content">
       <table class="group-table">
         <thead>
         <tr class="group-table--row group-table--row__header">
-          <th class="group-table--cell group-table--cell__header" colspan="2">Group {{ group.name }}</th>
+          <th class="group-table--cell group-table--cell__header" colspan="2">Group {{ getGroup.name }}</th>
           <th class="group-table--cell group-table--cell__header" title="Games">G</th>
           <th class="group-table--cell group-table--cell__header" title="Goal Difference">D</th>
           <th class="group-table--cell group-table--cell__header" title="Points">P</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(team, index) in tableByTeamIds(group.teams)" v-if="group.teams && group.teams.length > 0" class="group-table--row group-table--row__body">
+        <tr v-for="(team, index) in tableByTeamIds(getGroup.teams)" v-if="getGroup.teams && getGroup.teams.length > 0" class="group-table--row group-table--row__body">
           <td class="group-table--cell group-table--cell__place">{{ index + 1 }}</td>
           <td class="group-table--cell group-table--cell__team">
             <div class="group-table--team">
@@ -24,7 +24,7 @@
             </div>
           </td>
           <td class="group-table--cell group-table--cell__games">{{ team.stats.games }}</td>
-          <td class="group-table--cell group-table--cell__diff">{{ team.stats.diff }}</td>
+          <td class="group-table--cell group-table--cell__diff">{{ prefixDiff(team.stats.diff) }}</td>
           <td class="group-table--cell group-table--cell__points">{{ team.stats.points }}</td>
         </tr>
         </tbody>
@@ -56,8 +56,33 @@
     computed: {
       ...mapGetters([
         'baseUrl',
+        'groupById',
         'tableByTeamIds'
-      ])
+      ]),
+
+      getGroup() {
+        if (this.group) {
+          return this.group;
+        }
+
+        if (this.$route.params.groupId) {
+          return this.groupById(this.$route.params.groupId);
+        }
+
+        return null;
+      }
+    },
+
+    methods: {
+      prefixDiff(value) {
+        if (value === 0) {
+          return value;
+        }
+        if (value > 0) {
+          return '+' + value;
+        }
+        return value;
+      }
     }
   }
 </script>

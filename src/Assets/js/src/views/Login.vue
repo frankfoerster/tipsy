@@ -29,7 +29,7 @@
         <vue-button :loading="loading" :disabled="$v.$invalid">Login</vue-button>
       </vue-form>
       <template slot="footer">
-        <p>Forgot <router-link to="/lost-password">Username / Password?</router-link></p>
+        <p>Lost your <router-link to="/lost-password">Password?</router-link></p>
         <p>Not a member? <router-link to="/signup">Sign up now</router-link></p>
       </template>
     </support-box>
@@ -51,7 +51,7 @@
   import VueLabel from '../components/VueLabel.vue';
 
   export default {
-    name: 'login',
+    name: 'view-login',
 
     mixins: [flash, handleErrors],
 
@@ -129,14 +129,22 @@
   @import '../sass/imports';
 
   .view-support {
-    @include rem(padding, 20px 20px 0);
+    @include rem(padding, 10px 10px 0);
     min-height: calc(100vh - 103px);
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include respond-to-min(400px) {
+      @include rem(padding, 20px 20px 0);
+    }
   }
 
   .support-form {
-    @include rem(margin-bottom, 40px)
+    @include rem(margin-bottom, 20px);
+
+    @include respond-to-min(400px) {
+      @include rem(margin-bottom, 40px);
+    }
   }
 </style>

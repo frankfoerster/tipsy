@@ -1,33 +1,36 @@
 <template>
   <div class="view-table">
-    <group-table v-for="group in groups" :group="group" :key="group.id" v-if="groups && groups.length > 0"></group-table>
+    <h1 class="page-title">
+      All Results
+      <template v-if="secondaryTitle">
+        <span class="page-title--divider">/</span>
+        {{ secondaryTitle }}
+      </template>
+    </h1>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-
-  import GroupTable from '../components/GroupTable.vue';
+  import secondaryTitle from '../mixins/secondaryTitleMixin';
 
   export default {
     name: 'view-table',
 
-    components: {
-      GroupTable
-    },
+    mixins: [secondaryTitle],
 
     computed: {
-      ...mapGetters([
-        'groups'
-      ])
+      secondaryTitle() {
+        if (this.$route.name === 'table') {
+          return false;
+        }
+
+        return this.getSecondaryTitle(this.$route.params.groupId);
+      }
     }
   }
 </script>
 
 <style lang="scss">
   @import '../sass/imports';
-
-  .view-table {
-    @include rem(padding-top, 10px);
-  }
 </style>

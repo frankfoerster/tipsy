@@ -23,7 +23,7 @@
         </transition>
       </template>
       <template slot="footer">
-        <p v-if="!mailSent && !verified">Forgot <router-link to="/lost-password">Username / Password?</router-link></p>
+        <p v-if="!mailSent && !verified">Lost your <router-link to="/lost-password">Password?</router-link></p>
         <p v-if="!mailSent && !verified">Not a member? <router-link to="/signup">Sign up now</router-link></p>
         <p v-if="!mailSent && verified">You can <router-link to="/login">Login here</router-link>.</p>
         <p v-if="mailSent">Back to <router-link to="/">Game Plan</router-link></p>
@@ -42,7 +42,7 @@
   import SupportBox from '../components/SupportBox.vue';
 
   export default {
-    name: 'verify-email',
+    name: 'view-verify-email',
 
     mixins: [flash],
 

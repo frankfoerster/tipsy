@@ -46,9 +46,9 @@
         <div class="voting-user--result">{{ result2 }}</div>
       </div>
       <div class="voting-points" v-if="voted">
-        <div class="voting-points--result voting-points--result__match" v-if="voteMatch">+3 Points</div>
-        <div class="voting-points--result voting-points--result__tendency" v-if="voteTendency">+1 Point</div>
-        <div class="voting-points--result voting-points--result__lose" v-if="voteLose">Sorry, maybe next time.</div>
+        <div class="voting-points--result voting-points--result__match" v-if="voteMatch"><span title="Your vote matched the result.">+3 Points</span></div>
+        <div class="voting-points--result voting-points--result__tendency" v-if="voteTendency"><span title="The tendency of your vote was correct.">+1 Point</span></div>
+        <div class="voting-points--result voting-points--result__lose" v-if="voteLose"><span title="Your vote did not match and the tendency was wrong.">0 Points</span></div>
       </div>
     </div>
   </div>
@@ -363,6 +363,10 @@
   .voting-points--result {
     @include rem(font-size, 18px);
     font-weight: bold;
+
+    span {
+      cursor: help;
+    }
   }
 
   .voting-points--result__match {

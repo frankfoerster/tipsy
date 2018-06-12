@@ -3,18 +3,23 @@ import VueRouter from 'vue-router';
 
 import store from './store';
 
-import Games from './views/Games.vue';
-import GroupTable from './views/GroupTable.vue';
-import Imprint from './views/Imprint.vue';
-import Login from './views/Login.vue';
-import LostPassword from './views/LostPassword.vue';
-import NotFound from './views/NotFound.vue';
-import Overview from './views/Overview.vue';
-import Ranking from './views/Ranking.vue';
-import ResetPassword from './views/ResetPassword.vue';
-import Signup from './views/Signup.vue';
-import Table from './views/Table.vue';
-import VerifyEmail from './views/VerifyEmail.vue';
+import ViewGames from './views/Games.vue';
+import ViewImprint from './views/Imprint.vue';
+import ViewLogin from './views/Login.vue';
+import ViewLostPassword from './views/LostPassword.vue';
+import ViewLostPasswordRequested from './views/LostPasswordRequested.vue';
+import ViewNotFound from './views/NotFound.vue';
+import ViewOverview from './views/Overview.vue';
+import ViewRanking from './views/Ranking.vue';
+import ViewResetPassword from './views/ResetPassword.vue';
+import ViewResetPasswordComplete from './views/ResetPasswordComplete.vue';
+import ViewSignup from './views/Signup.vue';
+import ViewSignedUp from './views/SignedUp.vue';
+import ViewTable from './views/Table.vue';
+import ViewVerifyEmail from './views/VerifyEmail.vue';
+
+import Games from './components/Games.vue';
+import Tables from './components/Tables.vue';
 
 Vue.use(VueRouter);
 
@@ -24,49 +29,59 @@ const routes = [
   {
     path: '/',
     name: 'overview',
-    components: {
-      default: Overview
-    },
+    component: ViewOverview,
     meta: {
       auth: true
     }
   },
   {
     path: '/games',
-    name: 'games',
-    components: {
-      default: Games
-    },
-    meta: {
-      auth: true
-    }
-  },
-  {
-    path: '/group/:groupId/table',
-    name: 'group-table',
-    components: {
-      default: GroupTable
-    },
-    meta: {
-      auth: true
-    }
+    component: ViewGames,
+    children: [
+      {
+        path: '',
+        name: 'games',
+        component: Games,
+        meta: {
+          auth: true
+        }
+      },
+      {
+        path: ':type',
+        name: 'games-filtered',
+        component: Games,
+        meta: {
+          auth: true
+        }
+      }
+    ]
   },
   {
     path: '/table',
-    name: 'table',
-    components: {
-      default: Table
-    },
-    meta: {
-      auth: true
-    }
+    component: ViewTable,
+    children: [
+      {
+        path: '',
+        name: 'table',
+        component: Tables,
+        meta: {
+          auth: true
+        }
+      },
+      {
+        path: ':groupId',
+        name: 'group-table',
+        component: Tables,
+        meta: {
+          auth: true
+        }
+      }
+    ]
   },
   {
     path: '/ranking',
     name: 'ranking',
-    components: {
-      default: Ranking
-    },
+    component: ViewRanking,
     meta: {
       auth: true
     }
@@ -74,16 +89,12 @@ const routes = [
   {
     path: '/imprint',
     name: 'imprint',
-    components: {
-      default: Imprint
-    }
+    component: ViewImprint
   },
   {
     path: '/login',
     name: 'login',
-    components: {
-      default: Login
-    }
+    component: ViewLogin
   },
   {
     path: '/logout',
@@ -100,44 +111,49 @@ const routes = [
   {
     path: '/signup',
     name: 'signup',
-    components: {
-      default: Signup
-    }
+    component: ViewSignup
+  },
+  {
+    path: '/signed-up',
+    name: 'signed-up',
+    component: ViewSignedUp
   },
   {
     path: '/lost-password',
     name: 'lost-password',
-    components: {
-      default: LostPassword
-    }
+    component: ViewLostPassword
   },
   {
-    path: '/reset-password',
+    path: '/lost-password-requested',
+    name: 'lost-password-requested',
+    component: ViewLostPasswordRequested
+  },
+  {
+    path: '/reset-password/:token',
     name: 'reset-password',
-    components: {
-      default: ResetPassword
-    }
+    component: ViewResetPassword
+  },
+  {
+    path: '/reset-password-complete',
+    name: 'reset-password-complete',
+    component: ViewResetPasswordComplete
   },
   {
     path: '/verify/:token',
     name: 'verify-email',
-    components: {
-      default: VerifyEmail
-    }
+    component: ViewVerifyEmail
   },
   {
     path: '/request-verification',
     name: 'request-verification',
-    components: {
-      default: VerifyEmail
-    },
+    component: ViewVerifyEmail,
     meta: {
       auth: true
     }
   },
   {
     path: '*',
-    component: NotFound
+    component: ViewNotFound
   }
 ];
 

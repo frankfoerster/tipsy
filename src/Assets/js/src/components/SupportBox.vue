@@ -42,16 +42,24 @@
   @import '../sass/imports';
 
   .support-box {
-    @include rem(padding, 40px);
+    @include rem(padding, 20px);
     width: 100%;
     @include rem(max-width, 440px);
     background-color: #fff;
     box-shadow: 0 0 40px rgba(0,0,0,0.6);
     border-radius: 3px;
+
+    @include respond-to-min(400px) {
+      @include rem(padding, 40px);
+    }
   }
 
   .support-box--title {
-    @include rem(margin, 0 0 30px);
+    @include rem(margin, 0 0 20px);
+
+    @include respond-to-min(400px) {
+      @include rem(margin-bottom, 30px);
+    }
   }
 
   .support-box--footer {

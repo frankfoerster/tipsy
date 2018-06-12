@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'imprint'
+    name: 'view-imprint'
   }
 </script>
 

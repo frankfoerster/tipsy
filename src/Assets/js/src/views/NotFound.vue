@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'not-found'
+    name: 'view-not-found'
   }
 </script>
 

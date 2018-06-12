@@ -8,9 +8,7 @@
         <div class="app-pre-loader" v-if="loading">
           <div class="pre-load-spinner"></div>
         </div>
-        <keep-alive v-if="!loading">
-          <router-view></router-view>
-        </keep-alive>
+        <router-view v-if="!loading"></router-view>
       </transition>
     </div>
     <app-footer></app-footer>
@@ -86,7 +84,7 @@
 
         if (baseUrl) {
           icons.forEach(icon => {
-            promises.push(this.getImagePromise(this.baseUrl + icon));
+            promises.push(this.getImagePromise(baseUrl + icon));
           });
         }
 
@@ -149,8 +147,11 @@
 
     .route-login &.loaded,
     .route-signup &.loaded,
+    .route-signed-up &.loaded,
     .route-lost-password &.loaded,
+    .route-lost-password-requested &.loaded,
     .route-reset-password &.loaded,
+    .route-reset-password-complete &.loaded,
     .route-verify-email &.loaded,
     .route-request-verification &.loaded {
       opacity: 1;
@@ -184,8 +185,20 @@
     }
   }
 
-  .sr-only {
-    @include visuallyhidden();
+  .page-title {
+    @include rem(margin, 30px 0 10px);
+    @include rem(font-size, 20px);
+    font-weight: 600;
+    text-align: center;
+
+    @include respond-to-min(400px) {
+      @include rem(margin-bottom, 20px);
+      @include rem(font-size, 28px);
+    }
+  }
+
+  .page-title--divider {
+    color: $rot;
   }
 
   .fade-enter {

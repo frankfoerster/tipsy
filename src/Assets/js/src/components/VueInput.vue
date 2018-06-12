@@ -130,6 +130,12 @@
     align-items: center;
     justify-content: center;
     @include rem(font-size, 20px);
+
+    .support-box & {
+      @include respond-to-max(399px) {
+        @include rem(width, 50px);
+      }
+    }
   }
 
   .input-icon {
@@ -159,6 +165,17 @@
 
     &.has-error {
       box-shadow: inset -3px -3px 0px $rot, inset 3px 3px 0px $rot;
+    }
+
+    .support-box & {
+
+      @include respond-to-max(399px) {
+        @include rem(height, 50px);
+
+        &.has-icon {
+          @include rem(padding, 0 15px 0 50px);
+        }
+      }
     }
   }
 </style>
