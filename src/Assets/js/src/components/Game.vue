@@ -6,14 +6,7 @@
     </div>
     <div class="game-teams">
       <div class="game-team">
-        <div class="game-team--name">
-          <template v-if="game.team1_id">
-            {{ teamById(game.team1_id).name }}
-          </template>
-          <template v-else>
-            {{ game.team1_note }}
-          </template>
-        </div>
+        <div class="game-team--name">{{ teamName(1) }}</div>
         <div class="game-team--image-wrapper">
           <template v-if="game.team1_id">
             <img :src="baseUrl + teamById(game.team1_id).icon" :title="teamById(game.team1_id).name" :alt="teamById(game.team1_id).name" class="game-team--image">
@@ -29,14 +22,7 @@
         <div class="game-result">{{ game.result2 || '-' }}</div>
       </div>
       <div class="game-team game-team__reverse">
-        <div class="game-team--name">
-          <template v-if="game.team2_id">
-            {{ teamById(game.team2_id).name }}
-          </template>
-          <template v-else>
-            {{ game.team2_note }}
-          </template>
-        </div>
+        <div class="game-team--name">{{ teamName(2) }}</div>
         <div class="game-team--image-wrapper">
           <template v-if="game.team1_id">
             <img :src="baseUrl + teamById(game.team2_id).icon" :title="teamById(game.team2_id).name" :alt="teamById(game.team2_id).name" class="game-team--image">
@@ -94,6 +80,17 @@
 
       onBlur() {
         this.$emit('gameBlur', this.game.id);
+      },
+
+      teamName(nr) {
+        const teamSelector = 'team' + nr + '_id';
+        const noteSelector = 'team' + nr + '_note';
+
+        if (this.game[teamSelector]) {
+          return this.teamById(this.game[teamSelector]).name;
+        } else {
+          return this.game[noteSelector];
+        }
       }
     }
   }

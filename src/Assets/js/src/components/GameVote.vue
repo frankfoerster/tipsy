@@ -1,6 +1,11 @@
 <template>
   <div class="vote">
     <form v-if="canVote(game)" class="vote-form" @submit.prevent="onSubmit">
+      <div class="game-votes">
+        <div class="game-votes--win" :style="{ width: winPercent + '%' }" :title="teamName(1) + ' will win against ' + teamName(2) + ' (' + winPercent + '%).'"></div>
+        <div class="game-votes--draw" :style="{ width: drawPercent + '%' }" :title="'The game will end with a draw (' + drawPercent + '%).'"></div>
+        <div class="game-votes--lose" :style="{ width: losePercent + '%' }" :title="teamName(1) + ' will lose against ' + teamName(2) + ' (' + losePercent + '%).'"></div>
+      </div>
       <div class="vote--control">
         <vue-label :for="'vote-' + game.id + '-v1'">Vote</vue-label>
         <vue-input
@@ -111,6 +116,7 @@
     computed: {
       ...mapGetters([
         'userTipByGameId',
+        'teamById',
         'token'
       ]),
 
@@ -144,6 +150,35 @@
 
       voteLose() {
         return !this.voteMatch && !this.voteTendency;
+      },
+
+      totalVotes() {
+        const times_win = this.game.times_win || 0;
+        const times_draw = this.game.times_draw || 0;
+        const times_lose = this.game.times_lose || 0;
+
+        return this.game.times_win + this.game.times_draw + this.game.times_lose;
+      },
+
+      winPercent() {
+        if (this.totalVotes === 0) {
+          return 33.33;
+        }
+        return Math.round(this.game.times_win / this.totalVotes * 100);
+      },
+
+      drawPercent() {
+        if (this.totalVotes === 0) {
+          return 33.33;
+        }
+        return Math.round(this.game.times_draw / this.totalVotes * 100);
+      },
+
+      losePercent() {
+        if (this.totalVotes === 0) {
+          return 33.33;
+        }
+        return Math.round(this.game.times_lose / this.totalVotes * 100);
       }
     },
 
@@ -198,7 +233,11 @@
         setTimeout(() => {
           this.$store.dispatch('VOTE', {
             token: this.token,
-            vote: vote
+            vote: vote,
+            isNew: !this.voted,
+            previousWin: parseInt(this.initialResult1) > parseInt(this.initialResult2),
+            previousDraw: parseInt(this.initialResult1) === parseInt(this.initialResult2),
+            previousLose: parseInt(this.initialResult1) < parseInt(this.initialResult2)
           }).then((data) => {
             this.initialResult1 = vote.result1;
             this.initialResult2 = vote.result2;
@@ -234,6 +273,17 @@
             this.loading = false;
           });
         }, 200)
+      },
+
+      teamName(nr) {
+        const teamSelector = 'team' + nr + '_id';
+        const noteSelector = 'team' + nr + '_note';
+
+        if (this.game[teamSelector]) {
+          return this.teamById(this.game[teamSelector]).name;
+        } else {
+          return this.game[noteSelector];
+        }
       }
     },
 
@@ -310,6 +360,33 @@
     @include rem(width, 56px);
     align-items: center;
     justify-content: center;
+  }
+
+  .game-votes {
+    @include rem(margin-bottom, 15px);
+    display: flex;
+    width: 100%;
+    @include rem(height, 10px);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .game-votes--win {
+    //background-color: #51832a;
+    background-color: #bcdea2;
+    flex-grow: 1;
+  }
+
+  .game-votes--draw {
+    //background-color: #e8840e;
+    background-color: #ffd39f;
+    flex-grow: 1;
+  }
+
+  .game-votes--lose {
+    //background-color: $rot2;
+    background-color: #cb7680;
+    flex-grow: 1;
   }
 
   .vote--button {

@@ -18997,10 +18997,41 @@ var store = new __WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */].Store({
       var commit = ref.commit;
       var token = ref$1.token;
       var vote = ref$1.vote;
+      var isNew = ref$1.isNew;
+      var previousWin = ref$1.previousWin;
+      var previousDraw = ref$1.previousDraw;
+      var previousLose = ref$1.previousLose;
 
       return __WEBPACK_IMPORTED_MODULE_5__api_tipResource__["a" /* default */].createOrUpdate(token, vote)
         .then(function (data) {
           commit('UPDATE_USER_TIP', Object.assign({}, vote, { voted: true }));
+
+          if ((vote.result1 > vote.result2) && !previousWin) {
+            commit('INCREASE_WIN', vote.game_id);
+
+            if (!isNew) {
+              previousDraw && commit('DECREASE_DRAW', vote.game_id);
+              previousLose && commit('DECREASE_LOSE', vote.game_id);
+            }
+          }
+
+          if ((vote.result1 === vote.result2) && !previousDraw) {
+            commit('INCREASE_DRAW', vote.game_id);
+
+            if (!isNew) {
+              previousWin && commit('DECREASE_WIN', vote.game_id);
+              previousLose && commit('DECREASE_LOSE', vote.game_id);
+            }
+          }
+
+          if ((vote.result1 < vote.result2) && !previousLose) {
+            commit('INCREASE_LOSE', vote.game_id);
+
+            if (!isNew) {
+              previousWin && commit('DECREASE_WIN', vote.game_id);
+              previousDraw && commit('DECREASE_DRAW', vote.game_id);
+            }
+          }
 
           return Promise.resolve(data);
         });
@@ -19031,6 +19062,30 @@ var store = new __WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */].Store({
 
     UPDATE_USER_TIP: function UPDATE_USER_TIP(state, vote) {
       __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].set(state.user.tips, vote.game_id, vote);
+    },
+
+    INCREASE_WIN: function INCREASE_WIN(state, game_id) {
+      __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].set(state.games, game_id, Object.assign({}, state.games[game_id], { times_win: state.games[game_id].times_win + 1 }));
+    },
+
+    DECREASE_WIN: function DECREASE_WIN(state, game_id) {
+      __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].set(state.games, game_id, Object.assign({}, state.games[game_id], { times_win: state.games[game_id].times_win - 1 }));
+    },
+
+    INCREASE_DRAW: function INCREASE_DRAW(state, game_id) {
+      __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].set(state.games, game_id, Object.assign({}, state.games[game_id], { times_draw: state.games[game_id].times_draw + 1 }));
+    },
+
+    DECREASE_DRAW: function DECREASE_DRAW(state, game_id) {
+      __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].set(state.games, game_id, Object.assign({}, state.games[game_id], { times_draw: state.games[game_id].times_draw - 1 }));
+    },
+
+    INCREASE_LOSE: function INCREASE_LOSE(state, game_id) {
+      __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].set(state.games, game_id, Object.assign({}, state.games[game_id], { times_lose: state.games[game_id].times_lose + 1 }));
+    },
+
+    DECREASE_LOSE: function DECREASE_LOSE(state, game_id) {
+      __WEBPACK_IMPORTED_MODULE_2_vue__["a" /* default */].set(state.games, game_id, Object.assign({}, state.games[game_id], { times_lose: state.games[game_id].times_lose - 1 }));
     }
   },
 
@@ -44943,20 +44998,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -44998,6 +45039,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     onBlur: function onBlur() {
       this.$emit('gameBlur', this.game.id);
+    },
+
+    teamName: function teamName(nr) {
+      var teamSelector = 'team' + nr + '_id';
+      var noteSelector = 'team' + nr + '_note';
+
+      if (this.game[teamSelector]) {
+        return this.teamById(this.game[teamSelector]).name;
+      } else {
+        return this.game[noteSelector];
+      }
     }
   }
 });
@@ -45139,6 +45191,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -45195,6 +45252,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   computed: Object.assign({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])([
       'userTipByGameId',
+      'teamById',
       'token'
     ]),
 
@@ -45228,6 +45286,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     voteLose: function voteLose() {
       return !this.voteMatch && !this.voteTendency;
+    },
+
+    totalVotes: function totalVotes() {
+      var times_win = this.game.times_win || 0;
+      var times_draw = this.game.times_draw || 0;
+      var times_lose = this.game.times_lose || 0;
+
+      return this.game.times_win + this.game.times_draw + this.game.times_lose;
+    },
+
+    winPercent: function winPercent() {
+      if (this.totalVotes === 0) {
+        return 33.33;
+      }
+      return Math.round(this.game.times_win / this.totalVotes * 100);
+    },
+
+    drawPercent: function drawPercent() {
+      if (this.totalVotes === 0) {
+        return 33.33;
+      }
+      return Math.round(this.game.times_draw / this.totalVotes * 100);
+    },
+
+    losePercent: function losePercent() {
+      if (this.totalVotes === 0) {
+        return 33.33;
+      }
+      return Math.round(this.game.times_lose / this.totalVotes * 100);
     }}),
 
   methods: {
@@ -45283,7 +45370,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       setTimeout(function () {
         this$1.$store.dispatch('VOTE', {
           token: this$1.token,
-          vote: vote
+          vote: vote,
+          isNew: !this$1.voted,
+          previousWin: parseInt(this$1.initialResult1) > parseInt(this$1.initialResult2),
+          previousDraw: parseInt(this$1.initialResult1) === parseInt(this$1.initialResult2),
+          previousLose: parseInt(this$1.initialResult1) < parseInt(this$1.initialResult2)
         }).then(function (data) {
           this$1.initialResult1 = vote.result1;
           this$1.initialResult2 = vote.result2;
@@ -45319,6 +45410,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           this$1.loading = false;
         });
       }, 200)
+    },
+
+    teamName: function teamName(nr) {
+      var teamSelector = 'team' + nr + '_id';
+      var noteSelector = 'team' + nr + '_note';
+
+      if (this.game[teamSelector]) {
+        return this.teamById(this.game[teamSelector]).name;
+      } else {
+        return this.game[noteSelector];
+      }
     }
   },
 
@@ -46243,6 +46345,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_c('div', {
+    staticClass: "game-votes"
+  }, [_c('div', {
+    staticClass: "game-votes--win",
+    style: ({
+      width: _vm.winPercent + '%'
+    }),
+    attrs: {
+      "title": _vm.teamName(1) + ' will win against ' + _vm.teamName(2) + ' (' + _vm.winPercent + '%).'
+    }
+  }), _c('div', {
+    staticClass: "game-votes--draw",
+    style: ({
+      width: _vm.drawPercent + '%'
+    }),
+    attrs: {
+      "title": 'The game will end with a draw (' + _vm.drawPercent + '%).'
+    }
+  }), _c('div', {
+    staticClass: "game-votes--lose",
+    style: ({
+      width: _vm.losePercent + '%'
+    }),
+    attrs: {
+      "title": _vm.teamName(1) + ' will lose against ' + _vm.teamName(2) + ' (' + _vm.losePercent + '%).'
+    }
+  })]), _c('div', {
     staticClass: "vote--control"
   }, [_c('vue-label', {
     attrs: {
@@ -46371,7 +46499,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "game-team"
   }, [_c('div', {
     staticClass: "game-team--name"
-  }, [(_vm.game.team1_id) ? [_vm._v("\n          " + _vm._s(_vm.teamById(_vm.game.team1_id).name) + "\n        ")] : [_vm._v("\n          " + _vm._s(_vm.game.team1_note) + "\n        ")]], 2), _c('div', {
+  }, [_vm._v(_vm._s(_vm.teamName(1)))]), _c('div', {
     staticClass: "game-team--image-wrapper"
   }, [(_vm.game.team1_id) ? [_c('img', {
     staticClass: "game-team--image",
@@ -46394,7 +46522,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "game-team game-team__reverse"
   }, [_c('div', {
     staticClass: "game-team--name"
-  }, [(_vm.game.team2_id) ? [_vm._v("\n          " + _vm._s(_vm.teamById(_vm.game.team2_id).name) + "\n        ")] : [_vm._v("\n          " + _vm._s(_vm.game.team2_note) + "\n        ")]], 2), _c('div', {
+  }, [_vm._v(_vm._s(_vm.teamName(2)))]), _c('div', {
     staticClass: "game-team--image-wrapper"
   }, [(_vm.game.team1_id) ? [_c('img', {
     staticClass: "game-team--image",

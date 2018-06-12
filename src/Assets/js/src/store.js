@@ -104,10 +104,37 @@ const store = new Vuex.Store({
       return userResource.requestVerificationEmail(token);
     },
 
-    VOTE({commit}, {token, vote}) {
+    VOTE({commit}, {token, vote, isNew, previousWin, previousDraw, previousLose}) {
       return tipResource.createOrUpdate(token, vote)
         .then((data) => {
           commit('UPDATE_USER_TIP', Object.assign({}, vote, { voted: true }));
+
+          if ((vote.result1 > vote.result2) && !previousWin) {
+            commit('INCREASE_WIN', vote.game_id);
+
+            if (!isNew) {
+              previousDraw && commit('DECREASE_DRAW', vote.game_id);
+              previousLose && commit('DECREASE_LOSE', vote.game_id);
+            }
+          }
+
+          if ((vote.result1 === vote.result2) && !previousDraw) {
+            commit('INCREASE_DRAW', vote.game_id);
+
+            if (!isNew) {
+              previousWin && commit('DECREASE_WIN', vote.game_id);
+              previousLose && commit('DECREASE_LOSE', vote.game_id);
+            }
+          }
+
+          if ((vote.result1 < vote.result2) && !previousLose) {
+            commit('INCREASE_LOSE', vote.game_id);
+
+            if (!isNew) {
+              previousWin && commit('DECREASE_WIN', vote.game_id);
+              previousDraw && commit('DECREASE_DRAW', vote.game_id);
+            }
+          }
 
           return Promise.resolve(data);
         });
@@ -138,6 +165,30 @@ const store = new Vuex.Store({
 
     UPDATE_USER_TIP(state, vote) {
       Vue.set(state.user.tips, vote.game_id, vote);
+    },
+
+    INCREASE_WIN(state, game_id) {
+      Vue.set(state.games, game_id, Object.assign({}, state.games[game_id], { times_win: state.games[game_id].times_win + 1 }));
+    },
+
+    DECREASE_WIN(state, game_id) {
+      Vue.set(state.games, game_id, Object.assign({}, state.games[game_id], { times_win: state.games[game_id].times_win - 1 }));
+    },
+
+    INCREASE_DRAW(state, game_id) {
+      Vue.set(state.games, game_id, Object.assign({}, state.games[game_id], { times_draw: state.games[game_id].times_draw + 1 }));
+    },
+
+    DECREASE_DRAW(state, game_id) {
+      Vue.set(state.games, game_id, Object.assign({}, state.games[game_id], { times_draw: state.games[game_id].times_draw - 1 }));
+    },
+
+    INCREASE_LOSE(state, game_id) {
+      Vue.set(state.games, game_id, Object.assign({}, state.games[game_id], { times_lose: state.games[game_id].times_lose + 1 }));
+    },
+
+    DECREASE_LOSE(state, game_id) {
+      Vue.set(state.games, game_id, Object.assign({}, state.games[game_id], { times_lose: state.games[game_id].times_lose - 1 }));
     }
   },
 

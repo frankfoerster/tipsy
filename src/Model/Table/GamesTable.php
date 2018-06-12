@@ -66,13 +66,13 @@ class GamesTable extends Table
     }
 
     /**
-     * Find all groups for the vuex store.
+     * Find all games for the vuex store.
      *
      * @return \Cake\Collection\CollectionInterface
      */
     public function findForStore()
     {
-        return $this->find()
+        $games = $this->find()
             ->select([
                 'id',
                 'team1_id',
@@ -88,7 +88,65 @@ class GamesTable extends Table
                 'is_semi_final',
                 'is_game_for_3rd_place',
                 'is_final'
+            ]);
+
+        $winCase = $games->newExpr()
+            ->addCase(
+                [
+                    // win
+                    $games->newExpr()->add([
+                        'UserTip.result1 > UserTip.result2'
+                    ]),
+                    $games->newExpr()->add([
+                        'UserTip.result1 <= UserTip.result2',
+                    ])
+                ],
+                [1, 0],
+                ['integer', 'integer']
+            );
+
+        $drawCase = $games->newExpr()
+            ->addCase(
+                [
+                    // draw
+                    $games->newExpr()->add([
+                        'UserTip.result1 = UserTip.result2'
+                    ]),
+                    $games->newExpr()->add([
+                        'UserTip.result1 <> UserTip.result2',
+                    ])
+                ],
+                [1, 0],
+                ['integer', 'integer']
+            );
+
+        $loseCase = $games->newExpr()
+            ->addCase(
+                [
+                    // lose
+                    $games->newExpr()->add([
+                        'UserTip.result1 < UserTip.result2'
+                    ]),
+                    $games->newExpr()->add([
+                        'UserTip.result1 > UserTip.result2',
+                    ])
+                ],
+                [1, 0],
+                ['integer', 'integer']
+            );
+
+        return $games
+            ->select([
+                'times_win' => $games->func()->sum($winCase),
+                'times_draw' => $games->func()->sum($drawCase),
+                'times_lose' => $games->func()->sum($loseCase)
             ])
+            ->contain(['UserTip' => function (Query $query) use ($winCase, $drawCase, $loseCase) {
+                return $query->select([
+                    'game_id',
+                ]);
+            }])
+            ->group('Games.id')
             ->order(['playing_time' => 'asc'])
             ->map(function(Game $entity) {
                 if (!empty($entity->playing_time)) {
