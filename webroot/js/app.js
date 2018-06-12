@@ -7113,7 +7113,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\SupportBox.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\SupportBox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] SupportBox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -7124,9 +7124,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4c80da4d", Component.options)
+    hotAPI.createRecord("data-v-3a605359", Component.options)
   } else {
-    hotAPI.reload("data-v-4c80da4d", Component.options)
+    hotAPI.reload("data-v-3a605359", Component.options)
   }
 })()}
 
@@ -15875,7 +15875,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\VueLabel.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\VueLabel.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueLabel.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15886,9 +15886,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0204f5c2", Component.options)
+    hotAPI.createRecord("data-v-343fd12b", Component.options)
   } else {
-    hotAPI.reload("data-v-0204f5c2", Component.options)
+    hotAPI.reload("data-v-343fd12b", Component.options)
   }
 })()}
 
@@ -15913,7 +15913,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\VueInput.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\VueInput.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueInput.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15924,9 +15924,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ee15fa16", Component.options)
+    hotAPI.createRecord("data-v-839161fe", Component.options)
   } else {
-    hotAPI.reload("data-v-ee15fa16", Component.options)
+    hotAPI.reload("data-v-839161fe", Component.options)
   }
 })()}
 
@@ -15951,7 +15951,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\VueButton.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\VueButton.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueButton.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15962,9 +15962,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5b03b597", Component.options)
+    hotAPI.createRecord("data-v-63ea29ea", Component.options)
   } else {
-    hotAPI.reload("data-v-5b03b597", Component.options)
+    hotAPI.reload("data-v-63ea29ea", Component.options)
   }
 })()}
 
@@ -16390,7 +16390,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\FlashMessage.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\FlashMessage.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FlashMessage.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16401,9 +16401,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-91e9d5f0", Component.options)
+    hotAPI.createRecord("data-v-aa1f09d8", Component.options)
   } else {
-    hotAPI.reload("data-v-91e9d5f0", Component.options)
+    hotAPI.reload("data-v-aa1f09d8", Component.options)
   }
 })()}
 
@@ -16428,7 +16428,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\FormRow.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\FormRow.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FormRow.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16439,9 +16439,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a52a275", Component.options)
+    hotAPI.createRecord("data-v-24d0a4e9", Component.options)
   } else {
-    hotAPI.reload("data-v-0a52a275", Component.options)
+    hotAPI.reload("data-v-24d0a4e9", Component.options)
   }
 })()}
 
@@ -16466,7 +16466,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\VueForm.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\VueForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16477,9 +16477,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8b955d2e", Component.options)
+    hotAPI.createRecord("data-v-56995846", Component.options)
   } else {
-    hotAPI.reload("data-v-8b955d2e", Component.options)
+    hotAPI.reload("data-v-56995846", Component.options)
   }
 })()}
 
@@ -17638,7 +17638,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Card.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Card.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Card.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17649,9 +17649,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d8faeabe", Component.options)
+    hotAPI.createRecord("data-v-5884bcad", Component.options)
   } else {
-    hotAPI.reload("data-v-d8faeabe", Component.options)
+    hotAPI.reload("data-v-5884bcad", Component.options)
   }
 })()}
 
@@ -17741,7 +17741,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\VueInputError.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\VueInputError.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VueInputError.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17752,9 +17752,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-01687b7a", Component.options)
+    hotAPI.createRecord("data-v-efd9c492", Component.options)
   } else {
-    hotAPI.reload("data-v-01687b7a", Component.options)
+    hotAPI.reload("data-v-efd9c492", Component.options)
   }
 })()}
 
@@ -31580,7 +31580,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Games.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Games.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Games.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -31591,9 +31591,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2ac1d700", Component.options)
+    hotAPI.createRecord("data-v-0605e674", Component.options)
   } else {
-    hotAPI.reload("data-v-2ac1d700", Component.options)
+    hotAPI.reload("data-v-0605e674", Component.options)
   }
 })()}
 
@@ -31647,7 +31647,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Game.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Game.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Game.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -31658,9 +31658,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2a8d1a83", Component.options)
+    hotAPI.createRecord("data-v-20e166e2", Component.options)
   } else {
-    hotAPI.reload("data-v-2a8d1a83", Component.options)
+    hotAPI.reload("data-v-20e166e2", Component.options)
   }
 })()}
 
@@ -31735,7 +31735,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\UserMenu.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\UserMenu.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] UserMenu.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -31746,9 +31746,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-60a095db", Component.options)
+    hotAPI.createRecord("data-v-d43a3c32", Component.options)
   } else {
-    hotAPI.reload("data-v-60a095db", Component.options)
+    hotAPI.reload("data-v-d43a3c32", Component.options)
   }
 })()}
 
@@ -39736,7 +39736,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\plugins\\Notify\\Notifications.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\plugins\\Notify\\Notifications.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Notifications.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39747,9 +39747,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6130e7c9", Component.options)
+    hotAPI.createRecord("data-v-3735693d", Component.options)
   } else {
-    hotAPI.reload("data-v-6130e7c9", Component.options)
+    hotAPI.reload("data-v-3735693d", Component.options)
   }
 })()}
 
@@ -40214,7 +40214,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\plugins\\Notify\\VelocityGroup.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\plugins\\Notify\\VelocityGroup.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VelocityGroup.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40225,9 +40225,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3458b183", Component.options)
+    hotAPI.createRecord("data-v-0a5d32f7", Component.options)
   } else {
-    hotAPI.reload("data-v-3458b183", Component.options)
+    hotAPI.reload("data-v-0a5d32f7", Component.options)
   }
 })()}
 
@@ -40287,7 +40287,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3458b183", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-0a5d32f7", module.exports)
   }
 }
 
@@ -40305,7 +40305,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\plugins\\Notify\\CssGroup.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\plugins\\Notify\\CssGroup.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CssGroup.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40316,9 +40316,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-11a4362a", Component.options)
+    hotAPI.createRecord("data-v-29d96a12", Component.options)
   } else {
-    hotAPI.reload("data-v-11a4362a", Component.options)
+    hotAPI.reload("data-v-29d96a12", Component.options)
   }
 })()}
 
@@ -40358,7 +40358,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-11a4362a", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-29d96a12", module.exports)
   }
 }
 
@@ -40480,7 +40480,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6130e7c9", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-3735693d", module.exports)
   }
 }
 
@@ -44738,7 +44738,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\Games.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\Games.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Games.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -44749,9 +44749,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-418df458", Component.options)
+    hotAPI.createRecord("data-v-e399e738", Component.options)
   } else {
-    hotAPI.reload("data-v-418df458", Component.options)
+    hotAPI.reload("data-v-e399e738", Component.options)
   }
 })()}
 
@@ -44955,7 +44955,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-d8faeabe", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-5884bcad", module.exports)
   }
 }
 
@@ -45109,7 +45109,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\GameVote.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\GameVote.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GameVote.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45120,9 +45120,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-58eb5f0d", Component.options)
+    hotAPI.createRecord("data-v-e3a4a9ce", Component.options)
   } else {
-    hotAPI.reload("data-v-58eb5f0d", Component.options)
+    hotAPI.reload("data-v-e3a4a9ce", Component.options)
   }
 })()}
 
@@ -46065,7 +46065,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0204f5c2", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-343fd12b", module.exports)
   }
 }
 
@@ -46247,7 +46247,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-ee15fa16", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-839161fe", module.exports)
   }
 }
 
@@ -46341,7 +46341,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5b03b597", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-63ea29ea", module.exports)
   }
 }
 
@@ -46492,7 +46492,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-58eb5f0d", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-e3a4a9ce", module.exports)
   }
 }
 
@@ -46563,7 +46563,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2a8d1a83", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-20e166e2", module.exports)
   }
 }
 
@@ -46598,7 +46598,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2ac1d700", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-0605e674", module.exports)
   }
 }
 
@@ -46619,7 +46619,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-418df458", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-e399e738", module.exports)
   }
 }
 
@@ -46641,7 +46641,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\Imprint.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\Imprint.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Imprint.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46652,9 +46652,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-125535e0", Component.options)
+    hotAPI.createRecord("data-v-6bd70a28", Component.options)
   } else {
-    hotAPI.reload("data-v-125535e0", Component.options)
+    hotAPI.reload("data-v-6bd70a28", Component.options)
   }
 })()}
 
@@ -46769,7 +46769,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-125535e0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-6bd70a28", module.exports)
   }
 }
 
@@ -46791,7 +46791,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\Login.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\Login.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46802,9 +46802,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c347c600", Component.options)
+    hotAPI.createRecord("data-v-29fd95e8", Component.options)
   } else {
-    hotAPI.reload("data-v-c347c600", Component.options)
+    hotAPI.reload("data-v-29fd95e8", Component.options)
   }
 })()}
 
@@ -47025,7 +47025,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-91e9d5f0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-aa1f09d8", module.exports)
   }
 }
 
@@ -47066,7 +47066,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0a52a275", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-24d0a4e9", module.exports)
   }
 }
 
@@ -47141,7 +47141,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4c80da4d", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-3a605359", module.exports)
   }
 }
 
@@ -47196,7 +47196,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-8b955d2e", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-56995846", module.exports)
   }
 }
 
@@ -47287,7 +47287,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-c347c600", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-29fd95e8", module.exports)
   }
 }
 
@@ -47309,7 +47309,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\LostPassword.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\LostPassword.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] LostPassword.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47320,9 +47320,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-453b8ed0", Component.options)
+    hotAPI.createRecord("data-v-103f89e8", Component.options)
   } else {
-    hotAPI.reload("data-v-453b8ed0", Component.options)
+    hotAPI.reload("data-v-103f89e8", Component.options)
   }
 })()}
 
@@ -47490,7 +47490,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-01687b7a", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-efd9c492", module.exports)
   }
 }
 
@@ -47556,7 +47556,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-453b8ed0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-103f89e8", module.exports)
   }
 }
 
@@ -47578,7 +47578,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\LostPasswordRequested.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\LostPasswordRequested.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] LostPasswordRequested.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47589,9 +47589,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0d6f6634", Component.options)
+    hotAPI.createRecord("data-v-10b3ccf2", Component.options)
   } else {
-    hotAPI.reload("data-v-0d6f6634", Component.options)
+    hotAPI.reload("data-v-10b3ccf2", Component.options)
   }
 })()}
 
@@ -47663,7 +47663,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0d6f6634", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-10b3ccf2", module.exports)
   }
 }
 
@@ -47685,7 +47685,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\NotFound.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\NotFound.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NotFound.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47696,9 +47696,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8fb8a0b0", Component.options)
+    hotAPI.createRecord("data-v-0f65e7c8", Component.options)
   } else {
-    hotAPI.reload("data-v-8fb8a0b0", Component.options)
+    hotAPI.reload("data-v-0f65e7c8", Component.options)
   }
 })()}
 
@@ -47742,7 +47742,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-8fb8a0b0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-0f65e7c8", module.exports)
   }
 }
 
@@ -47764,7 +47764,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\Overview.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\Overview.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Overview.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47775,9 +47775,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b993fb2", Component.options)
+    hotAPI.createRecord("data-v-e87ac7b4", Component.options)
   } else {
-    hotAPI.reload("data-v-4b993fb2", Component.options)
+    hotAPI.reload("data-v-e87ac7b4", Component.options)
   }
 })()}
 
@@ -47898,7 +47898,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\GroupFooter.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\GroupFooter.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GroupFooter.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -47909,9 +47909,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-fe3c390e", Component.options)
+    hotAPI.createRecord("data-v-4ef18bed", Component.options)
   } else {
-    hotAPI.reload("data-v-fe3c390e", Component.options)
+    hotAPI.reload("data-v-4ef18bed", Component.options)
   }
 })()}
 
@@ -47979,7 +47979,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-fe3c390e", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-4ef18bed", module.exports)
   }
 }
 
@@ -48001,7 +48001,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\GroupTeams.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\GroupTeams.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GroupTeams.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48012,9 +48012,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a4c80070", Component.options)
+    hotAPI.createRecord("data-v-c9090e58", Component.options)
   } else {
-    hotAPI.reload("data-v-a4c80070", Component.options)
+    hotAPI.reload("data-v-c9090e58", Component.options)
   }
 })()}
 
@@ -48086,7 +48086,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-a4c80070", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-c9090e58", module.exports)
   }
 }
 
@@ -48108,7 +48108,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Playoffs.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Playoffs.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Playoffs.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48119,9 +48119,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-57abf929", Component.options)
+    hotAPI.createRecord("data-v-e6237596", Component.options)
   } else {
-    hotAPI.reload("data-v-57abf929", Component.options)
+    hotAPI.reload("data-v-e6237596", Component.options)
   }
 })()}
 
@@ -48302,7 +48302,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-57abf929", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-e6237596", module.exports)
   }
 }
 
@@ -48324,7 +48324,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\TopTen.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\TopTen.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TopTen.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48335,9 +48335,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-50ccc3d9", Component.options)
+    hotAPI.createRecord("data-v-43eaba36", Component.options)
   } else {
-    hotAPI.reload("data-v-50ccc3d9", Component.options)
+    hotAPI.reload("data-v-43eaba36", Component.options)
   }
 })()}
 
@@ -48403,7 +48403,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-50ccc3d9", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-43eaba36", module.exports)
   }
 }
 
@@ -48425,7 +48425,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\UpcomingGames.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\UpcomingGames.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] UpcomingGames.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48436,9 +48436,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b6925378", Component.options)
+    hotAPI.createRecord("data-v-2d7e31b8", Component.options)
   } else {
-    hotAPI.reload("data-v-b6925378", Component.options)
+    hotAPI.reload("data-v-2d7e31b8", Component.options)
   }
 })()}
 
@@ -48529,7 +48529,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-b6925378", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-2d7e31b8", module.exports)
   }
 }
 
@@ -48609,7 +48609,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4b993fb2", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-e87ac7b4", module.exports)
   }
 }
 
@@ -48631,7 +48631,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\Ranking.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\Ranking.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Ranking.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48642,9 +48642,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4af430e6", Component.options)
+    hotAPI.createRecord("data-v-db75a6ce", Component.options)
   } else {
-    hotAPI.reload("data-v-4af430e6", Component.options)
+    hotAPI.reload("data-v-db75a6ce", Component.options)
   }
 })()}
 
@@ -48688,7 +48688,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4af430e6", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-db75a6ce", module.exports)
   }
 }
 
@@ -48710,7 +48710,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\ResetPassword.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\ResetPassword.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ResetPassword.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48721,9 +48721,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-be87f9be", Component.options)
+    hotAPI.createRecord("data-v-540361a6", Component.options)
   } else {
-    hotAPI.reload("data-v-be87f9be", Component.options)
+    hotAPI.reload("data-v-540361a6", Component.options)
   }
 })()}
 
@@ -48971,7 +48971,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-be87f9be", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-540361a6", module.exports)
   }
 }
 
@@ -48993,7 +48993,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\ResetPasswordComplete.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\ResetPasswordComplete.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ResetPasswordComplete.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49004,9 +49004,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4f82aa0c", Component.options)
+    hotAPI.createRecord("data-v-20aba9f4", Component.options)
   } else {
-    hotAPI.reload("data-v-4f82aa0c", Component.options)
+    hotAPI.reload("data-v-20aba9f4", Component.options)
   }
 })()}
 
@@ -49071,7 +49071,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4f82aa0c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-20aba9f4", module.exports)
   }
 }
 
@@ -49093,7 +49093,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\Signup.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\Signup.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Signup.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49104,9 +49104,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-79817011", Component.options)
+    hotAPI.createRecord("data-v-7d014cf6", Component.options)
   } else {
-    hotAPI.reload("data-v-79817011", Component.options)
+    hotAPI.reload("data-v-7d014cf6", Component.options)
   }
 })()}
 
@@ -49438,7 +49438,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-79817011", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-7d014cf6", module.exports)
   }
 }
 
@@ -49460,7 +49460,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\SignedUp.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\SignedUp.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] SignedUp.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49471,9 +49471,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-68209610", Component.options)
+    hotAPI.createRecord("data-v-af6c1af8", Component.options)
   } else {
-    hotAPI.reload("data-v-68209610", Component.options)
+    hotAPI.reload("data-v-af6c1af8", Component.options)
   }
 })()}
 
@@ -49543,7 +49543,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-68209610", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-af6c1af8", module.exports)
   }
 }
 
@@ -49565,7 +49565,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\Table.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\Table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49576,9 +49576,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e360a236", Component.options)
+    hotAPI.createRecord("data-v-4a16721e", Component.options)
   } else {
-    hotAPI.reload("data-v-e360a236", Component.options)
+    hotAPI.reload("data-v-4a16721e", Component.options)
   }
 })()}
 
@@ -49648,7 +49648,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-e360a236", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-4a16721e", module.exports)
   }
 }
 
@@ -49667,11 +49667,11 @@ var Component = __webpack_require__(2)(
   /* template */
   __webpack_require__(686),
   /* scopeId */
-  "data-v-c517480c",
+  "data-v-2ab23b06",
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\views\\VerifyEmail.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\views\\VerifyEmail.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] VerifyEmail.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49682,9 +49682,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c517480c", Component.options)
+    hotAPI.createRecord("data-v-2ab23b06", Component.options)
   } else {
-    hotAPI.reload("data-v-c517480c", Component.options)
+    hotAPI.reload("data-v-2ab23b06", Component.options)
   }
 })()}
 
@@ -49847,11 +49847,11 @@ var Component = __webpack_require__(2)(
   /* template */
   __webpack_require__(677),
   /* scopeId */
-  "data-v-e3c9b73a",
+  "data-v-012259d7",
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\BummerSvg.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\BummerSvg.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] BummerSvg.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49862,9 +49862,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e3c9b73a", Component.options)
+    hotAPI.createRecord("data-v-012259d7", Component.options)
   } else {
-    hotAPI.reload("data-v-e3c9b73a", Component.options)
+    hotAPI.reload("data-v-012259d7", Component.options)
   }
 })()}
 
@@ -49948,7 +49948,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-e3c9b73a", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-012259d7", module.exports)
   }
 }
 
@@ -49966,11 +49966,11 @@ var Component = __webpack_require__(2)(
   /* template */
   __webpack_require__(681),
   /* scopeId */
-  "data-v-e2f83d40",
+  "data-v-fb2d7128",
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\CheckmarkSvg.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\CheckmarkSvg.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CheckmarkSvg.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49981,9 +49981,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e2f83d40", Component.options)
+    hotAPI.createRecord("data-v-fb2d7128", Component.options)
   } else {
-    hotAPI.reload("data-v-e2f83d40", Component.options)
+    hotAPI.reload("data-v-fb2d7128", Component.options)
   }
 })()}
 
@@ -50048,7 +50048,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-e2f83d40", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-fb2d7128", module.exports)
   }
 }
 
@@ -50070,7 +50070,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\LoadingSvg.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\LoadingSvg.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] LoadingSvg.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50081,9 +50081,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-574fc059", Component.options)
+    hotAPI.createRecord("data-v-452f3965", Component.options)
   } else {
-    hotAPI.reload("data-v-574fc059", Component.options)
+    hotAPI.reload("data-v-452f3965", Component.options)
   }
 })()}
 
@@ -50284,7 +50284,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-574fc059", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-452f3965", module.exports)
   }
 }
 
@@ -50358,7 +50358,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-c517480c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-2ab23b06", module.exports)
   }
 }
 
@@ -50380,7 +50380,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Tables.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Tables.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tables.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50391,9 +50391,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7c9a4136", Component.options)
+    hotAPI.createRecord("data-v-09d82042", Component.options)
   } else {
-    hotAPI.reload("data-v-7c9a4136", Component.options)
+    hotAPI.reload("data-v-09d82042", Component.options)
   }
 })()}
 
@@ -50473,7 +50473,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\GroupTable.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\GroupTable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] GroupTable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50484,9 +50484,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-408365e0", Component.options)
+    hotAPI.createRecord("data-v-2e62deec", Component.options)
   } else {
-    hotAPI.reload("data-v-408365e0", Component.options)
+    hotAPI.reload("data-v-2e62deec", Component.options)
   }
 })()}
 
@@ -50664,7 +50664,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-408365e0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-2e62deec", module.exports)
   }
 }
 
@@ -50688,7 +50688,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-7c9a4136", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-09d82042", module.exports)
   }
 }
 
@@ -50710,7 +50710,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\App.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\App.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50721,9 +50721,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-40bdcc20", Component.options)
+    hotAPI.createRecord("data-v-fe31aed8", Component.options)
   } else {
-    hotAPI.reload("data-v-40bdcc20", Component.options)
+    hotAPI.reload("data-v-fe31aed8", Component.options)
   }
 })()}
 
@@ -50876,7 +50876,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Header.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Header.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Header.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50887,9 +50887,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b19915e", Component.options)
+    hotAPI.createRecord("data-v-4f511f2c", Component.options)
   } else {
-    hotAPI.reload("data-v-4b19915e", Component.options)
+    hotAPI.reload("data-v-4f511f2c", Component.options)
   }
 })()}
 
@@ -50965,7 +50965,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Container.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Container.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Container.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -50976,9 +50976,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-113fa540", Component.options)
+    hotAPI.createRecord("data-v-f7724a98", Component.options)
   } else {
-    hotAPI.reload("data-v-113fa540", Component.options)
+    hotAPI.reload("data-v-f7724a98", Component.options)
   }
 })()}
 
@@ -51022,7 +51022,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-113fa540", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-f7724a98", module.exports)
   }
 }
 
@@ -51044,7 +51044,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\MainMenu.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\MainMenu.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MainMenu.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51055,9 +51055,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2b12e1c9", Component.options)
+    hotAPI.createRecord("data-v-60552dd5", Component.options)
   } else {
-    hotAPI.reload("data-v-2b12e1c9", Component.options)
+    hotAPI.reload("data-v-60552dd5", Component.options)
   }
 })()}
 
@@ -51236,7 +51236,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2b12e1c9", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-60552dd5", module.exports)
   }
 }
 
@@ -51367,7 +51367,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-60a095db", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-d43a3c32", module.exports)
   }
 }
 
@@ -51398,7 +51398,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4b19915e", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-4f511f2c", module.exports)
   }
 }
 
@@ -51420,7 +51420,7 @@ var Component = __webpack_require__(2)(
   /* cssModules */
   null
 )
-Component.options.__file = "D:\\www\\frankfoerster\\betz\\src\\Assets\\js\\src\\components\\Footer.vue"
+Component.options.__file = "D:\\www\\frankfoerster\\tipsy\\src\\Assets\\js\\src\\components\\Footer.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Footer.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -51431,9 +51431,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-29e72d6c", Component.options)
+    hotAPI.createRecord("data-v-91b5e710", Component.options)
   } else {
-    hotAPI.reload("data-v-29e72d6c", Component.options)
+    hotAPI.reload("data-v-91b5e710", Component.options)
   }
 })()}
 
@@ -51494,7 +51494,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-29e72d6c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-91b5e710", module.exports)
   }
 }
 
@@ -51537,7 +51537,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-40bdcc20", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-fe31aed8", module.exports)
   }
 }
 

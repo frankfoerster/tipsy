@@ -113,10 +113,6 @@
 
   @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600');
 
-  :root {
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
-
   *, *::before, *::after {
     box-sizing: border-box;
   }
