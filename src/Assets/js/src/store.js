@@ -10,6 +10,8 @@ import period from './util/period';
 
 Vue.use(Vuex);
 
+const baseUrl = global.window.AppConfig.appBaseUrl || '/';
+
 const store = new Vuex.Store({
 
   /* --------------------------------------------------------------------------------------------- */
@@ -17,7 +19,7 @@ const store = new Vuex.Store({
   /* --------------------------------------------------------------------------------------------- */
   state: {
     appTitle: global.window.AppConfig.appTitle || 'Tipsy',
-    baseUrl: global.window.AppConfig.appBaseUrl || '/',
+    baseUrl: baseUrl.endsWith('/') ? baseUrl : baseUrl + '/',
     user: null,
     token: global.window.localStorage.getItem('token'),
     games: global.window.AppConfig.games || {},
