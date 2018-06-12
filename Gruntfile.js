@@ -1,4 +1,4 @@
-const webpackConfig = require('./config/webpack.js');
+const webpackConfig = require('./webpack.config.js');
 
 module.exports = function(grunt) {
   "use strict";
@@ -41,21 +41,21 @@ module.exports = function(grunt) {
     copy: {
       dev: {
         files: [
-          { src: 'dist/app.css', dest: '../../../webroot/css/app.css' },
-          { src: 'dist/app.css.map', dest: '../../../webroot/css/app.css.map' },
-          { src: 'dist/app.js', dest: '../../../webroot/js/app.js' },
-          { src: 'dist/app.js.map', dest: '../../../webroot/js/app.js.map' }
+          { src: 'dist/app.css', dest: './webroot/css/app.css' },
+          { src: 'dist/app.css.map', dest: './webroot/css/app.css.map' },
+          { src: 'dist/app.js', dest: './webroot/js/app.js' },
+          { src: 'dist/app.js.map', dest: './webroot/js/app.js.map' }
         ]
       },
       prod: {
         files: [
-          { src: 'dist/app.min.css', dest: '../../../webroot/css/app.min.css' },
-          { src: 'dist/app.min.js', dest: '../../../webroot/js/app.min.js' }
+          { src: 'dist/app.min.css', dest: './webroot/css/app.min.css' },
+          { src: 'dist/app.min.js', dest: './webroot/js/app.min.js' }
         ]
       },
       fonts: {
         files: [
-          {expand: true, cwd: '../fonts', src: ['**'], dest: '../../../webroot/fonts/'}
+          {expand: true, cwd: './src/Assets/fonts', src: ['**'], dest: './webroot/fonts/'}
         ]
       }
     },

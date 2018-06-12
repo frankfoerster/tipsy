@@ -8,8 +8,8 @@ vendor
 ######################
 config/app.php
 config/Environment/environment.local.php
-src/Assets/js/node_modules
-src/Assets/js/dist
+node_modules
+/dist
 webroot/fonts/**/selection.json
 
 # OS generated files #

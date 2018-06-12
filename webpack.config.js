@@ -4,10 +4,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devtool: '#source-map',
   entry: {
-    app: './src/index.js'
+    app: './src/Assets/js/src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, './dist'),
     publicPath: '/',
     filename: '[name].js'
   },

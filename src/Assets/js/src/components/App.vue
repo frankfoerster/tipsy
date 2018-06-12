@@ -107,7 +107,7 @@
 </script>
 
 <style lang="scss">
-  @import '../../node_modules/normalize.css/normalize.css';
+  @import '../../../../../node_modules/normalize.css/normalize.css';
   @import '../sass/imports';
   @import '../sass/icons';
 
