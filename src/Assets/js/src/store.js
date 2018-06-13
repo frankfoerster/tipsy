@@ -348,8 +348,38 @@ const store = new Vuex.Store({
 
     rankingSorted(state, getters) {
       return [...getters.ranking].sort((a, b) => {
-        if (a.total_points < b.total_points) { return 1; }
-        if (a.total_points > b.total_points) { return -1; }
+        if (a.total_points < b.total_points) {
+          return 1;
+        }
+
+        if (a.total_points > b.total_points) {
+          return -1;
+        }
+
+        if (a.total_exact < b.total_exact) {
+          return 1;
+        }
+
+        if (a.total_exact > b.total_exact) {
+          return -1;
+        }
+
+        if (a.total_tendency < b.total_tendency) {
+          return 1;
+        }
+
+        if (a.total_tendency > b.total_tendency) {
+          return -1;
+        }
+
+        if (a.username > b.username) {
+          return 1;
+        }
+
+        if (a.username < b.username) {
+          return -1;
+        }
+
         return 0;
       });
     },

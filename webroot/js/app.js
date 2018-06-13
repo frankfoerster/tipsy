@@ -58082,8 +58082,38 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store({
 
     rankingSorted: function rankingSorted(state, getters) {
       return [].concat( getters.ranking ).sort(function (a, b) {
-        if (a.total_points < b.total_points) { return 1; }
-        if (a.total_points > b.total_points) { return -1; }
+        if (a.total_points < b.total_points) {
+          return 1;
+        }
+
+        if (a.total_points > b.total_points) {
+          return -1;
+        }
+
+        if (a.total_exact < b.total_exact) {
+          return 1;
+        }
+
+        if (a.total_exact > b.total_exact) {
+          return -1;
+        }
+
+        if (a.total_tendency < b.total_tendency) {
+          return 1;
+        }
+
+        if (a.total_tendency > b.total_tendency) {
+          return -1;
+        }
+
+        if (a.username > b.username) {
+          return 1;
+        }
+
+        if (a.username < b.username) {
+          return -1;
+        }
+
         return 0;
       });
     },
@@ -58152,11 +58182,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store({
           return -1;
         }
 
-        if (a.stats.diff > b.stats.diff) {
+        if (a.stats.diff < b.stats.diff) {
           return 1;
         }
 
-        if (a.stats.diff < b.stats.diff) {
+        if (a.stats.diff > b.stats.diff) {
           return -1;
         }
 
