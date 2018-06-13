@@ -372,11 +372,11 @@ const store = new Vuex.Store({
           return -1;
         }
 
-        if (a.username > b.username) {
+        if (a.username.toLowerCase() > b.username.toLowerCase()) {
           return 1;
         }
 
-        if (a.username < b.username) {
+        if (a.username.toLowerCase() < b.username.toLowerCase()) {
           return -1;
         }
 

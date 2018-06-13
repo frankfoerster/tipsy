@@ -58106,11 +58106,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store({
           return -1;
         }
 
-        if (a.username > b.username) {
+        if (a.username.toLowerCase() > b.username.toLowerCase()) {
           return 1;
         }
 
-        if (a.username < b.username) {
+        if (a.username.toLowerCase() < b.username.toLowerCase()) {
           return -1;
         }
 
