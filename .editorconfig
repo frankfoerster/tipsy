@@ -20,5 +20,11 @@ indent_size = 2
 [*.twig]
 insert_final_newline = false
 
+[*.js]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+
 [Makefile]
 indent_style = tab

@@ -14,29 +14,8 @@ module.exports = function(grunt) {
       options: {
         stats: true
       },
-      prod: webpackConfig,
-      dev: webpackConfig
-    },
-    uglify: {
-      options: {
-        mangle: true
-      },
-      default: {
-        files: {
-          'dist/app.min.js': ['dist/app.js']
-        }
-      }
-    },
-    cssmin: {
-      options: {
-        shorthandCompacting: false,
-        roundingPrecision: -1
-      },
-      default: {
-        files: {
-          'dist/app.min.css': 'dist/app.css'
-        }
-      }
+      dev: webpackConfig(),
+      prod: webpackConfig(true)
     },
     copy: {
       dev: {
@@ -59,6 +38,14 @@ module.exports = function(grunt) {
         ]
       }
     },
+    bytesize: {
+      prod: {
+        src: [
+          './webroot/css/app.min.css',
+          './webroot/js/app.min.js'
+        ]
+      }
+    },
 
     //----------------------------------------------- WATCHERS -------------------------------------------------------//
     watch: {
@@ -78,10 +65,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('webpack-prod', [
     'webpack:prod',
-    'uglify',
-    'cssmin',
     'copy:prod',
-    'copy:fonts'
+    'copy:fonts',
+    'bytesize:prod'
   ]);
 
   grunt.registerTask('watch-vue', [

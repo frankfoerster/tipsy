@@ -1,65 +1,82 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
-  devtool: '#source-map',
-  entry: {
-    app: './src/Assets/js/src/index.js'
-  },
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/',
-    filename: '[name].js'
-  },
-  performance: {
-    hints: false
-  },
-  module: {
-    noParse: /es6-promise\.js$/, // avoid webpack shimming process
-    rules: [
-      {
-        enforce: 'pre',
-        test: /.vue$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          buble: {
-            objectAssign: 'Object.assign',
-          },
-          preserveWhitespace: false,
-          loaders: {
-            scss: ExtractTextPlugin.extract({
-              use: 'css-loader?-url!sass-loader',
-              fallback: 'vue-style-loader' // <- this is a dep of vue-loader
-            })
-          },
-          postcss: [require('autoprefixer')()]
+module.exports = (prod = false) => {
+
+  const config = {
+    mode: prod ? 'production' : 'development',
+    entry: {
+      app: './src/Assets/js/src/index.js'
+    },
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      publicPath: '/',
+      filename: '[name]' + (prod ? '.min' : '') + '.js'
+    },
+    performance: {
+      hints: false
+    },
+    module: {
+      rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            hotReload: false
+          }
+        },
+        // this will apply to both plain `.js` files
+        // AND `<script>` blocks in `.vue` files
+        {
+          test: /\.js$/,
+          loader: 'buble-loader',
+          exclude: /node_modules/,
+          options: {
+            objectAssign: 'Object.assign'
+          }
+        },
+        // this will apply to both plain `.scss` files
+        // AND `<style lang="scss">` blocks in `.vue` files
+        {
+          test: /\.scss$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                url: false,
+                importLoaders: 2,
+                minimize: prod
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: !prod
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: !prod
+              }
+            }
+          ]
         }
-      },
-      {
-        test: /\.js$/,
-        loader: 'buble-loader',
-        exclude: /node_modules/,
-        options: {
-          objectAssign: 'Object.assign'
-        }
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
-      }
+      ]
+    },
+    plugins: [
+      new VueLoaderPlugin(),
+      new MiniCssExtractPlugin({
+        filename: '[name]' + (prod ? '.min' : '') + '.css'
+      })
     ]
-  },
-  plugins: [
-    // extract css
-    new ExtractTextPlugin('app.css')
-  ]
+  };
+
+  if (!prod) {
+    config.devtool = 'source-map';
+  }
+
+  return config;
 };
