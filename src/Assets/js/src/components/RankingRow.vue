@@ -36,7 +36,7 @@
           'ranking-row__4to10': this.place >= 4 && this.place <= 10,
           'ranking-row__three': this.place === 3,
           'ranking-row__ten': this.place === 10,
-          'ranking-row__user': this.user.id === this.currentUser.id
+          'ranking-row__user': this.currentUser && this.user.id === this.currentUser.id
         }
       }
     }
