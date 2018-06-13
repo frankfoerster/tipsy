@@ -102,7 +102,6 @@
   }
 
   .main-menu--link, .main-menu--toggle {
-    /*display: inline-block;*/
     display: block;
     @include rem(padding, 14px 16px 12px);
     color: #fff;
@@ -121,7 +120,7 @@
   }
 
   .main-menu--toggle {
-    @include rem(padding, 14px 16px 14px);
+    @include rem(padding, 13px 16px 12px);
 
     i {
       margin-right: 0;
@@ -148,10 +147,12 @@
 
     .main-menu--items {
       display: block !important;
+      @include clearfix;
     }
 
     .main-menu--item {
       display: inline-block;
+      float: left;
     }
 
     .main-menu--item__mobile {
