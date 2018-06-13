@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <container class="header--container">
-      <div class="header--title"><router-link to="/" exact><i class="icon-soccer-ball header--title--icon" aria-hidden="true"></i>{{ appTitle }}</router-link></div>
+      <div class="header--title"><router-link to="/" class="header--title--link" exact><i class="icon-soccer-ball header--title--icon" aria-hidden="true"></i>{{ appTitle }}</router-link></div>
       <main-menu></main-menu>
       <user-menu></user-menu>
     </container>
@@ -60,14 +60,17 @@
     @include rem(font-size, 20px);
     user-select: none;
 
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-
     @include respond-to-min($breakpoint-display-full-menu) {
       flex-grow: unset;
       width: auto;
+    }
+  }
+
+  .header--title--link {
+    color: #fff;
+
+    &, &:hover, &:focus {
+      text-decoration: none;
     }
   }
 
