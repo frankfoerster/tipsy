@@ -147,8 +147,13 @@ class UsersController extends ApiAppController
 
         if ($this->Users->create($user, $this->request->getData())) {
             $token = $this->Users->Tokens->create($user, TokensTable::TYPE_VERIFY_EMAIL, 'P2D');
-            $this->getMailer('User')->send('signup', [$user, $token->token]);
-            $this->set('message', __('Your account has been created.'));
+            try {
+                $this->getMailer('User')->send('signup', [$user, $token->token]);
+                $this->set('message', __('Your account has been created.'));
+            } catch (\Exception $e) {
+                $this->_respondWithBadRequest();
+                $this->set('message', 'Mailer not configured.');
+            }
         } else {
             $this->set('message', __('Please correct the marked errors.'));
             $this->set('errors', $user->getErrors());
@@ -212,8 +217,13 @@ class UsersController extends ApiAppController
         if (!$user->verified) {
             $this->Users->Tokens->expireTokens($user->id, TokensTable::TYPE_VERIFY_EMAIL);
             $token = $this->Users->Tokens->create($user, TokensTable::TYPE_VERIFY_EMAIL, 'P2D');
-            $this->getMailer('User')->send('verify', [$user, $token->token]);
-            $this->set('message', __('Please check your inbox.'));
+            try {
+                $this->getMailer('User')->send('verify', [$user, $token->token]);
+                $this->set('message', __('Please check your inbox.'));
+            } catch (\Exception $e) {
+                $this->_respondWithBadRequest();
+                $this->set('message', 'Mailer not configured.');
+            }
         } else {
             $this->set('message', __('Your email address is already verified.'));
         }
@@ -240,11 +250,16 @@ class UsersController extends ApiAppController
 
         if ($user) {
             $token = $this->Tokens->create($user, TokensTable::TYPE_LOST_PASSWORD);
-            $this->getMailer('User')->send('lostPassword', [$user, $token->token]);
+            try {
+                $this->getMailer('User')->send('lostPassword', [$user, $token->token]);
+                $message = __('Please check your inbox and follow the instructions in the mail to reset your password.');
+            } catch (\Exception $e) {
+                $this->_respondWithBadRequest();
+                $message = 'Mailer not configured.';
+            }
         }
 
-        // We always respond positively to avoid email phishing.
-        $this->set('message', __('Please check your inbox and follow the instructions in the mail to reset your password.'));
+        $this->set('message', $message);
         $this->set('_serialize', 'message');
     }
 
