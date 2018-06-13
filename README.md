@@ -12,6 +12,7 @@ Tipsy is a betting game for football worldcups and shows how CakePHP 3 and VueJS
 3. Configure your environment ([Environment Documentation](https://github.com/frankfoerster/cakephp-environment))
 4. Migrate the DB
     ```bash
+    chmod +x bin/cake
     bin/cake migrations migrate
     ```
 
@@ -19,7 +20,7 @@ Tipsy is a betting game for football worldcups and shows how CakePHP 3 and VueJS
 
 1. Install npm packages
     ```bash
-    cd src/Assets/js && npm install
+    npm install
     ```
 
 2. Run any of the provided Grunt tasks to create a new frontend build.
@@ -32,7 +33,7 @@ Tipsy is a betting game for football worldcups and shows how CakePHP 3 and VueJS
     
     - **webpack-prod**
         ```bash
-        grunt webpack-dev
+        grunt webpack-prod
         ```
         Creates a production ready minified and uglified build without VueJS Dev tools support.
     
