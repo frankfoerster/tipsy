@@ -89,7 +89,7 @@
             token: this.token,
             vote: vote
           }).then((data) => {
-            this.initialWinner = vote.winner;
+            this.initialWinner = vote.winning_team_id;
             this.voted = true;
 
             if (data && data.message) {
