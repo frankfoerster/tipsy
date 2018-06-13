@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 
 import userResource from './api/userResource';
 import tipResource from './api/tipResource';
+import contentResource from './api/contentResource';
 
 import period from './util/period';
 
@@ -27,7 +28,8 @@ const store = new Vuex.Store({
     teams: global.window.AppConfig.teams || {},
     ranking: global.window.AppConfig.ranking || {},
     tips: {},
-    redirect: null
+    redirect: null,
+    imprint: ''
   },
 
   /* --------------------------------------------------------------------------------------------- */
@@ -142,6 +144,13 @@ const store = new Vuex.Store({
 
     VOTE_WINNER({commit}, {token, vote}) {
       return userResource.updateWinner(token, vote);
+    },
+
+    FETCH_IMPRINT({commit}) {
+      return contentResource.imprint()
+        .then((data) => {
+          commit('SET_IMPRINT', data.imprint);
+        });
     }
   },
 
@@ -193,6 +202,10 @@ const store = new Vuex.Store({
 
     DECREASE_LOSE(state, game_id) {
       Vue.set(state.games, game_id, Object.assign({}, state.games[game_id], { times_lose: state.games[game_id].times_lose - 1 }));
+    },
+
+    SET_IMPRINT(state, imprint) {
+      state.imprint = imprint;
     }
   },
 
@@ -519,6 +532,10 @@ const store = new Vuex.Store({
       if (game.is_final) {
         return 'Final';
       }
+    },
+
+    imprint(state) {
+      return state.imprint;
     }
   }
 

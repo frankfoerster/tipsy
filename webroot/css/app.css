@@ -610,6 +610,14 @@ to {
 }
 }
 
+.imprint-content {
+  padding: 20px;
+  padding: 1.25rem;
+  margin: 0 auto;
+  max-width: 640px;
+  max-width: 40rem;
+}
+
 .view-support {
   padding: 10px 10px 0;
   padding: 0.625rem 0.625rem 0;

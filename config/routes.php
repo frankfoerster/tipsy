@@ -38,6 +38,10 @@ Router::scope('/', function (RouteBuilder $routes) {
             $routes->connect('/', ['action' => 'index', '_method' => 'GET']);
         });
 
+        $routes->scope('/content', ['controller' => 'Content'], function(RouteBuilder $routes) {
+            $routes->connect('/imprint', ['action' => 'imprint', '_method' => 'GET']);
+        });
+
         $routes->connect('/*', ['controller' => 'Users', 'action' => 'notFound']);
     });
 

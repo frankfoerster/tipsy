@@ -78,5 +78,16 @@ $configure = [
     'appName' => 'Tipsy',
     'appTitle' => 'WM 2018',
 
-    'authorizationHeader' => 'Authorization'
+    'authorizationHeader' => 'Authorization',
+
+    'Imprint' => [
+        'name' => 'Your (company) name',
+        'street' => 'Example Avenue. 5',
+        'zip' => '12345',
+        'location' => 'Example Town',
+        'country' => 'Germany',
+        'tel' => 'Tel.: 0123456789',
+        'operatorInfo' => 'info about the operator runnning the website',
+        'content' => 'Imprint content'
+    ]
 ];
