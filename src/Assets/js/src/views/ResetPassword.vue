@@ -32,7 +32,7 @@
           <vue-input-error v-if="!$v.passwordConfirmation.required">Please repeat your password.</vue-input-error>
           <vue-input-error v-if="!$v.passwordConfirmation.sameAsPassword">The passwords must be identical.</vue-input-error>
         </form-row>
-        <vue-button>Reset Password</vue-button>
+        <vue-button :loading="loading">Reset Password</vue-button>
       </vue-form>
       <template slot="footer">
         <p>Remember password? <router-link to="/login">Login</router-link></p>
