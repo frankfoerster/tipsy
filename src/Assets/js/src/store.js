@@ -418,11 +418,11 @@ const store = new Vuex.Store({
           return -1;
         }
 
-        if (a.stats.diff > b.stats.diff) {
+        if (a.stats.diff < b.stats.diff) {
           return 1;
         }
 
-        if (a.stats.diff < b.stats.diff) {
+        if (a.stats.diff > b.stats.diff) {
           return -1;
         }
 
