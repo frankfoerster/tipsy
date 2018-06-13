@@ -18,6 +18,7 @@ use Cake\Validation\Validator;
  * @property TokensTable Tokens
  * @property TipsTable Tips
  * @property TipsTable UserTip
+ * @property UsersTable WinningUser
  */
 class UsersTable extends Table
 {
@@ -39,6 +40,10 @@ class UsersTable extends Table
         $this->hasOne('UserTip', [
             'className' => 'Tips',
             'foreignKey' => 'user_id'
+        ]);
+
+        $this->hasOne('WinningUser', [
+            'className' => 'Users'
         ]);
 
         $this->addBehavior('Timestamp');
@@ -245,10 +250,11 @@ class UsersTable extends Table
      */
     public function findRankingForStore()
     {
-        $users = $this->find()
+        $users = $this->find();
+
+        $users = $users
             ->select([
                 'Users.id',
-                'base_user_id' => 'Users.id',
                 'Users.username'
             ])
             ->contain([
@@ -260,19 +266,19 @@ class UsersTable extends Table
                 }
             ]);
 
-        $bonusPointsQuery = $this->find()
+        $bonusPointsQuery = $this->WinningUser->find()
             ->select([
-                'points' => $users->func()->sum($this->getTotalBonusPoints($users))
+                'points' => $users->func()->sum($this->getTotalBonusPoints($users, 'WinningUser'))
             ])
             ->leftJoin(['Games' => 'games'], [
                     'or' => [
-                        'Games.team1_id = Users.winning_team_id',
-                        'Games.team2_id = Users.winning_team_id'
+                        'Games.team1_id = WinningUser.winning_team_id',
+                        'Games.team2_id = WinningUser.winning_team_id'
                     ]
             ])
             ->where([
-                'Users.id = base_user_id',
-                'Users.winning_team_id IS NOT NULL'
+                $users->newExpr('WinningUser.id = Users.id'),
+                $users->newExpr('WinningUser.winning_team_id IS NOT NULL')
             ]);
 
         $rankings = $users

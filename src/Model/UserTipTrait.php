@@ -143,24 +143,24 @@ trait UserTipTrait
             );
     }
 
-    public function getTotalBonusPoints(Query $query)
+    public function getTotalBonusPoints(Query $query, $userAlias = 'Users')
     {
         return $query->newExpr()
             ->addCase(
                 [
                     $query->newExpr()->add([
-                        'Users.winning_team_id IS NOT NULL',
+                        $userAlias . '.winning_team_id IS NOT NULL',
                         'Games.result1 IS NOT NULL',
                         'Games.result2 IS NOT NULL',
                         'Games.is_final = 1',
                         'or' => [
                             [
                                 'Games.result1 > Games.result2',
-                                'Games.team1_id = Users.winning_team_id'
+                                'Games.team1_id = ' . $userAlias . '.winning_team_id'
                             ],
                             [
                                 'Games.result2 > Games.result1',
-                                'Games.team2_id = Users.winning_team_id'
+                                'Games.team2_id = ' . $userAlias . '.winning_team_id'
                             ]
                         ]
                     ])
