@@ -35888,13 +35888,13 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "game-results" }, [
           _c("div", { staticClass: "game-result" }, [
-            _vm._v(_vm._s(_vm.game.result1 || "-"))
+            _vm._v(_vm._s(_vm.game.result1 !== null ? _vm.game.result1 : "-"))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "game-result--spacer" }, [_vm._v(":")]),
           _vm._v(" "),
           _c("div", { staticClass: "game-result" }, [
-            _vm._v(_vm._s(_vm.game.result2 || "-"))
+            _vm._v(_vm._s(_vm.game.result2 !== null ? _vm.game.result2 : "-"))
           ])
         ]),
         _vm._v(" "),
