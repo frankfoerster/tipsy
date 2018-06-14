@@ -55,24 +55,40 @@ trait UserTipTrait
                 [
                     // win
                     $query->newExpr()->add([
+                        'UserTip.result1 IS NOT NULL',
+                        'UserTip.result2 IS NOT NULL',
+                        'Games.result1 IS NOT NULL',
+                        'Games.result2 IS NOT NULL',
                         'UserTip.result1 > UserTip.result2',
                         'Games.result1 > Games.result2',
-                        'UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2'
+                        '(UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2)'
                     ]),
                     // lose
                     $query->newExpr()->add([
+                        'UserTip.result1 IS NOT NULL',
+                        'UserTip.result2 IS NOT NULL',
+                        'Games.result1 IS NOT NULL',
+                        'Games.result2 IS NOT NULL',
                         'UserTip.result1 < UserTip.result2',
                         'Games.result1 < Games.result2',
-                        'UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2'
+                        '(UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2)'
                     ]),
                     // draw
                     $query->newExpr()->add([
+                        'UserTip.result1 IS NOT NULL',
+                        'UserTip.result2 IS NOT NULL',
+                        'Games.result1 IS NOT NULL',
+                        'Games.result2 IS NOT NULL',
                         'UserTip.result1 = UserTip.result2',
                         'Games.result1 = Games.result2',
-                        'UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2'
+                        '(UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2)'
                     ]),
                     //exact
                     $query->newExpr()->add([
+                        'UserTip.result1 IS NOT NULL',
+                        'UserTip.result2 IS NOT NULL',
+                        'Games.result1 IS NOT NULL',
+                        'Games.result2 IS NOT NULL',
                         'UserTip.result1 = Games.result1',
                         'UserTip.result2 = Games.result2'
                     ])
@@ -111,12 +127,23 @@ trait UserTipTrait
                         'UserTip.result2 IS NOT NULL',
                         'Games.result1 IS NOT NULL',
                         'Games.result2 IS NOT NULL',
-                        'UserTip.result1 <> Games.result1',
-                        'UserTip.result2 <> Games.result2',
                         [
                             'or' => [
-                                '(Games.result1 - Games.result2) < 0 && (UserTip.result1 - UserTip.result2) < 0',
-                                '(Games.result1 - Games.result2) > 0 && (UserTip.result1 - UserTip.result2) > 0'
+                                [
+                                    'UserTip.result1 > UserTip.result2',
+                                    'Games.result1 > Games.result2',
+                                    '(UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2)'
+                                ],
+                                [
+                                    'UserTip.result1 < UserTip.result2',
+                                    'Games.result1 < Games.result2',
+                                    '(UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2)'
+                                ],
+                                [
+                                    'UserTip.result1 = UserTip.result2',
+                                    'Games.result1 = Games.result2',
+                                    '(UserTip.result1 != Games.result1 OR UserTip.result2 != Games.result2)'
+                                ]
                             ]
                         ]
                     ])
