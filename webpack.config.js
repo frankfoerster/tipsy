@@ -2,9 +2,13 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = (prod = false) => {
+module.exports = (env) => {
 
-  const config = {
+  const prod = env === 'production';
+  const dev = env === 'development';
+  const test = env === 'testing';
+
+  let config = {
     mode: prod ? 'production' : 'development',
     entry: {
       app: './src/Assets/js/src/index.js'
@@ -74,8 +78,14 @@ module.exports = (prod = false) => {
     ]
   };
 
-  if (!prod) {
+  if (dev) {
     config.devtool = 'source-map';
+  }
+
+  if (test) {
+    config.devtool = 'inline-cheap-module-source-map';
+    config.output.devtoolModuleFilenameTemplate = '[absolute-resource-path]';
+    config.output.devtoolFallbackModuleFilenameTemplate = '[absolute-resource-path]?[hash]';
   }
 
   return config;

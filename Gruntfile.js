@@ -14,9 +14,11 @@ module.exports = function(grunt) {
       options: {
         stats: true
       },
-      dev: webpackConfig(),
-      prod: webpackConfig(true)
+      dev: webpackConfig('development'),
+      prod: webpackConfig('production')
     },
+
+    //-------------------------------------------------- Copy --------------------------------------------------------//
     copy: {
       dev: {
         files: [
@@ -38,12 +40,22 @@ module.exports = function(grunt) {
         ]
       }
     },
+
+    //------------------------------------------------ ByteSize ------------------------------------------------------//
     bytesize: {
       prod: {
         src: [
           './webroot/css/app.min.css',
           './webroot/js/app.min.js'
         ]
+      }
+    },
+
+    //-------------------------------------------------- Karma -------------------------------------------------------//
+    karma: {
+      unit: {
+        configFile: 'test/js/unit/karma.conf.js',
+        singleRun: true
       }
     },
 
@@ -76,5 +88,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('copy-fonts', [
     'copy:fonts'
+  ]);
+
+  grunt.registerTask('test', [
+    'karma:unit'
   ]);
 };
