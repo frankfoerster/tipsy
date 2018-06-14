@@ -1,7 +1,7 @@
 {
-    "name": "snm/betsy",
-    "description": "The SNM betting game",
-    "homepage": "https://github.com/frankfoerster/betz",
+    "name": "frankfoerster/tipsy",
+    "description": "A CakePHP 3 + Vue.js betting game for football cups",
+    "homepage": "https://github.com/frankfoerster/tipsy",
     "type": "project",
     "license": "MIT",
     "require": {
