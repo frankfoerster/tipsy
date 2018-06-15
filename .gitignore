@@ -11,6 +11,7 @@ config/Environment/environment.local.php
 node_modules
 /dist
 webroot/fonts/**/selection.json
+test/js/unit/coverage
 
 # OS generated files #
 ######################

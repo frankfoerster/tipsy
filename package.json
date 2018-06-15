@@ -24,6 +24,11 @@
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.18",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
     "buble": "^0.19.3",
     "buble-loader": "^0.5.1",
     "css-loader": "^0.28.11",

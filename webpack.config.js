@@ -32,12 +32,21 @@ module.exports = (env) => {
         },
         // this will apply to both plain `.js` files
         // AND `<script>` blocks in `.vue` files
-        {
+        !test ?
+          {
+            test: /\.js$/,
+            loader: 'buble-loader',
+            exclude: /node_modules/,
+            options: {
+              objectAssign: 'Object.assign'
+            }
+          }
+        : {
           test: /\.js$/,
-          loader: 'buble-loader',
+          loader: 'babel-loader',
           exclude: /node_modules/,
           options: {
-            objectAssign: 'Object.assign'
+            presets: ["env"]
           }
         },
         // this will apply to both plain `.scss` files
