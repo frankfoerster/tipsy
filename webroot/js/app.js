@@ -3288,6 +3288,13 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return this.game[noteSelector];
       }
+    },
+
+    hasResults: function hasResults(game) {
+      return (
+        game.result1 !== null &&
+        game.result2 !== null
+      );
     }
   },
 
@@ -36136,7 +36143,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.voted
+          _vm.voted && _vm.hasResults(_vm.game)
             ? _c("div", { staticClass: "voting-points" }, [
                 _vm.voteMatch
                   ? _c(
