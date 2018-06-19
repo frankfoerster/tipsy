@@ -3137,7 +3137,8 @@ __webpack_require__.r(__webpack_exports__);
 
       return (
         gameDiff < 0 && userDiff < 0 ||
-        gameDiff > 0 && userDiff > 0
+        gameDiff > 0 && userDiff > 0 ||
+        gameDiff === userDiff
       );
     },
 
