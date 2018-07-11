@@ -1,7 +1,7 @@
 <template>
   <div class="ranking-row" :class="rowClasses">
     <div class="ranking-row-col ranking--place">{{ place }}.</div>
-    <div class="ranking-row-col ranking--name"><span class="ranking-row--username">{{ user.username }}</span></div>
+    <div class="ranking-row-col ranking--name"><span class="ranking-row--username">{{ user.username }}</span><img :src="trophyIcon" class="ranking--winner-team-icon" v-if="user.total_bonus_points > 0" :title="user.username + ' voted for the winning team. (+10 points)'"></div>
     <div class="ranking-row-col ranking--exact">{{ user.total_exact }}</div>
     <div class="ranking-row-col ranking--tendency">{{ user.total_tendency }}</div>
     <div class="ranking-row-col ranking--points">{{ user.total_points }}</div>
@@ -22,6 +22,12 @@
       user: {
         type: Object,
         required: true
+      }
+    },
+
+    data() {
+      return {
+        trophyIcon: global.window.AppConfig.trophyIcon
       }
     },
 
@@ -171,5 +177,11 @@
     @include respond-to-min(560px) {
       @include ranking-extended;
     }
+  }
+
+  .ranking--winner-team-icon {
+    @include rem(max-width, 10px);
+    @include rem(margin-left, 5px);
+    cursor: help;
   }
 </style>
