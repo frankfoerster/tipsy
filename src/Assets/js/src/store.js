@@ -372,6 +372,14 @@ const store = new Vuex.Store({
           return -1;
         }
 
+        if (a.total_votes < b.total_votes) {
+          return 1;
+        }
+
+        if (a.total_votes > b.total_votes) {
+          return -1;
+        }
+
         if (a.username.toLowerCase() > b.username.toLowerCase()) {
           return 1;
         }

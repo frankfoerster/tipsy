@@ -3855,7 +3855,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -3883,6 +3883,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
 
+  data: function data() {
+    return {
+      trophyIcon: global.window.AppConfig.trophyIcon
+    }
+  },
+
   computed: Object.assign({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
       currentUser: 'user'
     }),
@@ -3898,6 +3904,7 @@ __webpack_require__.r(__webpack_exports__);
     }})
 });
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -37262,7 +37269,17 @@ var render = function() {
     _c("div", { staticClass: "ranking-row-col ranking--name" }, [
       _c("span", { staticClass: "ranking-row--username" }, [
         _vm._v(_vm._s(_vm.user.username))
-      ])
+      ]),
+      _vm.user.total_bonus_points > 0
+        ? _c("img", {
+            staticClass: "ranking--winner-team-icon",
+            attrs: {
+              src: _vm.trophyIcon,
+              title:
+                _vm.user.username + " voted for the winning team. (+10 points)"
+            }
+          })
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "ranking-row-col ranking--exact" }, [
@@ -37274,7 +37291,20 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "ranking-row-col ranking--points" }, [
-      _vm._v(_vm._s(_vm.user.total_points))
+      _c(
+        "span",
+        {
+          staticClass: "ranking--points--help",
+          attrs: {
+            title:
+              _vm.user.total_points +
+              " points with " +
+              _vm.user.total_votes +
+              " total votes"
+          }
+        },
+        [_vm._v(_vm._s(_vm.user.total_points))]
+      )
     ])
   ])
 }
@@ -58111,6 +58141,14 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store({
         }
 
         if (a.total_tendency > b.total_tendency) {
+          return -1;
+        }
+
+        if (a.total_votes < b.total_votes) {
+          return 1;
+        }
+
+        if (a.total_votes > b.total_votes) {
           return -1;
         }
 

@@ -1175,6 +1175,16 @@ form {
     width: 4.375rem;
 }
 }
+.ranking--winner-team-icon {
+  max-width: 10px;
+  max-width: 0.625rem;
+  margin-left: 5px;
+  margin-left: 0.3125rem;
+  cursor: help;
+}
+.ranking--points--help {
+  cursor: help;
+}
 
 
 
