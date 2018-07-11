@@ -1,51 +1,59 @@
 {
-    "name": "snm/betsy",
-    "description": "The SNM betting game",
-    "homepage": "https://github.com/frankfoerster/betz",
-    "type": "project",
-    "license": "MIT",
-    "require": {
-        "php": ">=7.1",
-        "ext-intl": "*",
-        "ext-mbstring": "*",
-        "ext-openssl": "*",
-        "cakephp/cakephp": "3.6.*",
-        "cakephp/migrations": "^1.8.0",
-        "cakephp/plugin-installer": "^1.0",
-        "frankfoerster/cakephp-asset": "^3.4",
-        "frankfoerster/cakephp-environment": "^3.0"
-    },
-    "require-dev": {
-        "cakephp/bake": "^1.1",
-        "cakephp/cakephp-codesniffer": "^3.0",
-        "cakephp/debug_kit": "^3.15.0",
-        "psy/psysh": "@stable"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Test\\": "tests/",
-            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
-        }
-    },
-    "scripts": {
-        "post-install-cmd": "App\\Console\\Installer::postInstall",
-        "post-create-project-cmd": "App\\Console\\Installer::postInstall",
-        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
-        "check": [
-            "@test",
-            "@cs-check"
-        ],
-        "cs-check": "phpcs --colors -p --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests",
-        "cs-fix": "phpcbf --colors --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests",
-        "test": "phpunit --colors=always"
-    },
-    "prefer-stable": true,
-    "config": {
-        "sort-packages": true
+  "name": "frankfoerster/tipsy",
+  "description": "A CakePHP 3 + Vue.js betting game for football cups",
+  "homepage": "https://github.com/frankfoerster/tipsy",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Frank Förster",
+      "email": "github@frankfoerster.com",
+      "homepage": "http://frankfoerster.com",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "ext-intl": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "cakephp/cakephp": "3.6.*",
+    "cakephp/migrations": "^1.8.0",
+    "cakephp/plugin-installer": "^1.0",
+    "frankfoerster/cakephp-asset": "^3.4",
+    "frankfoerster/cakephp-environment": "^3.0"
+  },
+  "require-dev": {
+    "cakephp/bake": "^1.1",
+    "cakephp/cakephp-codesniffer": "^3.0",
+    "cakephp/debug_kit": "^3.15.0",
+    "psy/psysh": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Test\\": "tests/",
+      "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": "App\\Console\\Installer::postInstall",
+    "post-create-project-cmd": "App\\Console\\Installer::postInstall",
+    "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
+    "check": [
+      "@test",
+      "@cs-check"
+    ],
+    "cs-check": "phpcs --colors -p --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests",
+    "cs-fix": "phpcbf --colors --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests",
+    "test": "phpunit --colors=always"
+  },
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  }
 }

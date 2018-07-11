@@ -1,6 +1,6 @@
-# Tipsy - A CakePhp 3 + VueJS betting game SPA 
+# Tipsy - A CakePHP 3 + Vue.js betting game SPA 
 
-Tipsy is a betting game for football worldcups and shows how CakePHP 3 and VueJS can be used to create SPAs that consist of a VueJS powered frontend and an API implementation in CakePHP 3.
+Tipsy is a betting game for football worldcups and shows how CakePHP 3 and Vue.js can be used to create SPAs that consist of a Vue.js powered frontend and an API implementation in CakePHP 3.
 
 ## Installation
 
@@ -29,13 +29,13 @@ Tipsy is a betting game for football worldcups and shows how CakePHP 3 and VueJS
         ```bash
         grunt webpack-dev
         ```
-        Creates an unminified development build that supports VueJS Dev tools.
+        Creates an unminified development build that supports Vue.js Dev tools.
     
     - **webpack-prod**
         ```bash
         grunt webpack-prod
         ```
-        Creates a production ready minified and uglified build without VueJS Dev tools support.
+        Creates a production ready minified and uglified build without Vue.js Dev tools support.
     
     - **watch-vue**
         ```bash
@@ -49,7 +49,7 @@ Depending on the debug configuration of your environment the app will either loa
 
 ## About
 
-This app is an experiment to see how easy it is to couple VueJS with a stateless CakePHP API.
+This app is an experiment to see how easy it is to couple Vue.js with a stateless CakePHP API.
 
 ## Screenshots
 
