@@ -33,7 +33,7 @@
     "buble-loader": "^0.5.1",
     "css-loader": "^0.28.11",
     "expect": "^23.1.0",
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.2",
     "grunt-bytesize": "^0.2.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.1.0",
